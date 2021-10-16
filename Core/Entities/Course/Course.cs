@@ -1,0 +1,18 @@
+using System;
+using Core.Entity.Comman;
+
+namespace Core.Entity.Course
+{
+    public class Course:BaseNameEntity
+    {
+        public decimal Price { get; set; }
+        public string CoursePhoto { get; set; }
+        public string CourseDesc { get; set; }
+        public Guid courseLevelId { get; set; }
+        public Guid LanguageId { get; set; }
+        public Guid CurrencyId { get; set; }
+        public CourseLevel courseLevel { get; set; }
+        public Currency currency { get; set; }
+        public Language language { get; set; }
+    }
+}
