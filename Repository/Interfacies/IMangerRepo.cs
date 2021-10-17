@@ -6,6 +6,7 @@ namespace Repository.Interfacies
     public interface IMangerRepo
     {
          public ILanguageRepo LanguageRepo { get;  }
+         public ICurrencyRepo CurrencyRepo { get;  }
         public DapperContext dapperContext{get;}
 
          int save();

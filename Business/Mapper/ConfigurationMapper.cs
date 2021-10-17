@@ -9,6 +9,8 @@ namespace Business.Mapper
         {
             CreateMap<Language,AddLanguageDto>().ReverseMap();
             CreateMap<Language,LanguageDto>().ReverseMap();
+            CreateMap<Currency,CurrencyDto>().ReverseMap();
+            CreateMap<Currency,addCurrencyDto>().ReverseMap();
         }
     }
 }

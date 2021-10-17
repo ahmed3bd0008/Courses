@@ -22,11 +22,12 @@ namespace Api.Extention
         {
             services.AddScoped(typeof(IGenericRepo<>),typeof(GenericRepo<>));
             services.AddScoped(typeof(ILanguageRepo),typeof(LanguageRepo));
+            services.AddScoped(typeof(ICurrencyRepo),typeof(CurrencyRepo));
             services.AddScoped(typeof(IMangerRepo),typeof(MangerRepo));
         }
          public static void addServicesServ(this IServiceCollection services)
         {
-            services.AddScoped(typeof(ILanguageServes),typeof(LanguageServes));
+            services.AddScoped(typeof(ISystemService),typeof(SystemService));
         }
     }
 }

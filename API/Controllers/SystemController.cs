@@ -19,38 +19,50 @@ namespace API.Controllers
         };
 
         private readonly ILogger<SystemController> _logger;
-                        private readonly ILanguageServes _languageServes;
+                        private readonly ISystemService _systemService;
 
                         public SystemController(ILogger<SystemController> logger,
-        ILanguageServes languageServes)
+        ISystemService systemService)
         {
             _logger = logger;
-            _languageServes=languageServes;
+            _systemService=systemService;
         }
 
-        [HttpPost]
-        public IActionResult Add(AddLanguageDto languageDto)
+        [HttpPost("AddLanguage")]
+        public IActionResult AddLaguage(AddLanguageDto languageDto)
         {
-           _languageServes.addLanguage(languageDto);
+           _systemService.addLanguage(languageDto);
            return Ok();
         }
-        [HttpGet]
+        [HttpGet("GetAllLanguage")]
         public async Task< IActionResult> Get()
         {
            
-           return Ok(await _languageServes.GetLanguageies());
+           return Ok(await _systemService.GetLanguageies());
         }
         [HttpGet("GetLanguage")]
         public async Task< IActionResult> GetLanguage(string laguage)
         {
            
-           return Ok(await _languageServes.GetLanguage(laguage));
+           return Ok(await _systemService.GetLanguage(laguage));
         }
          [HttpGet("GetLanguageId")]
         public async Task< IActionResult> GetLanguageId(Guid Id)
         {
            
-           return Ok(await _languageServes.GetLanguageId(Id));
+           return Ok(await _systemService.GetLanguageId(Id));
+        }
+        [HttpPost("AddCurrency")]
+         public IActionResult AddCurrency(addCurrencyDto currencyDto)
+        {
+           _systemService.addCurrency(currencyDto);
+           return Ok();
+        }
+        [HttpGet("GetCurrencies")]
+        public async Task< IActionResult> GetCurrencies()
+        {
+           
+           return Ok(await _systemService.GetCurrencies());
         }
     }
 }
