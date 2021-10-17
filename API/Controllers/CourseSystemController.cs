@@ -15,15 +15,27 @@ namespace API.Controllers
     {
         
         private readonly ILogger<SystemController> _logger;
-                        private readonly ISystemService _systemService;
+                        private readonly ISystemServiceCourse _systemServiceCourse;
 
                         public CourseSystemController(ILogger<SystemController> logger,
-        ISystemService systemService)
+        ISystemServiceCourse systemServiceCourse)
         {
             _logger = logger;
-            _systemService=systemService;
+            _systemServiceCourse=systemServiceCourse;
         }
+[HttpGet("GetAllCourseLevel")]
+public async Task<IActionResult>GetAllCourseLevel()
+{
 
+    return Ok(await _systemServiceCourse.GetCourseLevel());
+}
+[HttpPost("AddCourseLevel")]
+public  IActionResult AddCourseLevel(AddCourseLevelDto courseLevelDto)
+{
+
+     _systemServiceCourse.addCourseLevel(courseLevelDto);
+     return Ok(1);
+}
        
     }
 }

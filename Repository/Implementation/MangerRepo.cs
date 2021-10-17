@@ -12,6 +12,7 @@ namespace Repository.Implementation
                         }
                         private  ILanguageRepo _languageRepo;
                         private  ICurrencyRepo _currencyRepo;
+                        private  ICourseLevelRepo _courseLevelRepo;
                         private readonly AppDbContext _context;
                         private readonly DapperContext _dapperContext;
                         public DapperContext dapperContext{get{return _dapperContext;}}
@@ -29,6 +30,14 @@ namespace Repository.Implementation
                                                 if(_currencyRepo==null)
                                                             _currencyRepo=new  CurrencyRepo(_context,_dapperContext);
                                                 return _currencyRepo;
+                                    }
+                        }
+                         public ICourseLevelRepo CourseLevelRepo 
+                        {
+                                    get{
+                                                if(_courseLevelRepo==null)
+                                                            _courseLevelRepo=new  CourseLevelRepo(_context,_dapperContext);
+                                                return _courseLevelRepo;
                                     }
                         }
 

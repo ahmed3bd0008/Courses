@@ -7,6 +7,7 @@ namespace Repository.Interfacies
     {
          public ILanguageRepo LanguageRepo { get;  }
          public ICurrencyRepo CurrencyRepo { get;  }
+         public ICourseLevelRepo CourseLevelRepo { get;  }
         public DapperContext dapperContext{get;}
 
          int save();

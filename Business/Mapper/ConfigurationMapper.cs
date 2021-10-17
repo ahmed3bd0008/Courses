@@ -1,6 +1,8 @@
 using AutoMapper;
 using Core.Dto;
 using Core.Entity;
+using Core.Entity.Course;
+
 namespace Business.Mapper
 {
    public class ConfigurationMapper:Profile
@@ -11,6 +13,8 @@ namespace Business.Mapper
             CreateMap<Language,LanguageDto>().ReverseMap();
             CreateMap<Currency,CurrencyDto>().ReverseMap();
             CreateMap<Currency,addCurrencyDto>().ReverseMap();
+            CreateMap<CourseLevel,CourseLevelDto>().ReverseMap();
+            CreateMap<CourseLevel,AddCourseLevelDto>().ReverseMap();
         }
     }
 }
