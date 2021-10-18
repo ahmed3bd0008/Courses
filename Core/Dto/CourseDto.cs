@@ -1,5 +1,4 @@
 using System;
-using Microsoft.AspNetCore.Http;
 namespace Core.Dto
 {
     public class CourseDto
