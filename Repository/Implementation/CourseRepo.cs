@@ -11,15 +11,13 @@ namespace Repository.Implementation
     public class CourseRepo:GenericRepo<Course>,ICourseRepo
     {
                         private readonly DapperContext _dapperContext;
-
                         public CourseRepo(AppDbContext context,DapperContext dapperContext):base(context)
-        {
-            _dapperContext=dapperContext;
-        }
-
+                        {
+                            _dapperContext=dapperContext;
+                        }
                         public async Task<Course> GetCourse(Guid Id)
                         {
-                                var query="SELECT * FROM COURSE WHERE id = @Id";
+                                var query="SELECT * FROM Courses WHERE id = @Id";
                                 using(var connection=_dapperContext.CreateConnection())
                                 {
                                     var Course=await connection.QuerySingleOrDefaultAsync<Course>(query,new {Id}) ;
@@ -27,12 +25,12 @@ namespace Repository.Implementation
                                 }
                         }
 
-                        public Task<IEnumerable<Course>> GetCourses()
+                        public async Task<IEnumerable<Course>> GetCourses()
                         {
-                                   var query="SELECT * FROM course";
+                                   var query="SELECT * FROM courses";
                                    using(var connection=_dapperContext.CreateConnection())
                                    {
-                                       var courses=connection.QueryAsync<Course>(query);
+                                       var courses=await connection.QueryAsync<Course>(query);
                                        return courses;
                                    }
                         }
@@ -42,22 +40,22 @@ namespace Repository.Implementation
                                     throw new NotImplementedException();
                         }
 
-                        public Task<IEnumerable<Course>> GetCoursespres()
+                        public async Task<IEnumerable<Course>> GetCoursespres()
                         {
-                                   var query="SELECT id, Name FROM Course";
+                                   var query="SELECT id, Name FROM Courses";
                                    using(var connection=_dapperContext.CreateConnection())
                                    {
-                                       var couse=connection.QueryAsync<Course>(query);
+                                       var couse=await connection.QueryAsync<Course>(query);
                                        return couse;
                                    }
                         }
 
-                        public Task<IEnumerable<Course>> GetCoursespres(string courseName)
+                        public async Task<IEnumerable<Course>> GetCoursespres(string courseName)
                         {
-                                   var query="SELECT id, Name FROM Course where Name like @Name +'%' ";
+                                   var query="SELECT id, Name FROM Courses where Name like @Name +'%' ";
                                    using(var connection=_dapperContext.CreateConnection())
                                    {
-                                       var couse=connection.QueryAsync<Course>(query);
+                                       var couse=await connection.QueryAsync<Course>(query,new{Name=courseName});
                                        return couse;
                                    }
                         }

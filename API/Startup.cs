@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using Api.Extention;
 using Repository.Context;
 using Business.Mapper;
+using Newtonsoft.Json.Serialization;
 
 namespace API
 {
@@ -30,7 +31,11 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(); 
+            //options =>
+          //  {
+            //    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+           // }
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });

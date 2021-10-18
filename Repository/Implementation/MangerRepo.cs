@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Repository.Context;
 using Repository.Interfacies;
+using Repository.Implementation;
 namespace Repository.Implementation
 {
             public class MangerRepo : IMangerRepo
@@ -13,6 +14,7 @@ namespace Repository.Implementation
                         private  ILanguageRepo _languageRepo;
                         private  ICurrencyRepo _currencyRepo;
                         private  ICourseLevelRepo _courseLevelRepo;
+                        private  ICourseRepo _courseRepo;
                         private readonly AppDbContext _context;
                         private readonly DapperContext _dapperContext;
                         public DapperContext dapperContext{get{return _dapperContext;}}
@@ -39,6 +41,14 @@ namespace Repository.Implementation
                                                             _courseLevelRepo=new  CourseLevelRepo(_context,_dapperContext);
                                                 return _courseLevelRepo;
                                     }
+                        }
+
+                        public ICourseRepo CourseRepo {
+                            get{
+                                if (_courseRepo==null)
+                                    _courseRepo=new CourseRepo(context:_context,dapperContext: _dapperContext);
+                                return _courseRepo;
+                            }
                         }
 
                         public int save()

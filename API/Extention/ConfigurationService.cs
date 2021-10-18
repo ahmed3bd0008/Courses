@@ -25,11 +25,13 @@ namespace Api.Extention
             services.AddScoped(typeof(ICurrencyRepo),typeof(CurrencyRepo));
             services.AddScoped(typeof(IMangerRepo),typeof(MangerRepo));
             services.AddScoped(typeof(ICourseLevelRepo),typeof(CourseLevelRepo));
+            services.AddScoped(typeof(ICourseRepo),typeof(CourseRepo));
         }
          public static void addServicesServ(this IServiceCollection services)
         {
             services.AddScoped(typeof(ISystemService),typeof(SystemService));
             services.AddScoped(typeof(ISystemServiceCourse),typeof(SystemServiceCourse));
+            services.AddScoped(typeof(ICourseServices),typeof(CourseServices));
         }
     }
 }
