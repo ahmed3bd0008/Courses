@@ -24,7 +24,7 @@ namespace Repository.Implementation
                         {
 
                             
-                                    var query="select id, name from language where name LIKE @Language";
+                                    var query="select id, name from language where name LIKE  @Language +'%'";
                                     using (var connection = _dapperContext.CreateConnection())
                                     {
                                         var languageDb= await connection.QueryFirstOrDefaultAsync<Language>(query,new{language});
