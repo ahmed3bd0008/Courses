@@ -20,8 +20,6 @@ namespace Core.Entity.Course
         public Guid CourseCategoryId { get; set; }
         public Guid CourseStatusId { get; set; }
         public Guid CourseTypeId { get; set; }
-        public Guid CourseGainSkillId { get; set; }
-        public Guid CourseRequiredSkillId { get; set; }
         public Guid LanguageId { get; set; }
         public Guid CurrencyId { get; set; }
         public CourseStatus CourseStatus { get; set; }
