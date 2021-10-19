@@ -7,7 +7,7 @@ namespace Repository.Interfacies
     public interface ICourseStatuseRepo:IGenericRepo<CourseStatus>
     {
           Task< IEnumerable<CourseStatus>> GetCourseStatus();
-           Task <IEnumerable<CourseStatus>> GetCourseStatus(string courseCategory);
+           Task <IEnumerable<CourseStatus>> GetCourseStatus(string courseStatus);
            Task<CourseStatus> GetCourseStatusId(Guid id);
     }
 }

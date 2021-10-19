@@ -16,6 +16,10 @@ namespace Business.Mapper
             CreateMap<CourseLevel,CourseLevelDto>().ReverseMap();
             CreateMap<CourseLevel,AddCourseLevelDto>().ReverseMap();
             CreateMap<Course,AddCourseDto>().ReverseMap();
+            CreateMap<CourseStatus,AddCourseStatusDto>().ReverseMap();
+            CreateMap<CourseStatus,CourseStatusDto>().ReverseMap();
+            CreateMap<CourseType,AddCourseTypeDto>().ReverseMap();
+            CreateMap<CourseType,CourseTypeDto>().ReverseMap();
             CreateMap<Course,CourseDto>().ReverseMap();
         }
     }

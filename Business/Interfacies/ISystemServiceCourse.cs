@@ -15,7 +15,24 @@ namespace Business.Interfacies
         Task< HttpResponse<CourseLevelDto>>GetCourseLevel(Guid courseLevel);
 
         Task< HttpResponse<List< CourseLevelDto>>>GetCourseLevel();
+        ////////CourseStatus
+        HttpResponse<int> addCourseStatus(AddCourseStatusDto courseStatusDto);
+        Task <HttpResponse<int>> addAsyncCourseStatus(AddCourseStatusDto courseStatusDto);
+
+        Task< HttpResponse<List< CourseStatusDto>>>GetCourseStatus(string coursStatud);
+        Task< HttpResponse<CourseStatusDto>>GetCourseStatus(Guid coursecoursStatud);
+
+        Task< HttpResponse<List< CourseStatusDto>>>GetCourseStatus();
         
+        /////////CourseLType
+        
+        HttpResponse<int> addCourseType(AddCourseTypeDto courseStatusDto);
+        Task <HttpResponse<int>> addAsyncCourseType(AddCourseTypeDto courseStatusDto);
+
+        Task< HttpResponse<List<CourseTypeDto>>>GetCourseType(string courseType);
+        Task< HttpResponse<CourseTypeDto>>GetCourseType(Guid courseType);
+
+        Task< HttpResponse<List<CourseTypeDto>>>GetCourseType();
          
     }
 }

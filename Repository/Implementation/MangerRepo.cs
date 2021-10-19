@@ -15,6 +15,8 @@ namespace Repository.Implementation
                         private  ICurrencyRepo _currencyRepo;
                         private  ICourseLevelRepo _courseLevelRepo;
                         private  ICourseRepo _courseRepo;
+                        private  ICourseTypeRepo _courseTypeRepo;
+                        private  ICourseStatuseRepo _courseStatusRepo;
                         private readonly AppDbContext _context;
                         private readonly DapperContext _dapperContext;
                         public DapperContext dapperContext{get{return _dapperContext;}}
@@ -48,6 +50,24 @@ namespace Repository.Implementation
                                 if (_courseRepo==null)
                                     _courseRepo=new CourseRepo(context:_context,dapperContext: _dapperContext);
                                 return _courseRepo;
+                            }
+                        }
+
+                        public ICourseStatuseRepo CourseStatuseRepo 
+                        {
+                            get{
+                                if (_courseStatusRepo==null)
+                                    _courseStatusRepo=new CourseStatuseRepo(appDbContext:_context,dapperContext: _dapperContext);
+                                return _courseStatusRepo;
+                            }
+                        }
+
+                        public ICourseTypeRepo CourseTypeRepo 
+                        {
+                            get{
+                                if (_courseTypeRepo==null)
+                                    _courseTypeRepo=new CourseTypeRepo(appDbContext:_context,dapperContext: _dapperContext);
+                                return _courseTypeRepo;
                             }
                         }
 
