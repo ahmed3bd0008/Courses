@@ -31,7 +31,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers().AddNewtonsoftJson(); 
+            services.AddControllers(); 
             //options =>
           //  {
             //    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
