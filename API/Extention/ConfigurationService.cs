@@ -25,6 +25,8 @@ namespace Api.Extention
             services.AddScoped(typeof(ICurrencyRepo),typeof(CurrencyRepo));
             services.AddScoped(typeof(IMangerRepo),typeof(MangerRepo));
             services.AddScoped(typeof(ICourseLevelRepo),typeof(CourseLevelRepo));
+            services.AddScoped(typeof(ICourseStatuseRepo),typeof(CourseStatuseRepo));
+            services.AddScoped(typeof(ICourseTypeRepo),typeof(CourseTypeRepo));
             services.AddScoped(typeof(ICourseRepo),typeof(CourseRepo));
         }
          public static void addServicesServ(this IServiceCollection services)

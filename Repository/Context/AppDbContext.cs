@@ -18,9 +18,15 @@ namespace Repository.Context
         public DbSet< CourseCategory> CourseCategories { get; set; }
         public DbSet< CourseStatus> CourseStatuses { get; set; }
         public DbSet< CourseType> CourseTypes { get; set; }
+          public DbSet< Instructor> Instructors { get; set; }
+        public DbSet< Skill> Skills { get; set; }
+        public DbSet< Module> Modules { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             new CourseConfiguration();
+            new ModuleConfiguration();
+            new InstructorConfiguration();
+            new SkillConfiguration();
         }
        
     }

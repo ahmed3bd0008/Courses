@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository.Context;
 
 namespace API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211019134852_add tabel Skill Instructor Module")]
+    partial class addtabelSkillInstructorModule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -267,7 +269,7 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Instructors");
+                    b.ToTable("Instructor");
                 });
 
             modelBuilder.Entity("Core.Entity.Language", b =>
@@ -298,7 +300,7 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Modules");
+                    b.ToTable("Module");
                 });
 
             modelBuilder.Entity("Core.Entity.Skill", b =>
@@ -318,7 +320,7 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skill");
                 });
 
             modelBuilder.Entity("Core.Entity.Course.Course", b =>

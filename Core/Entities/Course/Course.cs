@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Core.Entity.Comman;
 
 namespace Core.Entity.Course
@@ -18,6 +19,9 @@ namespace Core.Entity.Course
         public Guid courseLevelId { get; set; }
         public Guid CourseCategoryId { get; set; }
         public Guid CourseStatusId { get; set; }
+        public Guid CourseTypeId { get; set; }
+        public Guid CourseGainSkillId { get; set; }
+        public Guid CourseRequiredSkillId { get; set; }
         public Guid LanguageId { get; set; }
         public Guid CurrencyId { get; set; }
         public CourseStatus CourseStatus { get; set; }
@@ -26,5 +30,9 @@ namespace Core.Entity.Course
         public CourseLevel CourseLevel { get; set; }
         public Currency currency { get; set; }
         public Language language { get; set; }
+         public ICollection< CourseGainSkill >CourseGainSkills { get; set; }
+        public ICollection< CourseRequiredSkill >CourseRequiredSkills { get; set; }
+        public ICollection<CourseModule>CourseModules{set;get;}
+        public ICollection<CourseInstructor>CourseInstructors{set;get;}
     }
 }
