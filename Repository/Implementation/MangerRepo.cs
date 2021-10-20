@@ -19,6 +19,9 @@ namespace Repository.Implementation
                         private  ICourseStatuseRepo _courseStatusRepo;
                         private readonly AppDbContext _context;
                         private readonly DapperContext _dapperContext;
+                         private  ISkillRepo _skillRepo;
+                        private  IModuleRepo _ModuleRepo;
+                        private  IInstructorRepo _instructorRepo;
                         public DapperContext dapperContext{get{return _dapperContext;}}
                         public ILanguageRepo LanguageRepo 
                         {
@@ -44,7 +47,6 @@ namespace Repository.Implementation
                                                 return _courseLevelRepo;
                                     }
                         }
-
                         public ICourseRepo CourseRepo {
                             get{
                                 if (_courseRepo==null)
@@ -52,7 +54,6 @@ namespace Repository.Implementation
                                 return _courseRepo;
                             }
                         }
-
                         public ICourseStatuseRepo CourseStatuseRepo 
                         {
                             get{
@@ -61,7 +62,6 @@ namespace Repository.Implementation
                                 return _courseStatusRepo;
                             }
                         }
-
                         public ICourseTypeRepo CourseTypeRepo 
                         {
                             get{
@@ -70,12 +70,34 @@ namespace Repository.Implementation
                                 return _courseTypeRepo;
                             }
                         }
-
+                        public IInstructorRepo InstructorRepo
+                        {
+                            get{
+                                if(_instructorRepo==null)
+                                    _instructorRepo=new InstructorRepo(_context,_dapperContext);
+                                return _instructorRepo;
+                            }
+                        }
+                        public IModuleRepo ModuleRepo 
+                        {
+                            get{
+                                if(_ModuleRepo==null)
+                                    _ModuleRepo=new ModuleRepo(_context,_dapperContext);
+                                return _ModuleRepo;
+                            }
+                        }
+                        public ISkillRepo SkillRepo 
+                        {
+                              get{
+                                if(_skillRepo==null)
+                                    _skillRepo=new SkillRepo(_context,_dapperContext);
+                                return _skillRepo;
+                            }
+                        }
                         public int save()
                         {
                                return     _context.SaveChanges();
                         }
-
                         public async Task<int> saveAsync()
                         {
                                     return await _context.SaveChangesAsync();
