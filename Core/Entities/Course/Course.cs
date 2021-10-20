@@ -16,12 +16,17 @@ namespace Core.Entity.Course
         public string CourseRefranceText { get; set; }
         public string CourseRefranceLink { get; set; }
         public string CourseDesc { get; set; }
-        public Guid courseLevelId { get; set; }
-        public Guid CourseCategoryId { get; set; }
+        public string CourseRequirement { get; set; }
+        public int ourseCertificationNO { get; set; }
+        public bool CertificationAvailable { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndData { get; set; }
         public Guid CourseStatusId { get; set; }
+        public Guid CourseCategoryId { get; set; }
         public Guid CourseTypeId { get; set; }
-        public Guid LanguageId { get; set; }
+        public Guid courseLevelId { get; set; }
         public Guid CurrencyId { get; set; }
+        public Guid LanguageId { get; set; }
         public CourseStatus CourseStatus { get; set; }
         public CourseCategory CourseCategory { get; set; }
         public CourseType CourseType { get; set; }

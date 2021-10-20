@@ -56,14 +56,14 @@ namespace Business.Implemenation
                         {
                                 var courses=await _mangerRepo.CourseRepo.GetCoursespres(courseName:Course);
                                 var courseDto=_mapper.Map<List<CourseDto>>(courses);
-                                return new HttpResponse<List<CourseDto>>(){Data=courseDto}; 
+                                return new HttpResponse<List<CourseDto>>(){Status=true,Data=courseDto}; 
                         }
 
                         public async Task<HttpResponse<List<CourseDto>>> GetCourses()
                         {
                                     var courses=await _mangerRepo.CourseRepo.GetCourses();
                                 var courseDto=_mapper.Map<List<CourseDto>>(courses);
-                                return new HttpResponse<List<CourseDto>>(){Data=courseDto};
+                                return new HttpResponse<List<CourseDto>>(){Status=true,Data=courseDto};
                         }
             }
 }

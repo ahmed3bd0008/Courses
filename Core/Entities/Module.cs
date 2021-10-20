@@ -6,7 +6,6 @@ namespace Core.Entity
 {
     public class Module:BaseNameEntity
     {
-         public System.Guid CourseModuleId { get; set; }
         public ICollection<CourseModule> CourseModule { get; set; }
     }
 }

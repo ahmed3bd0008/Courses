@@ -18,14 +18,33 @@ namespace Repository.Implementation
 
                         public async Task<IEnumerable<Currency>> GetCurrencies()
                         {
-                                    var query="SELECT id, Name FROM Currency";
-                                 using(  var connection=_dapperContext.CreateConnection())
+                                var query="SELECT id, Name FROM Currency";
+                                using(  var connection=_dapperContext.CreateConnection())
                                  {
                                     
                                         var currency=await connection.QueryAsync<Currency>(query);
                                         return currency;
                                  }
                                     
+                        }
+                        public async Task<IEnumerable<Currency>> GetCurrencies(string Name)
+                        {
+                                var query="SELECT id, Name FROM Currency WHERE Name LIKE @Name +'%'";
+                                using(  var connection=_dapperContext.CreateConnection())
+                                 {
+                                    
+                                        var currency=await connection.QueryAsync<Currency>(query,new {Name});
+                                        return currency;
+                                 }
+                        }
+                        public async Task<Currency>GetCurrencyById(System.Guid Id)
+                        {
+                                var query="SELECT id, Name FROM Currency WHERE Id =@Id";
+                                using(  var connection=_dapperContext.CreateConnection())
+                                 {
+                                        var currency=await connection.QuerySingleAsync<Currency>(query,new {Id});
+                                        return currency;
+                                 }
                         }
             }
 }

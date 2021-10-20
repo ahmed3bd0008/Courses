@@ -15,11 +15,11 @@ namespace Business.Interfacies
         Task< HttpResponse<LanguageDto>>GetLanguageId(Guid Language);
 
         Task< HttpResponse<List< LanguageDto>>>GetLanguageies();
-        HttpResponse<int> addCurrency(addCurrencyDto languageDto);
-        Task <HttpResponse<int>> addAsyncCurrency(addCurrencyDto languageDto);
+        HttpResponse<int> addCurrency(addCurrencyDto currancyDto);
+        Task <HttpResponse<int>> addAsyncCurrency(addCurrencyDto currancyDto);
 
-        Task< HttpResponse<CurrencyDto>>GetCurrency(string Language);
-        Task< HttpResponse<CurrencyDto>>GetCurrency(Guid Language);
+        Task< HttpResponse<List<CurrencyDto>>>GetCurrency(string currencyName);
+        Task< HttpResponse<CurrencyDto>>GetCurrency(Guid currencyId);
 
         Task< HttpResponse<List< CurrencyDto>>>GetCurrencies();
          

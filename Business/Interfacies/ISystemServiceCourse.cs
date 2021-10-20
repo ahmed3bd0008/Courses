@@ -11,7 +11,7 @@ namespace Business.Interfacies
         HttpResponse<int> addCourseLevel(AddCourseLevelDto courseLevelDto);
         Task <HttpResponse<int>> addAsyncCourseLevel(AddCourseLevelDto courseLevelDto);
 
-        Task< HttpResponse<CourseLevelDto>>GetCourseLevel(string courseLevel);
+        Task< HttpResponse<List<CourseLevelDto>>>GetCourseLevel(string courseLevel);
         Task< HttpResponse<CourseLevelDto>>GetCourseLevel(Guid courseLevel);
 
         Task< HttpResponse<List< CourseLevelDto>>>GetCourseLevel();

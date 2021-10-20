@@ -13,7 +13,7 @@ namespace Core.Dto
         public CourseLevelDto courseLevelDto { get; set; }
         public CurrencyDto currencyDto { get; set; }
         public LanguageDto languageDto { get; set; }
-
+        
     }
     public class AddCourseDto
     {

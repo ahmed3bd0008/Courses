@@ -28,6 +28,16 @@ namespace API.Controllers
         {
             return Ok(await _systemServiceCourse.GetCourseLevel());
         }
+        [HttpGet("GetCourseLevelName")]
+        public async Task<IActionResult>GetCourseLevelByName(string CourseLevelName)
+        {
+            return Ok(await _systemServiceCourse.GetCourseLevel(CourseLevelName));
+        }
+        [HttpGet("GetCourseLevelBId")]
+        public async Task<IActionResult>GetAllCourseLevelById(Guid Id)
+        {
+            return Ok(await _systemServiceCourse.GetCourseLevel(Id));
+        }
         [HttpPost("AddCourseLevel")]
         public  IActionResult AddCourseLevel(AddCourseLevelDto courseLevelDto)
         {
@@ -36,11 +46,22 @@ namespace API.Controllers
             return Ok(1);
         }
 
-            [HttpGet("GetAllCourseStatus")]
+        [HttpGet("GetAllCourseStatus")]
         public async Task<IActionResult>GetAllCourseStatus()
         {
 
             return Ok(await _systemServiceCourse.GetCourseStatus());
+        }
+        [HttpGet("GetCourseStatusName")]
+        public async Task<IActionResult>GetAllCourseStatus(string statusName)
+        {
+
+            return Ok(await _systemServiceCourse.GetCourseStatus(statusName));
+        }
+        [HttpGet("GetCourseStatusById")]
+        public async Task<IActionResult>GetCourseStatusById(Guid Id)
+        {
+            return Ok(await _systemServiceCourse.GetCourseStatus(Id));
         }
         [HttpPost("AddCourseStatus")]
         public  IActionResult AddCourseStatus(AddCourseStatusDto courseStatusDto)
@@ -51,8 +72,17 @@ namespace API.Controllers
         [HttpGet("GetAllCourseType")]
         public async Task<IActionResult>GetAllCourseType()
         {
-
             return Ok(await _systemServiceCourse.GetCourseType());
+        }
+        [HttpGet("GetCourseTypeBYId")]
+        public async Task<IActionResult>GetCourseTypeById(Guid Id)
+        {
+            return Ok(await _systemServiceCourse.GetCourseType(Id));
+        }
+        [HttpGet("GetCourseTypeName")]
+        public async Task<IActionResult>GetCourseTypeName(string CoursTypeName )
+        {
+            return Ok(await _systemServiceCourse.GetCourseType(CoursTypeName));
         }
         [HttpPost("AddCourseType")]
         public  IActionResult AddCourseType(AddCourseTypeDto courseTypeDto)
