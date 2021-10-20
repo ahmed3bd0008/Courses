@@ -15,78 +15,78 @@ namespace Business.Implemenation
             {
                         private readonly IMangerRepo _mangerRepo;
                         private readonly IMapper _mapper;
-
                         public SystemService(IMangerRepo mangerRepo,IMapper mapper)
                         {
                             _mangerRepo=mangerRepo;
                             _mapper=mapper;
                         }
-
-                       
-
-                        public Task<HttpResponse<int>> addAsyncLanguage(AddLanguageDto languageDto)
+                        public async Task<HttpResponse<int>> addAsyncLanguage(AddLanguageDto languageDto)
                         {
-                                    throw new System.NotImplementedException();
+                                    var language=_mapper.Map<Language>(languageDto);
+                                    await _mangerRepo.LanguageRepo.AddAsync(language);
+                                    await _mangerRepo.saveAsync();
+                                    return new HttpResponse<int>(){Status=true,Data=1};
                         }
-
-                       
-
                         public HttpResponse<int> addLanguage(AddLanguageDto languageDto)
                         {
                                    var Language=_mapper.Map<Language>(languageDto);
                                    _mangerRepo.LanguageRepo.Add(Language);
                                    _mangerRepo.save();
-                                   return new HttpResponse<int>(){Status=true};
+                                   return new HttpResponse<int>(){Status=true,Data=1};
                         }
-
-                       
                         public async Task<HttpResponse<LanguageDto>> GetLanguage(string Language)
                         {
                                    var LanguageDb= await _mangerRepo.LanguageRepo.GetLanguage(Language);
                                     var LanguageDto=_mapper.Map< LanguageDto>(LanguageDb);
-                                    return new HttpResponse<LanguageDto>{Data= LanguageDto};
+                                    return new HttpResponse<LanguageDto>{Status=true,Data= LanguageDto};
 
                         }
                          public async Task<HttpResponse<LanguageDto>> GetLanguageId(Guid Id)
                         {
                                    var LanguageDb= await _mangerRepo.LanguageRepo.GetLanguageId(Id);
                                     var LanguageDto=_mapper.Map< LanguageDto>(LanguageDb);
-                                    return new HttpResponse<LanguageDto>{Data= LanguageDto};
+                                    return new HttpResponse<LanguageDto>{Status=true,Data= LanguageDto};
 
                         }
                         public async Task< HttpResponse<List< LanguageDto>>>GetLanguageies()
                         {
                                     var languages = await _mangerRepo.LanguageRepo.GetLanguageies();
-                                     var LanguageDto=_mapper.Map<List< LanguageDto>>(languages);
-                                    return new HttpResponse<List< LanguageDto>>{Data= LanguageDto.ToList()};
+                                    var LanguageDto=_mapper.Map<List< LanguageDto>>(languages);
+                                    return new HttpResponse<List< LanguageDto>>{Status=true,Data= LanguageDto.ToList()};
                         }
                         //////////////currency
-                        public Task<HttpResponse<int>> addAsyncCurrency(addCurrencyDto languageDto)
+                        public async Task<HttpResponse<int>> addAsyncCurrency(addCurrencyDto currancyDto)
                         {
-                                    throw new NotImplementedException();
+                                    var currency=_mapper.Map<Currency>(currancyDto);
+                                     await _mangerRepo.CurrencyRepo.AddAsync(currency);
+                                    await _mangerRepo.saveAsync();
+                                    return new HttpResponse<int>{Status=true,Data=1};
                         }
                          public HttpResponse<int> addCurrency(addCurrencyDto currencyDto)
                         {
                                     var currency=_mapper.Map<Currency>(currencyDto);
                                     _mangerRepo.CurrencyRepo.Add(currency);
                                     _mangerRepo.save();
-                                    return new HttpResponse<int>{Data=1};
+                                    return new HttpResponse<int>{Status=true,Data=1};
                         }
                          public async Task<HttpResponse<List<CurrencyDto>>> GetCurrencies()
                         {
                                    var currency=await _mangerRepo.CurrencyRepo.GetCurrencies();
                                    var currenciesDto=_mapper.Map<List<CurrencyDto>>(currency);
-                                   return new HttpResponse<List<CurrencyDto>>{Data=currenciesDto};
+                                   return new HttpResponse<List<CurrencyDto>>{Status=true,Data=currenciesDto};
                         }
 
-                        public Task<HttpResponse<CurrencyDto>> GetCurrency(string Language)
+                        public async Task<HttpResponse<List<CurrencyDto>>> GetCurrency(string currancyName)
                         {
-                                    throw new NotImplementedException();
+                                   var currency=await _mangerRepo.CurrencyRepo.GetCurrencies(currancyName);
+                                   var currenciesDto=_mapper.Map<List<CurrencyDto>>(currency);
+                                   return new HttpResponse<List<CurrencyDto>>{Status=true,Data=currenciesDto};
                         }
-
-                        public Task<HttpResponse<CurrencyDto>> GetCurrency(Guid Language)
+                        public async Task<HttpResponse<CurrencyDto>> GetCurrency(Guid currancyId)
                         {
-                                    throw new NotImplementedException();
+                                    var currency=await _mangerRepo.CurrencyRepo.GetCurrencyById(currancyId);
+                                   var currenciesDto=_mapper.Map<CurrencyDto>(currency);
+                                   return new HttpResponse<CurrencyDto>{Status=true,Data=currenciesDto};
                         }
 
             }
