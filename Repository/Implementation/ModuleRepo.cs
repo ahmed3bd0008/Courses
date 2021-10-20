@@ -4,29 +4,46 @@ using Repository.Context;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
-
+using Dapper;
 namespace Repository.Implementation
 {
     public class ModuleRepo:GenericRepo<Module>,IModuleRepo
     {
-        public ModuleRepo(AppDbContext AppDbContext ,DapperContext dapperContext):base(AppDbContext)
+                        private readonly DapperContext _dapperContext;
+
+                        public ModuleRepo(AppDbContext AppDbContext ,DapperContext dapperContext):base(AppDbContext)
         {
-            
+            _dapperContext=dapperContext;
         }
 
-                        public Task<Module> GetModuleId(Guid id)
+                        public async Task<Module> GetModuleId(Guid id)
                         {
-                                    throw new NotImplementedException();
+                                  var query="SELECT * FROM Modules where Id=@Id ";
+                                  using(var Connection=_dapperContext.CreateConnection())
+                                  {
+                                              var Module= await Connection.QuerySingleOrDefaultAsync<Module>(query,new {Id=id});
+                                              return Module;
+                                  }
                         }
 
-                        public Task<IEnumerable<Module>> GetModules()
+                        public async Task<IEnumerable<Module>> GetModules()
                         {
-                                    throw new NotImplementedException();
+                                   var query="SELECT * FROM Modules  ";
+                                  using(var Connection=_dapperContext.CreateConnection())
+                                  {
+                                              var Modules= await Connection.QueryAsync<Module>(query);
+                                              return Modules;
+                                  }
                         }
 
-                        public Task<IEnumerable<Module>> GetModules(string moduleName)
+                        public async Task<IEnumerable<Module>> GetModules(string moduleName)
                         {
-                                    throw new NotImplementedException();
+                                     var query="SELECT * FROM Modules WHERE Name LIKE @Name +'%'  ";
+                                  using(var Connection=_dapperContext.CreateConnection())
+                                  {
+                                              var Modules= await Connection.QueryAsync<Module>(query,new {Name=moduleName});
+                                              return Modules;
+                                  }
                         }
             }
 }

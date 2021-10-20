@@ -11,6 +11,9 @@ namespace Repository.Interfacies
          public ICourseStatuseRepo CourseStatuseRepo { get;  }
          public ICourseTypeRepo CourseTypeRepo { get;  }
          public ICourseRepo CourseRepo { get;  }
+         public IInstructorRepo InstructorRepo { get;  }
+         public IModuleRepo ModuleRepo { get;  }
+         public ISkillRepo SkillRepo { get;  }
         public DapperContext dapperContext{get;}
 
          int save();
