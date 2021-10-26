@@ -62,7 +62,7 @@ namespace API.Controllers
         [HttpGet("GetModule")]
         public async Task <IActionResult >GetModule( )
         {
-            return Ok (await _courseAssistant.GetInstructor());
+            return Ok (await _courseAssistant.GetModule());
         } 
         ////// 
         [HttpPost("CreateSkill")]
