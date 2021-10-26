@@ -23,7 +23,7 @@ namespace API.Controllers
             _courseServices=courseServices;
         }
         [HttpPost("CreateCourse")]
-        public IActionResult CreateCourse(AddCourseDto courseDto)
+        public IActionResult CreateCourse([FromForm] AddCourseDto courseDto)
         {
             return Ok (_courseServices.addCourse(courseDto));
         }
