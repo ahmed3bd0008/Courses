@@ -22,6 +22,7 @@ namespace Repository.Implementation
                          private  ISkillRepo _skillRepo;
                         private  IModuleRepo _ModuleRepo;
                         private  IInstructorRepo _instructorRepo;
+                        private  ICourseCategoryRepo _courseCategoryRepo;
                         public DapperContext dapperContext{get{return _dapperContext;}}
                         public ILanguageRepo LanguageRepo 
                         {
@@ -94,6 +95,16 @@ namespace Repository.Implementation
                                 return _skillRepo;
                             }
                         }
+
+                        public ICourseCategoryRepo CourseCategoryRepo 
+                        {
+                            get{
+                                if(_courseCategoryRepo==null)
+                                    _courseCategoryRepo=new CourseCategoryRepo(_context,_dapperContext);
+                                    return _courseCategoryRepo;
+                            }
+                        }
+
                         public int save()
                         {
                                return     _context.SaveChanges();

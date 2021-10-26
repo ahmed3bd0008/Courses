@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository.Context;
 
 namespace API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211026110446_make CourseName Unique And Name Required")]
+    partial class makeCourseNameUniqueAndNameRequired
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +46,6 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CourseRefrance")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CourseRefranceLink")
@@ -98,7 +99,8 @@ namespace API.Migrations
                     b.HasIndex("CourseCategoryId");
 
                     b.HasIndex("CourseRefrance")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[CourseRefrance] IS NOT NULL");
 
                     b.HasIndex("CourseStatusId");
 

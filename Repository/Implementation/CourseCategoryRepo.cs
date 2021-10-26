@@ -27,7 +27,7 @@ namespace Repository.Implementation
 
         public async Task<IEnumerable<CourseCategory>> GetCategory(string courseCategory)
             {
-                    var query="SELECT * FROM CourseCategory WHERE Name like @Name +'%' ";
+                    var query="SELECT * FROM CourseCategories WHERE Name like @Name +'%' ";
                     using(var connection=_dapperContext.CreateConnection())
                     {
                         var courseCategoryDb=await connection .QueryAsync<CourseCategory>(query,new {Name=courseCategory});
@@ -37,7 +37,7 @@ namespace Repository.Implementation
 
         public async Task<CourseCategory> GetCategoryId(Guid id)
         {
-                                var query="SELECT * FROM CourseCategory WHERE id=@Id  ";
+                                var query="SELECT * FROM CourseCategories WHERE id=@Id  ";
                     using(var connection=_dapperContext.CreateConnection())
                     {
                         var courseCategoryDb=await connection .QueryFirstOrDefaultAsync<CourseCategory>(query,new {Id=id});

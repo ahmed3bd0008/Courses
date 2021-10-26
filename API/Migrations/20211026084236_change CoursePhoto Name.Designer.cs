@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository.Context;
 
 namespace API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211026084236_change CoursePhoto Name")]
+    partial class changeCoursePhotoName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,8 +46,7 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CourseRefrance")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CourseRefranceLink")
                         .HasColumnType("nvarchar(max)");
@@ -78,7 +79,6 @@ namespace API.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
@@ -96,9 +96,6 @@ namespace API.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CourseCategoryId");
-
-                    b.HasIndex("CourseRefrance")
-                        .IsUnique();
 
                     b.HasIndex("CourseStatusId");
 
@@ -333,28 +330,23 @@ namespace API.Migrations
 
                     b.HasOne("Core.Entity.Course.CourseStatus", "CourseStatus")
                         .WithMany()
-                        .HasForeignKey("CourseStatusId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CourseStatusId");
 
                     b.HasOne("Core.Entity.Course.CourseType", "CourseType")
                         .WithMany()
-                        .HasForeignKey("CourseTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CourseTypeId");
 
                     b.HasOne("Core.Entity.Currency", "currency")
                         .WithMany()
-                        .HasForeignKey("CurrencyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CurrencyId");
 
                     b.HasOne("Core.Entity.Language", "language")
                         .WithMany()
-                        .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("LanguageId");
 
                     b.HasOne("Core.Entity.Course.CourseLevel", "CourseLevel")
                         .WithMany()
-                        .HasForeignKey("courseLevelId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("courseLevelId");
 
                     b.Navigation("CourseCategory");
 

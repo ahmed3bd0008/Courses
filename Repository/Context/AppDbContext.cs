@@ -23,10 +23,10 @@ namespace Repository.Context
         public DbSet< Module> Modules { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            new CourseConfiguration();
-            new ModuleConfiguration();
-            new InstructorConfiguration();
-            new SkillConfiguration();
+            modelBuilder.ApplyConfiguration( new CourseConfiguration());
+            modelBuilder.ApplyConfiguration(new ModuleConfiguration());
+            modelBuilder.ApplyConfiguration(new InstructorConfiguration());
+             modelBuilder.ApplyConfiguration(new SkillConfiguration());
         }
        
     }

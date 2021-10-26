@@ -119,9 +119,44 @@ namespace Business.Implemenation
                                     var courseTypeDto=_mapper.Map<CourseTypeDto>(courseTypeDb);
                                     return new HttpResponse<CourseTypeDto>(){Status=true,Data=courseTypeDto};
                         }
-                         
-                       
 
+                        public HttpResponse<int> addCourseCategory(AddCourseCategoryDto categoryDto)
+                        {
+                                    var categoryDb=_mapper.Map<CourseCategory>(categoryDto);
+                                    _mangerRepo.CourseCategoryRepo.Add(categoryDb);
+                                    _mangerRepo.save();
+                                    return new HttpResponse<int>(){Data=1};
+                        }
+
+                        public async Task<HttpResponse<int>> addAsyncCourseCategory(AddCourseCategoryDto courseCategoryDto)
+                        {
+                                    var categoryDb=_mapper.Map<CourseCategory>(courseCategoryDto);
+                                    await _mangerRepo.CourseCategoryRepo.AddAsync(categoryDb);
+                                    await _mangerRepo.saveAsync();
+                                    return new HttpResponse<int>(){Data=1};
+                        }
+
+                        public async Task<HttpResponse<List<CourseCategoryDto>>> GetCourseCategory(string courseCategory)
+                        {
+                                    var courseCategoryDb=await _mangerRepo.CourseCategoryRepo.GetCategory(courseCategory);
+                                    var courseCategoryDto=_mapper.Map<List<CourseCategoryDto>>(courseCategoryDb);
+                                    return new HttpResponse<List<CourseCategoryDto>>(){Data=courseCategoryDto};
+
+                        }
+
+                        public async Task<HttpResponse<CourseCategoryDto>> GetCourseCategory(Guid courseCategoryId)
+                        {
+                                    var courseCategoryDb=await _mangerRepo.CourseCategoryRepo.GetCategoryId(courseCategoryId);
+                                    var courseCategoryDto=_mapper.Map<CourseCategoryDto>(courseCategoryDb);
+                                    return new HttpResponse<CourseCategoryDto>(){Data=courseCategoryDto};
+                        }
+
+                        public async Task<HttpResponse<List<CourseCategoryDto>>> GetCourseCategory()
+                        {
+                                   var courseCategoryDb=await _mangerRepo.CourseCategoryRepo.GetCategory();
+                                    var courseCategoryDto=_mapper.Map<List<CourseCategoryDto>>(courseCategoryDb);
+                                    return new HttpResponse<List<CourseCategoryDto>>(){Data=courseCategoryDto};
+                        }
             }
             
 }
