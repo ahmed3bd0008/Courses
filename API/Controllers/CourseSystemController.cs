@@ -91,5 +91,28 @@ namespace API.Controllers
             _systemServiceCourse.addCourseType(courseTypeDto);
             return Ok(1);
         }
+        [HttpGet("GetAllCourseCategory")]
+        public async Task<IActionResult>GetAllCourseCategory()
+        {
+
+            return Ok(await _systemServiceCourse.GetCourseCategory());
+        }
+        [HttpGet("GetCourseCategoryName")]
+        public async Task<IActionResult>GetAllCourseCategory(string courseCategoryName)
+        {
+
+            return Ok(await _systemServiceCourse.GetCourseCategory(courseCategoryName));
+        }
+        [HttpGet("GetCourseCategoryById")]
+        public async Task<IActionResult>GetCourseCategoryById(Guid Id)
+        {
+            return Ok(await _systemServiceCourse.GetCourseCategory(Id));
+        }
+        [HttpPost("AddCourseCategory")]
+        public  IActionResult AddCourseCategory(AddCourseCategoryDto courseCategoryDto)
+        {
+            _systemServiceCourse.addCourseCategory(courseCategoryDto);
+            return Ok(1);
+        }   
     }
 }

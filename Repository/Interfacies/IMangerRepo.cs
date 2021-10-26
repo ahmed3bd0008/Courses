@@ -9,6 +9,7 @@ namespace Repository.Interfacies
          public ICurrencyRepo CurrencyRepo { get;  }
          public ICourseLevelRepo CourseLevelRepo { get;  }
          public ICourseStatuseRepo CourseStatuseRepo { get;  }
+         public ICourseCategoryRepo CourseCategoryRepo { get;  }
          public ICourseTypeRepo CourseTypeRepo { get;  }
          public ICourseRepo CourseRepo { get;  }
          public IInstructorRepo InstructorRepo { get;  }

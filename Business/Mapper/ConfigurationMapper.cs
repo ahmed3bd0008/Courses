@@ -26,7 +26,8 @@ namespace Business.Mapper
             CreateMap<Instructor,InstructorDto>().ReverseMap();
             CreateMap<Instructor,AddInstructorDto>().ReverseMap();
             CreateMap<Skill,SkillDto>().ReverseMap();
-            CreateMap<Skill,AddSkillDto>().ReverseMap();
+            CreateMap<CourseCategory,CourseCategoryDto>().ReverseMap();
+            CreateMap<CourseCategory,AddCourseCategoryDto>().ReverseMap();
         }
     }
 }

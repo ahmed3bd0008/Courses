@@ -33,6 +33,15 @@ namespace Business.Interfacies
         Task< HttpResponse<CourseTypeDto>>GetCourseType(Guid courseType);
 
         Task< HttpResponse<List<CourseTypeDto>>>GetCourseType();
+
+      //Course Category
+         HttpResponse<int> addCourseCategory(AddCourseCategoryDto categoryDto);
+        Task <HttpResponse<int>> addAsyncCourseCategory(AddCourseCategoryDto courseCategoryDto);
+
+        Task< HttpResponse<List<CourseCategoryDto>>>GetCourseCategory(string courseCategory);
+        Task< HttpResponse<CourseCategoryDto>>GetCourseCategory(Guid courseCategoryId);
+
+        Task< HttpResponse<List<CourseCategoryDto>>>GetCourseCategory();
          
     }
 }

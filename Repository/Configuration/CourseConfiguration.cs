@@ -9,6 +9,9 @@ namespace Repository.Configuration
                         public void Configure(EntityTypeBuilder<Course> builder)
                         {
                                     builder.HasKey(k=>k.Id);
+                                    builder.Property(p=>p.Name).IsRequired();
+                                    builder.Property(p=>p.CourseRefrance).IsRequired();
+                                    builder.HasIndex(i=>i.CourseRefrance).IsUnique();
                                     builder.HasOne(d=>d.CourseLevel).WithMany().HasForeignKey(f=>f.courseLevelId).OnDelete(DeleteBehavior.Cascade);
                                     builder.HasOne(d=>d.language).WithMany().HasForeignKey(f=>f.LanguageId).OnDelete(DeleteBehavior.Cascade);
                                     builder.HasOne(d=>d.currency).WithMany().HasForeignKey(f=>f.CurrencyId).OnDelete(DeleteBehavior.Cascade);
@@ -18,7 +21,7 @@ namespace Repository.Configuration
                                     builder.HasMany(d=>d.CourseInstructors).WithOne(m=>m.Course).HasForeignKey(fk=>fk.CourseId).OnDelete(DeleteBehavior.Cascade);
                                     builder.HasMany(d=>d.CourseModules).WithOne(m=>m.Course).HasForeignKey(fk=>fk.CourseId).OnDelete(DeleteBehavior.Cascade);
                                     builder.HasMany(d=>d.CourseGainSkills).WithOne(m=>m.Course).HasForeignKey(fk=>fk.CourseId).OnDelete(DeleteBehavior.Cascade);
-                                    builder.HasMany(d=>d.CourseRequiredSkills).WithOne(m=>m.Course).HasForeignKey(fk=>fk.CourseId).OnDelete(DeleteBehavior.Cascade);
+                                    builder.HasMany(d=>d.CourseRequiredSkills).WithOne(m=>m.Course).HasForeignKey(fk=>fk.CourseId).OnDelete(DeleteBehavior.Cascade);           
                         }
             }
 }
