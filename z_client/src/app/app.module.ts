@@ -13,7 +13,9 @@ import { coursetrackcomponent } from './Courses/courseTrack/course-track.compone
 import { coursetypecomponent } from './Courses/courseType/course-type.component';
 import { navcomponent } from './Nav/nav.component';
 import { Usercomponent } from './User/user.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//mateDialog 
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,9 @@ import { Usercomponent } from './User/user.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [ ],
   exports:   [ AppComponent ],
