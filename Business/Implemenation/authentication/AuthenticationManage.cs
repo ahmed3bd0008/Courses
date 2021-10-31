@@ -18,21 +18,41 @@ namespace Business.Implemenation.authentication
     public class AuthentcationManger:IAuthentcationManger
     {
       private readonly IConfiguration _config;
+      
         private readonly UserManager<AppUser> _userManager;
         private readonly IConfigurationSection _serviceKey;
      private readonly JwtSettings _jwtSettings;
+                        private readonly RoleManager<AppRole> _roleManager;
 
-     public  AuthentcationManger(IConfiguration config,
+                        public  AuthentcationManger(IConfiguration config,
          UserManager<AppUser> userManager,
-         IOptionsMonitor<JwtSettings>jwtSettings)
+         IOptionsMonitor<JwtSettings>jwtSettings,
+         RoleManager<AppRole>roleManager)
         {
             _config = config;
             _userManager = userManager;
             _serviceKey = _config.GetSection("JwtSettings");
             _jwtSettings=jwtSettings.CurrentValue;
+            _roleManager=roleManager;
         }
         public AppUser user { get; set; }
+        public async Task<int> CreateUser(LoginUserDto loginUserDto)
+            {
+                   AppUser appUser=new AppUser();
+                   appUser.UserName=loginUserDto.UserName;
+                   var res= await _userManager.CreateAsync(appUser,loginUserDto.Password);
+                   if(res.Succeeded)
+                   {
 
+                   }
+                   throw new NotImplementedException();
+            }
+
+        public Task<UserToken> LogenUser()
+            {
+                    throw new NotImplementedException();
+            }
+        
         public async Task<string> CreateToken()
         {
             var signingCredentials = getSigningCredentials();
@@ -102,5 +122,6 @@ namespace Business.Implemenation.authentication
             ); return tokenOptions;
         }
 
-    }
+                       
+            }
 }

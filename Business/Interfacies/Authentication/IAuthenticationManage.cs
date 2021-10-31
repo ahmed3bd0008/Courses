@@ -7,6 +7,8 @@ namespace Business.Interfacies.Authencation
     public interface IAuthentcationManger
     {
           public AppUser user { get; set; }
+        Task<int>CreateUser(LoginUserDto loginUserDto);
+        Task<UserToken>LogenUser();
         Task<bool>VaildUser(LoginUserDto loginUserDto);
         Task<string>CreateToken();
     }
