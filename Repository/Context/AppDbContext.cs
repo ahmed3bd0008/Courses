@@ -2,10 +2,13 @@ using Microsoft.EntityFrameworkCore;
 using Core.Entity;
 using Core.Entity.Course;
 using Repository.Configuration;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Core.Entity.User;
+using System;
 
 namespace Repository.Context
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext:IdentityDbContext<AppUser,AppRole,string>
     {
         public AppDbContext(DbContextOptions options):base(options)
         {
@@ -23,6 +26,8 @@ namespace Repository.Context
         public DbSet< Module> Modules { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //impotant for identity 
+             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration( new CourseConfiguration());
             modelBuilder.ApplyConfiguration(new ModuleConfiguration());
             modelBuilder.ApplyConfiguration(new InstructorConfiguration());

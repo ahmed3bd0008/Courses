@@ -41,6 +41,7 @@ namespace API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
             services.SqlConfigurationService(Configuration);
+            services.addServiceIdentity(configuration:Configuration);
             services.addServicesRepo();
             services.addServicesServ();
             services.AddAutoMapper(typeof(ConfigurationMapper));

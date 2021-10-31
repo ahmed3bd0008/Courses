@@ -12,6 +12,7 @@ import { coursestatuscomponent } from './Courses/courseStatus/course-status.comp
 import { coursetrackcomponent } from './Courses/courseTrack/course-track.component';
 import { coursetypecomponent } from './Courses/courseType/course-type.component';
 import { navcomponent } from './Nav/nav.component';
+import { Usercomponent } from './User/user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { navcomponent } from './Nav/nav.component';
     coursestatuscomponent,
     coursetrackcomponent,
     coursetypecomponent,
-    coursecomponent
+    coursecomponent,
+    Usercomponent
   ],
   imports: [
     BrowserModule,
