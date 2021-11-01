@@ -36,12 +36,14 @@ namespace API
           //  {
             //    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
            // }
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
-            });
+           //add Swagger
+           services.addSwaggerService();
+           //add sqlConnection
             services.SqlConfigurationService(Configuration);
+            //add Identity
             services.addServiceIdentity(configuration:Configuration);
+            //Add JWT
+            services.addServicesJwt(configuration:Configuration);
             services.addServicesRepo();
             services.addServicesServ();
             services.AddAutoMapper(typeof(ConfigurationMapper));
@@ -56,11 +58,13 @@ namespace API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
 
+
             }
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

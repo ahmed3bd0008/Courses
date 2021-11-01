@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Dto;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Repository.Interfacies;
@@ -23,6 +25,7 @@ namespace API.Controllers
             _logger = logger;
             _courseAssistant=courseAssistant;
         }
+        [Authorize]
         [HttpPost("CreateInstructor")]
         public IActionResult CreateInstructor(AddInstructorDto instructorDto)
         {
@@ -38,7 +41,9 @@ namespace API.Controllers
         {
             return Ok (await _courseAssistant.GetInstructor(Name));
         }
+ 
         [HttpGet("GetInstructor")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task <IActionResult >GetInstructor( )
         {
             return Ok (await _courseAssistant.GetInstructor());
