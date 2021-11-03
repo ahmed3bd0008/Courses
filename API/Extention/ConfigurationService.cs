@@ -106,6 +106,8 @@ namespace Api.Extention
             services.AddScoped(typeof(IInstructorRepo),typeof(InstructorRepo));
             services.AddScoped(typeof(IModuleRepo),typeof(ModuleRepo));
             services.AddScoped(typeof(ISkillRepo),typeof(SkillRepo));
+            services.AddScoped(typeof(ICounteryRepo),typeof(CounteryRepo));
+            services.AddScoped(typeof(ICityRepo),typeof(CityRepo));
         }
          public static void addServicesServ(this IServiceCollection services)
         {

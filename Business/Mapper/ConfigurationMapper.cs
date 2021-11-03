@@ -28,6 +28,10 @@ namespace Business.Mapper
             CreateMap<Skill,SkillDto>().ReverseMap();
             CreateMap<CourseCategory,CourseCategoryDto>().ReverseMap();
             CreateMap<CourseCategory,AddCourseCategoryDto>().ReverseMap();
+            CreateMap<Countery,AddCountryDto>().ReverseMap();
+            CreateMap<Countery,CounteryDto>().ReverseMap();
+            CreateMap<City,AddCityDto>().ReverseMap();
+            CreateMap<City,CityDto>().ReverseMap();
         }
     }
 }
