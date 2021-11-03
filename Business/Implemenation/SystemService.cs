@@ -162,12 +162,11 @@ namespace Business.Implemenation
                                    var citiesDto=_mapper.Map<List<CityDto>>(cities);
                                    return new HttpResponse<List<CityDto>>{Status=true,Data=citiesDto};
                         }
-
-                        public async Task<HttpResponse<List<CounteryDto>>> GetCounteryWithCity()
+                        public async Task<HttpResponse<List<CityCounteryDto>>> GetCounteryWithCity()
                         {
-                                   var counteries=await _mangerRepo.CounteryRepo.GetCountery();
-                                   var counteriesDto=_mapper.Map<List<CounteryDto>>(counteries);
-                                   return new HttpResponse<List<CounteryDto>>{Status=true,Data=counteriesDto};
+                                   var counteries=await _mangerRepo.CounteryRepo.GetCounteryWithCitIes();
+                                   var counteriesDto=_mapper.Map<List<CityCounteryDto>>(counteries);
+                                   return new HttpResponse<List<CityCounteryDto>>{Status=true,Data=counteriesDto};
                         }
             }
             

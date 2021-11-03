@@ -42,12 +42,13 @@ namespace Repository.Implementation
                                    }
                         }
 
-                        public async Task<List<Countery>> GetCounteryWithCitIes()
+                        public async Task<List<City>> GetCounteryWithCitIes()
                         {
-                                  var query="SELECT * FROM Counteries JOIN Cities";
+                                  var query="SELECT * FROM Counteries JOIN Cities on Cities.CounteryId=Counteries.Id";
                                    using(var connection=_dapperContext.CreateConnection())
                                    {
-                                               var Cities=await connection.QueryAsync<Countery>(query);
+                                    
+                                               var Cities=await connection.QueryAsync<City,Countery,City>(query,(city,countery)=>{city.Countery=countery;return city;},splitOn:"CounteryId");
                                                return Cities.AsList();
                                    }
                         }
