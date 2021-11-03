@@ -15,6 +15,8 @@ namespace Repository.Interfacies
          public IInstructorRepo InstructorRepo { get;  }
          public IModuleRepo ModuleRepo { get;  }
          public ISkillRepo SkillRepo { get;  }
+         public ICounteryRepo CounteryRepo { get;  }
+         public ICityRepo CityRepo { get;  }
         public DapperContext dapperContext{get;}
 
          int save();

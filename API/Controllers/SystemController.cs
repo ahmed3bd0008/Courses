@@ -64,5 +64,35 @@ namespace API.Controllers
            
            return Ok(await _systemService.GetCurrencies());
         }
+         [HttpPost("AddCountery")]
+         public IActionResult AddCountery(AddCountryDto countryDto)
+        {
+           _systemService.addCountery(countryDto);
+           return Ok();
+        }
+        [HttpGet("GetCounteries")]
+        public async Task< IActionResult> GetCounteries()
+        {
+           
+           return Ok(await _systemService.GetCountery());
+        }
+        [HttpGet("GetCounteriesCities")]
+        public async Task< IActionResult> GetCounteriesCities()
+        {
+           
+           return Ok(await _systemService.GetCounteryWithCity());
+        }
+         [HttpPost("AddCity")]
+         public IActionResult addCity(AddCityDto cityDto)
+        {
+           _systemService.addCity(cityDto);
+           return Ok();
+        }
+        [HttpGet("GetCities")]
+        public async Task< IActionResult> getCities()
+        {
+           
+           return Ok(await _systemService.GetCity());
+        }
     }
 }

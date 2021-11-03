@@ -23,6 +23,8 @@ namespace Repository.Implementation
                         private  IModuleRepo _ModuleRepo;
                         private  IInstructorRepo _instructorRepo;
                         private  ICourseCategoryRepo _courseCategoryRepo;
+                        private  ICityRepo _cityRepo;
+                        private  ICounteryRepo _counteryRepo;
                         public DapperContext dapperContext{get{return _dapperContext;}}
                         public ILanguageRepo LanguageRepo 
                         {
@@ -102,6 +104,23 @@ namespace Repository.Implementation
                                 if(_courseCategoryRepo==null)
                                     _courseCategoryRepo=new CourseCategoryRepo(_context,_dapperContext);
                                     return _courseCategoryRepo;
+                            }
+                        }
+
+                        public ICounteryRepo CounteryRepo
+                        {
+                            get{
+                                if(_counteryRepo==null)
+                                    _counteryRepo=new CounteryRepo(_context,_dapperContext);
+                                return _counteryRepo;
+                            }
+                        }
+
+                        public ICityRepo CityRepo {
+                             get{
+                                if(_cityRepo==null)
+                                    _cityRepo=new CityRepo(_context,_dapperContext);
+                                return _cityRepo;
                             }
                         }
 
