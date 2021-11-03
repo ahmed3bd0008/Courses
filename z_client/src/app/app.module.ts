@@ -15,7 +15,13 @@ import { fetchDataComponent } from './fetch-data/fetch-data.component';
 import { homecomponent } from './Home/home.component';
 import { navcomponent } from './Nav/nav.component';
 import { Usercomponent } from './User/user.component';
+<<<<<<< HEAD
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//mateDialog 
+import {MatDialogModule} from '@angular/material/dialog';
+=======
 import { HttpClientModule}from'@angular/common/http'
+>>>>>>> 4e1a58bbcb97b21a4b5d72ddae2088613d84dc9b
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +42,12 @@ import { HttpClientModule}from'@angular/common/http'
   imports: [
     BrowserModule,
     AppRoutingModule,
+<<<<<<< HEAD
+    BrowserAnimationsModule,
+    MatDialogModule
+=======
     HttpClientModule
+>>>>>>> 4e1a58bbcb97b21a4b5d72ddae2088613d84dc9b
   ],
   providers: [ ],
   exports:   [ AppComponent ],
