@@ -6,6 +6,7 @@ namespace Core.Dto
     {
         public Guid Id { get; set; }
         public string  Name { get; set; }
+        public CityDto CityDto { get; set; }
     }
      public class AddCountryDto
     {

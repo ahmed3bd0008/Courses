@@ -34,12 +34,22 @@ namespace Repository.Implementation
                         }
                         public async Task<List<Countery>> GetCountery(string CounteryName)
                         {
-                                    var query="SELECT * FROM Counteries WHERE @Name +'%'";
+                                  var query="SELECT * FROM Counteries WHERE @Name +'%'";
                                    using(var connection=_dapperContext.CreateConnection())
                                    {
                                                var Cities=await connection.QueryAsync<Countery>(query,new {Name=CounteryName});
                                                return Cities.AsList();
                                    }
-                        }                    
-    }
+                        }
+
+                        public async Task<List<Countery>> GetCounteryWithCitIes()
+                        {
+                                  var query="SELECT * FROM Counteries JOIN Cities";
+                                   using(var connection=_dapperContext.CreateConnection())
+                                   {
+                                               var Cities=await connection.QueryAsync<Countery>(query);
+                                               return Cities.AsList();
+                                   }
+                        }
+            }
 }

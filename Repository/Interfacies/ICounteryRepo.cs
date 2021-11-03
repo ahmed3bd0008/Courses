@@ -10,5 +10,6 @@ namespace Repository.Interfacies
         public Task<Countery> GetCountery(Guid CounterId);
         public Task<List<Countery>> GetCountery();
         public Task<List<Countery>> GetCountery(string CounteryId);
+        public Task<List<Countery>> GetCounteryWithCitIes();
     }
 }

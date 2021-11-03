@@ -121,7 +121,7 @@ namespace Business.Implemenation
 
                         public async Task<HttpResponse<List<CounteryDto>>> GetCountery()
                         {
-                                    var counteries=await _mangerRepo.CounteryRepo.GetCountery();
+                                  var counteries=await _mangerRepo.CounteryRepo.GetCountery();
                                    var counteriesDto=_mapper.Map<List<CounteryDto>>(counteries);
                                    return new HttpResponse<List<CounteryDto>>{Status=true,Data=counteriesDto};
                         }
@@ -161,6 +161,13 @@ namespace Business.Implemenation
                                    var cities=await _mangerRepo.CityRepo.GetCity();
                                    var citiesDto=_mapper.Map<List<CityDto>>(cities);
                                    return new HttpResponse<List<CityDto>>{Status=true,Data=citiesDto};
+                        }
+
+                        public async Task<HttpResponse<List<CounteryDto>>> GetCounteryWithCity()
+                        {
+                                   var counteries=await _mangerRepo.CounteryRepo.GetCountery();
+                                   var counteriesDto=_mapper.Map<List<CounteryDto>>(counteries);
+                                   return new HttpResponse<List<CounteryDto>>{Status=true,Data=counteriesDto};
                         }
             }
             
