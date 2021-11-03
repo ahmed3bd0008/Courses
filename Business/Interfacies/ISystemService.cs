@@ -22,6 +22,20 @@ namespace Business.Interfacies
         Task< HttpResponse<CurrencyDto>>GetCurrency(Guid currencyId);
 
         Task< HttpResponse<List< CurrencyDto>>>GetCurrencies();
+         HttpResponse<int> addCountery(AddCountryDto countryDto);
+        Task <HttpResponse<int>> addAsyncCountery(AddCountryDto countryDto);
+
+        Task< HttpResponse<List<CounteryDto>>>GetCountery(string countryName);
+        Task< HttpResponse<CounteryDto>>GetCounter(Guid countryId);
+
+        Task< HttpResponse<List< CounteryDto>>>GetCountery();
+         HttpResponse<int> addCity(AddCityDto cityDto);
+        Task <HttpResponse<int>> addAsyncCity(AddCityDto cityDto);
+
+        Task< HttpResponse<List<CityDto>>>GetCity(string cityName);
+        Task< HttpResponse<CityDto>>GetCity(Guid cityId);
+
+        Task< HttpResponse<List< CityDto>>>GetCity();
          
     }
 }

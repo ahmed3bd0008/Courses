@@ -21,17 +21,21 @@ namespace Repository.Context
         public DbSet< CourseCategory> CourseCategories { get; set; }
         public DbSet< CourseStatus> CourseStatuses { get; set; }
         public DbSet< CourseType> CourseTypes { get; set; }
-          public DbSet< Instructor> Instructors { get; set; }
+        public DbSet< Instructor> Instructors { get; set; }
         public DbSet< Skill> Skills { get; set; }
         public DbSet< Module> Modules { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Countery> Counteries { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //impotant for identity 
-             base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration( new CourseConfiguration());
             modelBuilder.ApplyConfiguration(new ModuleConfiguration());
             modelBuilder.ApplyConfiguration(new InstructorConfiguration());
-             modelBuilder.ApplyConfiguration(new SkillConfiguration());
+            modelBuilder.ApplyConfiguration(new SkillConfiguration());
+            modelBuilder.ApplyConfiguration(new CounteryConfiguration());
+            modelBuilder.ApplyConfiguration(new CityConfiguration());
         }
        
     }
