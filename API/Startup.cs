@@ -47,6 +47,7 @@ namespace API
             services.addServicesRepo();
             services.addServicesServ();
             services.AddAutoMapper(typeof(ConfigurationMapper));
+            services.AddHealthChecks();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,7 +61,15 @@ namespace API
 
 
             }
-
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                OnPrepareResponse = (context) =>
+                {
+                    // Disable caching for all static files.
+                   context.Context.Response.Headers["Cache-Control"] =
+                            Configuration["StaticFiles:Headers:Cache-Control"];
+                }
+            });
             app.UseHttpsRedirection();
 
             app.UseRouting();
