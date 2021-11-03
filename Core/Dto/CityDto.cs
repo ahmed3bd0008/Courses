@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Core.Dto
 {
@@ -11,5 +12,10 @@ namespace Core.Dto
     {
         public string  Name { get; set; }
         public Guid CounteryId { get; set; }
+    }
+    public class CityCounteryDto
+    {
+        public List< CityDto> Cities { get; set; }
+        public CounteryDto Counteries { get; set; }
     }
 }
