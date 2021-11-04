@@ -17,6 +17,8 @@ import { navcomponent } from './Nav/nav.component';
 import { Usercomponent } from './User/user.component';
 import { HttpClientModule}from'@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule  } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [ ],
   exports:   [ AppComponent ],

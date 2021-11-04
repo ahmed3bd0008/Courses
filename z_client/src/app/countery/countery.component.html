@@ -19,4 +19,21 @@
     </tr>
   </tbody>
 </table> -->
+<table mat-table [dataSource]="counteries"
+class="table table table-hover"
+[hidden]="!counteries">
+<!-- Id Column -->
+<ng-container matColumnDef="id">
+<th mat-header-cell *matHeaderCellDef>ID</th>
+<td mat-cell *matCellDef="let countery">{{countery.id}}</td>
+</ng-container>
+<!-- Name Column -->
+<ng-container matColumnDef="name">
+<th mat-header-cell *matHeaderCellDef>Name</th>
+<td mat-cell *matCellDef="let countery">{{countery.name}}</td>
+</ng-container>
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
 
