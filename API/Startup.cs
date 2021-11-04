@@ -30,12 +30,20 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllers(); 
-            //options =>
-          //  {
-            //    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-           // }
+  services.AddControllers();
+        //     services.AddControllers().AddJsonOptions(options => {
+        //         // set this option to TRUE to indent the JSON output
+        //         options.JsonSerializerOptions.WriteIndented = true;
+        //         // set this option to NULL to use PascalCase instead of
+        //         // camelCase (default)
+        //         // options.JsonSerializerOptions.PropertyNamingPolicy =
+        //         // null;; 
+        //     //options =>
+        //   //  {
+        //     //    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+        //     //}
+        //     });
+            
            //add Swagger
            services.addSwaggerService();
            //add sqlConnection
@@ -73,6 +81,7 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(Op=>Op.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
             app.UseAuthentication();
 
             app.UseAuthorization();

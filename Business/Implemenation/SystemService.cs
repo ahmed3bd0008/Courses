@@ -123,7 +123,7 @@ namespace Business.Implemenation
                         {
                                   var counteries=await _mangerRepo.CounteryRepo.GetCountery();
                                    var counteriesDto=_mapper.Map<List<CounteryDto>>(counteries);
-                                   return new HttpResponse<List<CounteryDto>>{Status=true,Data=counteriesDto};
+                                   return new HttpResponse<List<CounteryDto>>{Status=true,Data=counteriesDto,Message="important"};
                         }
 
                         public HttpResponse<int> addCity(AddCityDto cityDto)

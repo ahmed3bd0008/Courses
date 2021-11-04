@@ -15,7 +15,9 @@ import { fetchDataComponent } from './fetch-data/fetch-data.component';
 import { homecomponent } from './Home/home.component';
 import { navcomponent } from './Nav/nav.component';
 import { Usercomponent } from './User/user.component';
-import { HttpClientModule}from'@angular/common/http'
+import { HttpClientModule}from'@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,9 @@ import { HttpClientModule}from'@angular/common/http'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [ ],
   exports:   [ AppComponent ],
