@@ -30,20 +30,32 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllers().AddNewtonsoftJson(); 
-            //options =>
-          //  {
-            //    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-           // }
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
-            });
+  services.AddControllers();
+        //     services.AddControllers().AddJsonOptions(options => {
+        //         // set this option to TRUE to indent the JSON output
+        //         options.JsonSerializerOptions.WriteIndented = true;
+        //         // set this option to NULL to use PascalCase instead of
+        //         // camelCase (default)
+        //         // options.JsonSerializerOptions.PropertyNamingPolicy =
+        //         // null;; 
+        //     //options =>
+        //   //  {
+        //     //    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+        //     //}
+        //     });
+            
+           //add Swagger
+           services.addSwaggerService();
+           //add sqlConnection
             services.SqlConfigurationService(Configuration);
+            //add Identity
+            services.addServiceIdentity(configuration:Configuration);
+            //Add JWT
+            services.addServicesJwt(configuration:Configuration);
             services.addServicesRepo();
             services.addServicesServ();
             services.AddAutoMapper(typeof(ConfigurationMapper));
+            services.AddHealthChecks();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,11 +67,22 @@ namespace API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
 
-            }
 
+            }
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                OnPrepareResponse = (context) =>
+                {
+                    // Disable caching for all static files.
+                   context.Context.Response.Headers["Cache-Control"] =
+                            Configuration["StaticFiles:Headers:Cache-Control"];
+                }
+            });
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(Op=>Op.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

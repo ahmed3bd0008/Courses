@@ -15,13 +15,28 @@ namespace Business.Interfacies
         Task< HttpResponse<LanguageDto>>GetLanguageId(Guid Language);
 
         Task< HttpResponse<List< LanguageDto>>>GetLanguageies();
-        HttpResponse<int> addCurrency(addCurrencyDto languageDto);
-        Task <HttpResponse<int>> addAsyncCurrency(addCurrencyDto languageDto);
+        HttpResponse<int> addCurrency(addCurrencyDto currancyDto);
+        Task <HttpResponse<int>> addAsyncCurrency(addCurrencyDto currancyDto);
 
-        Task< HttpResponse<CurrencyDto>>GetCurrency(string Language);
-        Task< HttpResponse<CurrencyDto>>GetCurrency(Guid Language);
+        Task< HttpResponse<List<CurrencyDto>>>GetCurrency(string currencyName);
+        Task< HttpResponse<CurrencyDto>>GetCurrency(Guid currencyId);
 
         Task< HttpResponse<List< CurrencyDto>>>GetCurrencies();
+         HttpResponse<int> addCountery(AddCountryDto countryDto);
+        Task <HttpResponse<int>> addAsyncCountery(AddCountryDto countryDto);
+
+        Task< HttpResponse<List<CounteryDto>>>GetCountery(string countryName);
+        Task< HttpResponse<CounteryDto>>GetCounter(Guid countryId);
+
+        Task< HttpResponse<List< CounteryDto>>>GetCountery();
+        Task< HttpResponse<List<CityCounteryDto>>>GetCounteryWithCity();
+         HttpResponse<int> addCity(AddCityDto cityDto);
+        Task <HttpResponse<int>> addAsyncCity(AddCityDto cityDto);
+
+        Task< HttpResponse<List<CityDto>>>GetCity(string cityName);
+        Task< HttpResponse<CityDto>>GetCity(Guid cityId);
+
+        Task< HttpResponse<List< CityDto>>>GetCity();
          
     }
 }
