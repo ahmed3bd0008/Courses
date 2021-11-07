@@ -9,6 +9,7 @@ import { Countery } from "./countery";
 export class countercomponent implements OnInit
 {
   public counteries:Countery[]=[];
+  public displayedColumns: string[] = ['id', 'name'];
   constructor(private Http:HttpClient)
   {
 

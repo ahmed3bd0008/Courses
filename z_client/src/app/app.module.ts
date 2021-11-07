@@ -23,7 +23,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './Register/Register.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,10 +47,12 @@ import { RegisterComponent } from './Register/Register.component';
 
     HttpClientModule,
     BrowserAnimationsModule,
+
     BrowserAnimationsModule,
     MatDialogModule,
     HttpClientModule,
     FormsModule
+
   ],
   providers: [ ],
   exports:   [ AppComponent ],
