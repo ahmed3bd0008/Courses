@@ -1,0 +1,25 @@
+<div class="container">
+  <h1 style="text-align: center;" class="mt-3">Register</h1>
+  <form #registForm="ngForm" (ngSubmit)="onSubmit(registForm)">
+    <div class="mb-3">
+      <label for="username" class="form-label">User Name</label>
+      <input class="form-control me-2" type="text" placeholder="username" aria-label="username" name="userName" ngModel required #userName="ngModel" >
+    </div>
+    <div  class="mb-3">
+      <label for="username" class="form-label">User Name</label>
+      <input class="form-control me-2" type="email" placeholder="Email" aria-label="Email" name="email"ngModel required #email="ngModel">
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">User Name</label>
+      <input class="form-control me-2" type="phone" placeholder="phone" aria-label="phone" name="phone"ngModel required #phone="ngModel">
+    </div>
+    <div class="mb-3 ml-3">
+      <label for="username" class="form-label">User Name</label>
+      <input class="form-control me-2" type="password" placeholder="password" aria-label="password" name="password"ngModel required #password="ngModel">
+    </div>
+    <div class="mb-3 ">
+      <input class="btn btn-primary" type="submit"/>
+      <input class="btn btn-secondary" type="button" value="Cancell" (click)="cancel()"/>
+    </div>
+  </form>
+</div>

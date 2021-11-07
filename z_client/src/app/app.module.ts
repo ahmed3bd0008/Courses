@@ -18,13 +18,11 @@ import { Usercomponent } from './User/user.component';
 
 import { HttpClientModule}from'@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//mateDialog 
+//mateDialog
 import {MatDialogModule} from '@angular/material/dialog';
-=======
-import { HttpClientModule}from'@angular/common/http'
+import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './Register/Register.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +39,8 @@ import { HttpClientModule}from'@angular/common/http'
     Usercomponent,
     homecomponent,
     countercomponent,
-    fetchDataComponent
+    fetchDataComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -49,14 +48,10 @@ import { HttpClientModule}from'@angular/common/http'
 
     HttpClientModule,
     BrowserAnimationsModule,
-
-
-
     BrowserAnimationsModule,
-    MatDialogModule
-
-    HttpClientModule
-
+    MatDialogModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ ],
   exports:   [ AppComponent ],

@@ -1,1 +1,8 @@
-<h1>home</h1>
+<div style="text-align: center;" *ngIf="!register">
+  <h2>user  Logging</h2>
+<div class="text-align mt-3" >
+  <button type="button" class="btn btn-primary mx-2 btn-lg" (click)="registerToggle()">Register</button>
+  <button type="button" class="btn btn-secondary btn-lg">Learn More</button>
+</div>
+</div>
+<register-app *ngIf="register" (cancelRegister)="cancellRegistModl($event)" ></register-app>

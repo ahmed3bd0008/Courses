@@ -5,10 +5,16 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class=" d-flex  me-auto me-auto mb-2 mb-lg-0">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form #logForm="ngForm" class=" d-flex  me-auto me-auto mb-2 mb-lg-0"
+              (ngSubmit)="onSubmit(logForm)"
+              *ngIf="(authservice.currentuser$|async)==null">
+        <input class="form-control me-2" type="text" placeholder="username" aria-label="username" name="userName" ngModel required #userName="ngModel" >
+        <input class="form-control me-2" type="password" placeholder="password" aria-label="password" name="password"ngModel required #password="ngModel">
+        <button class="btn btn-outline-success" type="submit" >Log</button>
       </form>
+      <div class=" d-flex  me-auto me-auto mb-2 mb-lg-0" *ngIf="authservice.currentuser$|async">
+
+      </div>
       <ul class="navbar-nav  d-flex">
         <li class="nav-item">
           <a  [routerLinkActive]="['active']" class="nav-link " routerLink='/home'>Home</a>
@@ -25,19 +31,26 @@
         <li class="nav-item">
           <a  [routerLinkActive]="['active']" class="nav-link" routerLink='/user'>user</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="authservice.currentuser$|async">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Wolcome User
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink='/Courses'>Courses</a></li>
-            <li><a class="dropdown-item" routerLink='/user'>User</a></li>
+            <li><a class="dropdown-item" routerLink='/Courses'>User  </a></li>
+            <li><a class="dropdown-item" routerLink='/user'>Edit User</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Log Out</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown" *ngIf="(authservice.currentuser$|async)==null">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Login
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink='/Courses'>Regist      </a></li>
           </ul>
         </li>
       </ul>
-
     </div>
   </div>
 </nav>
