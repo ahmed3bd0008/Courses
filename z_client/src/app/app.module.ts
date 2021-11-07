@@ -15,10 +15,13 @@ import { fetchDataComponent } from './fetch-data/fetch-data.component';
 import { homecomponent } from './Home/home.component';
 import { navcomponent } from './Nav/nav.component';
 import { Usercomponent } from './User/user.component';
+
 import { HttpClientModule}from'@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule  } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+//mateDialog
+import {MatDialogModule} from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './Register/Register.component';
 
 @NgModule({
   declarations: [
@@ -35,15 +38,21 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     Usercomponent,
     homecomponent,
     countercomponent,
-    fetchDataComponent
+    fetchDataComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTableModule,
-    MatPaginatorModule
+
+    BrowserAnimationsModule,
+    MatDialogModule,
+    HttpClientModule,
+    FormsModule
+
   ],
   providers: [ ],
   exports:   [ AppComponent ],

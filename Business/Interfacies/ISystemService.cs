@@ -29,7 +29,7 @@ namespace Business.Interfacies
         Task< HttpResponse<CounteryDto>>GetCounter(Guid countryId);
 
         Task< HttpResponse<List< CounteryDto>>>GetCountery();
-        Task< HttpResponse<List< CounteryDto>>>GetCounteryWithCity();
+        Task< HttpResponse<List<CityCounteryDto>>>GetCounteryWithCity();
          HttpResponse<int> addCity(AddCityDto cityDto);
         Task <HttpResponse<int>> addAsyncCity(AddCityDto cityDto);
 

@@ -32,6 +32,8 @@ namespace Business.Mapper
             CreateMap<Countery,CounteryDto>().ReverseMap();
             CreateMap<City,AddCityDto>().ReverseMap();
             CreateMap<City,CityDto>().ReverseMap();
+            CreateMap<City, CityCounteryDto>().ReverseMap();
+            
         }
     }
 }

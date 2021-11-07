@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AddCourseComponent } from "./AddCourse/Add-course.component";
 
 @Component({
   selector:'courselist-app',
@@ -6,5 +8,15 @@ import { Component } from "@angular/core";
 })
 export class courselistcomponent
 {
+  constructor(public dialog: MatDialog) {}
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddCourseComponent, {
+      
 
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+}
 }
