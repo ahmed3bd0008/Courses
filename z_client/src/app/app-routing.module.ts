@@ -10,7 +10,7 @@ const routes: Routes = [
   {path:'courses',component:courselistcomponent},
   {path:'user',component:Usercomponent},
   {path:'',component:homecomponent,pathMatch:'full'},
-  {path:'**',component:homecomponent,pathMatch:'full'},
+  
   {path:'fetch-data',component:fetchDataComponent},
   {path:'countery',component:countercomponent},
   {path:'home',component:homecomponent},

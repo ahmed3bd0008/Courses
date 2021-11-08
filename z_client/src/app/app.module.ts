@@ -20,6 +20,8 @@ import { HttpClientModule}from'@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //mateDialog
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table'
+import { MatChipsModule } from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './Register/Register.component';
 
@@ -44,14 +46,15 @@ import { RegisterComponent } from './Register/Register.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-
+    MatChipsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
+    MatTableModule,
     BrowserAnimationsModule,
     MatDialogModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+
 
   ],
   providers: [ ],

@@ -8,19 +8,15 @@
     </tr>
   </thead>
   <tbody>
-
     <tr *ngFor="let counter of counteries">
       <th scope="row">1</th>
 
       <td>{{counter.id}}</td>
       <td>{{counter.name}}</td>
-
-
     </tr>
   </tbody>
-
-</table> -->
-<table mat-table [dataSource]="counteries"
+</table>
+<table mat-table [dataSource]="counteries" >
 class="table table table-hover"
 [hidden]="!counteries">
 <!-- Id Column -->
@@ -38,6 +34,5 @@ class="table table table-hover"
 </table>
 
 
-</table>
 
 

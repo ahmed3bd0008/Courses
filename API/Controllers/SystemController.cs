@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Interfacies;
 using Core.Dto;
+using Core.Paging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -75,6 +76,11 @@ namespace API.Controllers
         {
            
            return Ok(await _systemService.GetCountery());
+        }
+        public async Task<IActionResult>GetCounteryPagation(RequestCounteryPrameter counteryPrameter)
+        {
+           
+           return Ok();
         }
         [HttpGet("GetCounteriesCities")]
         public async Task< IActionResult> GetCounteriesCities()
