@@ -9,7 +9,7 @@ namespace Core.Dto
         public Guid Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public Byte[] CoursePhoto { get; set; }
+        IFormFile CoursePhoto { get; set; }
          public string CoursePromtLink { get; set; }
         public string CourseWebsit { get; set; }
         public bool Track { get; set; }
@@ -37,7 +37,7 @@ namespace Core.Dto
         public string Name { get; set; }
         [Required]
         public decimal ? Price { get; set; }
-        public IFormFile CoursePhoto { get; set; } 
+        public IFormFile CoursePho { get; set; } 
          public string CoursePromtLink { get; set; }
         public string CourseWebsit { get; set; }
         public bool Track { get; set; }
