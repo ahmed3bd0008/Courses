@@ -12,6 +12,7 @@ namespace Core.Paging
                                     _PageSize=value>PageSize?MaxSize:value;
                         } 
                        }
+        public int PageNumber { get; set; }
         public string SortField { get; set; }
         public string SortQueue { get; set; }
     }

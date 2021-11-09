@@ -17,11 +17,11 @@ namespace Core.Paging
             };
             ;this.AddRange(Source);
         }
-        public static PagingList<T> ToPageList(List<T>Source,int PageIndex,int pageSize)
+        public static PagingList<T> ToPageList(List<T>Source,int PageIndex,int PageSize)
         {
                     int count=Source.Count;
-                    var items=Source.Skip((PageIndex-1)*pageSize).Take(pageSize).ToList();
-                    return new PagingList<T>(Source:items,PageIndex:PageIndex,PageSize:pageSize,AccountRecord:count);
+                    var items=Source.Skip((PageIndex-1)*PageSize).Take(PageIndex).ToList();
+                    return new PagingList<T>(Source:items,PageIndex:PageIndex,PageSize:PageSize,AccountRecord:count);
                     
         }
 }

@@ -7,6 +7,7 @@ using Business.HttpResponse;
 using Business.Interfacies;
 using Core.Dto;
 using Core.Entity;
+using Core.Paging;
 using Repository.Interfacies;
 
 namespace Business.Implemenation
@@ -122,6 +123,12 @@ namespace Business.Implemenation
                         public async Task<HttpResponse<List<CounteryDto>>> GetCountery()
                         {
                                   var counteries=await _mangerRepo.CounteryRepo.GetCountery();
+                                   var counteriesDto=_mapper.Map<List<CounteryDto>>(counteries);
+                                   return new HttpResponse<List<CounteryDto>>{Status=true,Data=counteriesDto,Message="important"};
+                        }
+                         public async Task<HttpResponse<List<CounteryDto>>> GetCountery(RequestCounteryPrameter counteryPrameter)
+                        {
+                                  var counteries=await _mangerRepo.CounteryRepo.GetCounteryOrderByName(counteryPrameter);
                                    var counteriesDto=_mapper.Map<List<CounteryDto>>(counteries);
                                    return new HttpResponse<List<CounteryDto>>{Status=true,Data=counteriesDto,Message="important"};
                         }

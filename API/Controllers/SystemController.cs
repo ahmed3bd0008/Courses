@@ -77,10 +77,10 @@ namespace API.Controllers
            
            return Ok(await _systemService.GetCountery());
         }
-        public async Task<IActionResult>GetCounteryPagation(RequestCounteryPrameter counteryPrameter)
+         [HttpGet("GetCounteriesPagingOrderByName")]
+        public async Task<IActionResult>GetCounteriesPagingOrderByName( [FromQuery]RequestCounteryPrameter counteryPrameter)
         {
-           
-           return Ok();
+          return Ok(await _systemService.GetCountery(counteryPrameter));
         }
         [HttpGet("GetCounteriesCities")]
         public async Task< IActionResult> GetCounteriesCities()

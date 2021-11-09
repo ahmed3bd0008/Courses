@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Business.HttpResponse;
 using Core.Dto;
+using Core.Paging;
 
 namespace Business.Interfacies
 {
@@ -29,6 +30,8 @@ namespace Business.Interfacies
         Task< HttpResponse<CounteryDto>>GetCounter(Guid countryId);
 
         Task< HttpResponse<List< CounteryDto>>>GetCountery();
+        Task<HttpResponse<List<CounteryDto>>> GetCountery(RequestCounteryPrameter counteryPrameter);
+
         Task< HttpResponse<List<CityCounteryDto>>>GetCounteryWithCity();
          HttpResponse<int> addCity(AddCityDto cityDto);
         Task <HttpResponse<int>> addAsyncCity(AddCityDto cityDto);
