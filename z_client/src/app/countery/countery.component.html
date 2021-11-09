@@ -1,4 +1,4 @@
-<h1>Countery</h1>
+<!-- <h1>Countery</h1>
  <table class="table table-sm table-hover">
   <thead>
     <tr>
@@ -15,8 +15,9 @@
       <td>{{counter.name}}</td>
     </tr>
   </tbody>
-</table>
-<table mat-table [dataSource]="counteries" >
+</table> -->
+<div class="container mt-5">
+<table mat-table [dataSource]="counterymeta" >
 class="table table table-hover"
 [hidden]="!counteries">
 <!-- Id Column -->
@@ -32,6 +33,16 @@ class="table table table-hover"
 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<!-- Pagination directive -->
+<mat-paginator [hidden]="!counterymeta"
+[pageSize]="10"
+[pageSizeOptions]="[10, 20, 50]"
+showFirstLastButtons></mat-paginator>
+</div>
+
+
+
+
 
 
 

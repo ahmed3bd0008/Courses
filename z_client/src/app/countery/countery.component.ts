@@ -12,6 +12,7 @@ import { MatSort } from '@angular/material/sort';
 export class countercomponent implements OnInit
 {
   public counteries:Countery[]=[];
+  public counteries2:Countery[]=[];
   public displayedColumns: string[] = ['id', 'name'];
   defaultPageIndex: number = 0;
   defaultPageSize: number = 10;
@@ -19,8 +20,8 @@ export class countercomponent implements OnInit
   public defaultSortOrder: string = "asc";
   defaultFilterColumn: string = "name";
   filterQuery: string ="";
-// @ViewChild(MatPaginator) paginator: MatPaginator;
-// @ViewChild(MatSort) sort: MatSort;
+  public counterymeta: MatTableDataSource<Countery>;
+   @ViewChild(MatPaginator) paginator: MatPaginator
   constructor(private Http:HttpClient)
   {
 
@@ -29,6 +30,8 @@ export class countercomponent implements OnInit
     console.log("hghh");
     this.Http.get<ResponseClient>('https://localhost:5001/'+'api/'+'System/GetCounteries').subscribe((reslt:ResponseClient )=>{
         this.counteries=(reslt.data as Countery[]);
+        this.counterymeta = new MatTableDataSource<Countery>(this.counteries);
+       this.counterymeta.paginator = this.paginator;
         console.log(reslt.message);
         console.log(reslt.status);
     },error=>{console.log(error)});

@@ -24,6 +24,9 @@ import { MatTableModule } from '@angular/material/table'
 import { MatChipsModule } from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './Register/Register.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+
 
 @NgModule({
   declarations: [
@@ -54,8 +57,7 @@ import { RegisterComponent } from './Register/Register.component';
     MatDialogModule,
     HttpClientModule,
     FormsModule,
-
-
+    MatPaginatorModule
   ],
   providers: [ ],
   exports:   [ AppComponent ],
