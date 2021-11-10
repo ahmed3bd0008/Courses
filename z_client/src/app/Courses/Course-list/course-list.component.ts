@@ -11,12 +11,15 @@ export class courselistcomponent
   constructor(public dialog: MatDialog) {}
   openDialog(): void {
     const dialogRef = this.dialog.open(AddCourseComponent, {
-      
-
+      height: '900px',
+      width: '1200px',
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+
 }
+
 }
