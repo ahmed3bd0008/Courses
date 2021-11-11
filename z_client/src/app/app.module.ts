@@ -25,11 +25,16 @@ import { MatChipsModule } from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './Register/Register.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SelectCourseComponent } from './Courses/courseLevel/CourseLevelSelect/select-course/select-course.component';
+import { AddCourseComponent } from './Courses/Course-list/AddCourse/Add-course.component';
+
+
 
 
 
 @NgModule({
   declarations: [
+
     AppComponent,
     navcomponent,
     courselistcomponent,
@@ -44,7 +49,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     homecomponent,
     countercomponent,
     fetchDataComponent,
-    RegisterComponent
+    RegisterComponent,
+    SelectCourseComponent,
+    AddCourseComponent
+
+
   ],
   imports: [
     BrowserModule,
@@ -60,7 +69,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatPaginatorModule
   ],
   providers: [ ],
-  exports:   [ AppComponent ],
+  exports:   [ AppComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

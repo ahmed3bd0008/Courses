@@ -1,6 +1,5 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "strictPropertyInitialization": false,
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
@@ -26,7 +25,7 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": false,
     "strictPropertyInitialization": false,
-    "strictInputAccessModifiers": true,
+    "strictInputAccessModifiers": false,
     "strictTemplates": false
   }
 }
