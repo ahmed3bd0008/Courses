@@ -13,14 +13,14 @@ export class counteryService{
 baseUrl:string='https://localhost:5001/api/System/'
 constructor(private client:HttpClient){}
 addcountery(countrey:addCountery){
-  return this.client.post(this.baseUrl+'AddCountery',countrey).pipe(map(response=>{
-    const country=response;
+  return this.client.post<ResponseClient>(this.baseUrl+'AddCountery',countrey).pipe(map(response=>{
+    const country :ResponseClient=response;
     console.log(country)
     return country;
   }))
 }
 getCountery(){
-  return this.client.get<Countery>(this.baseUrl+'GetCounteries').pipe<Countery>(map(Response=>{
+  return this.client.get<ResponseClient>(this.baseUrl+'GetCounteries').pipe<ResponseClient>(map(Response=>{
     const country=Response;
     console.log(country)
     return country;

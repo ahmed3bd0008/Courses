@@ -68,8 +68,8 @@ namespace API.Controllers
          [HttpPost("AddCountery")]
          public IActionResult AddCountery(AddCountryDto countryDto)
         {
-           _systemService.addCountery(countryDto);
-           return Ok();
+          
+           return Ok( _systemService.addCountery(countryDto));
         }
         [HttpGet("GetCounteries")]
         public async Task< IActionResult> GetCounteries()

@@ -19,13 +19,14 @@ export class addcounterycomponent
     const countery:addCountery=model.value as addCountery;
     console.log(countery);
     this.counterserv.addcountery(countery).subscribe(
-      Response=>{
-        this.toastrS.success("good")
-        console.log(Response);
+      Response =>{
+        console.log(Response.data);
+        console.log('ggdf');
+        this.toastrS.error("good")
       },
       error=>{
           console.log(error);
-          this.toastrS.success("good")
+          this.toastrS.error("good")
       }
     )
   }
