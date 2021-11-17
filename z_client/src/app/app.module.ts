@@ -67,7 +67,8 @@ import { addcounterycomponent } from './countery/add-countery/add-countery.compo
     HttpClientModule,
     FormsModule,
     MatPaginatorModule,
-    ToastrModule
+    ToastrModule.forRoot({
+      positionClass :'toast-bottom-right'})
   ],
   providers: [ ],
   exports:   [ AppComponent],

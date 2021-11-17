@@ -1,18 +1,17 @@
 import { Injectable } from "@angular/core";
 import{HttpClient}from '@angular/common/http'
-import{}from'../ResponseClient';
+import{ResponseClient}from'../ResponseClient';
 import { addCountery, Countery } from "./countery";
 import{map}from 'rxjs/operators';
-Injectable({
-  providedIn:"root"
+@Injectable({
+  providedIn:'root'
 })
 export class counteryService{
 /**
  *
  */
 baseUrl:string='https://localhost:5001/api/System/'
-constructor(private client:HttpClient) {
-}
+constructor(private client:HttpClient){}
 addcountery(countrey:addCountery){
   return this.client.post(this.baseUrl+'AddCountery',countrey).pipe(map(response=>{
     const country=response;
