@@ -1,4 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import{coursecatagoryservice}from"../coursecatagory/course-catagory.service";
+import{ResponseClient}from"../../ResponseClient";
+import{CourseCategory}from "../coursecatagory/category";
 
 @Component({
   selector:'coursCatagory-app',
@@ -9,7 +12,20 @@ import { Component } from "@angular/core";
   '<option value="3">Three</option>'+
 '</select>'
 })
-export class coursecatagorycomponent
-{
-
+ export class coursecatagorycomponent
+ {
+//    CourseCategories:CourseCategory[]=[];
+//   constructor(private catagoryService: coursecatagoryservice) {
+//   }
+//   getCourseCatagory(){
+//     this.catagoryService.getCategory()
+//       .subscribe(arg=>
+//         {
+//             const categories:ResponseClient=arg;
+//             this.CourseCategories=categories.data as CourseCategory[];
+//         });
+//   }
+//   ngOnInit(): void {
+//     this.getCourseCatagory()
+//   }
 }
