@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CourseLevel } from "../../../courseLevel/Course-level";
 import { ResponseClient } from "../../../../ResponseClient";
+import{courselevelservice}from "../../courselevel.service";
 @Component({
   selector: 'app-select-course',
   templateUrl: './select-course.component.html',
   styleUrls: ['./select-course.component.css']
 })
 export class SelectCourseComponent implements OnInit {
-
-  constructor(private client:HttpClient) { }
+  constructor(private client:HttpClient,private courselevelserv:courselevelservice  ) { }
   courselevels:CourseLevel[]=[];
   getcourseLevel(){
     console.log("asd")
@@ -20,10 +20,16 @@ export class SelectCourseComponent implements OnInit {
        console.log(error);
      }
      )
-
   }
-  ngOnInit(): void {
-    this.getcourseLevel();
+  GetLevelCourseLevel(){
+   this.courselevelserv.getCourseLevel().subscribe(arg =>{
+    const courselev:CourseLevel[]=arg.data as CourseLevel[];
+    this.courselevels=courselev;
+    console.log(courselev)
+       })
   }
-
+    ngOnInit(): void {
+    //this.getcourseLevel();
+    this.GetLevelCourseLevel();
+  }
 }

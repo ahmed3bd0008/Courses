@@ -1,23 +1,25 @@
-import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { CourseCategory } from "../category";
+import{ResponseClient}from"../../../ResponseClient";
+import{coursecatagoryservice}from "../../coursecatagory/course-catagory.service";
 @Component({
   selector:"selectcoursecategory-app",
   templateUrl:"./select-course-category.component.html"
 })
 export class selectCourseCategoryComponent implements OnInit
 {
-    /**
-     *
-     */
-    courseCategories :CourseCategory[]=[];
-    constructor(client:HttpClient) {
+        CourseCategories:CourseCategory[]=[];
+       constructor(private catagoryService: coursecatagoryservice) {}
+       getCourseCatagory(){
+         this.catagoryService.getCategory()
+           .subscribe(arg=>
+             {
+                 const categories:ResponseClient=arg;
+                 this.CourseCategories=categories.data as CourseCategory[];
+             });
 
-    }
-    getAllCategory(){
-      
-    }
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
-  }
+       }
+       ngOnInit(): void {
+         this.getCourseCatagory()
+       }
 }

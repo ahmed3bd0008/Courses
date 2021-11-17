@@ -27,11 +27,7 @@ import { RegisterComponent } from './Register/Register.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { SelectCourseComponent } from './Courses/courseLevel/CourseLevelSelect/select-course/select-course.component';
 import { AddCourseComponent } from './Courses/Course-list/AddCourse/Add-course.component';
-
-
-
-
-
+import { selectCourseCategoryComponent } from './Courses/coursecatagory/SelectCourseCatagory/select-course-category.component';
 @NgModule({
   declarations: [
 
@@ -51,9 +47,8 @@ import { AddCourseComponent } from './Courses/Course-list/AddCourse/Add-course.c
     fetchDataComponent,
     RegisterComponent,
     SelectCourseComponent,
-    AddCourseComponent
-
-
+    AddCourseComponent,
+    selectCourseCategoryComponent
   ],
   imports: [
     BrowserModule,
