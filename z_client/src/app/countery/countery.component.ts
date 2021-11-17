@@ -5,6 +5,8 @@ import { Countery } from "./countery";
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from "@angular/material/dialog";
+import { addcounterycomponent } from "./add-countery/add-countery.component";
 @Component({
   selector:'countery-app',
   templateUrl:'./countery.component.html'
@@ -22,7 +24,7 @@ export class countercomponent implements OnInit
   filterQuery: string ="";
   public counterymeta: MatTableDataSource<Countery>;
    @ViewChild(MatPaginator) paginator: MatPaginator
-  constructor(private Http:HttpClient)
+  constructor(private Http:HttpClient,private dailog:MatDialog)
   {
 
   }
@@ -63,4 +65,12 @@ export class countercomponent implements OnInit
   //     .set("filterQuery", this.filterQuery);
   //     }
   // }
+
+openDailog(){
+this.dailog.open(addcounterycomponent,{
+  width:'700px',
+  height:'500px',
+  disableClose:true
+})
+}
 }
