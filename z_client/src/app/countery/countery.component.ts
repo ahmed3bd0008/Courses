@@ -4,9 +4,9 @@ import { ResponseClient } from "../ResponseClient";
 import { Countery } from "./countery";
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { MatDialog } from "@angular/material/dialog";
 import { addcounterycomponent } from "./add-countery/add-countery.component";
+import { counteryService } from "./countery.service";
 @Component({
   selector:'countery-app',
   templateUrl:'./countery.component.html'
@@ -22,22 +22,38 @@ export class countercomponent implements OnInit
   public defaultSortOrder: string = "asc";
   defaultFilterColumn: string = "name";
   filterQuery: string ="";
+  name:string="";
+  counterydalog:Countery;
   public counterymeta: MatTableDataSource<Countery>;
    @ViewChild(MatPaginator) paginator: MatPaginator
-  constructor(private Http:HttpClient,private dailog:MatDialog)
+  constructor(private Http:HttpClient,private dailog:MatDialog,private CounterServ:counteryService)
   {
 
   }
   ngOnInit(): void {
     console.log("hghh");
-    this.Http.get<ResponseClient>('https://localhost:5001/'+'api/'+'System/GetCounteries').subscribe((reslt:ResponseClient )=>{
+   this.GetDataService();
+   //this.getCounteryData()
+    }
+
+    getCounteryData(){
+      this.Http.get<ResponseClient>('https://localhost:5001/'+'api/'+'System/GetCounteries').subscribe((reslt:ResponseClient )=>{
         this.counteries=(reslt.data as Countery[]);
         this.counterymeta = new MatTableDataSource<Countery>(this.counteries);
        this.counterymeta.paginator = this.paginator;
         console.log(reslt.message);
         console.log(reslt.status);
     },error=>{console.log(error)});
+    }
 
+    GetDataService(){
+      this.CounterServ.getCountery().subscribe((reslt:ResponseClient )=>{
+        this.counteries=(reslt.data as Countery[]);
+        this.counterymeta = new MatTableDataSource<Countery>(this.counteries);
+       this.counterymeta.paginator = this.paginator;
+        console.log(reslt.message);
+        console.log(reslt.status);
+    },error=>{console.log(error)});
     }
     loadData(query: string ) {
       var pageEvent = new PageEvent();
@@ -48,29 +64,18 @@ export class countercomponent implements OnInit
       }
      // this.getData(pageEvent);
       }
-  //     getData(event: PageEvent) {
-  //     var url = 'https://localhost:5001/'+'api/'+'System/GetCounteries';
-  //     var params = new HttpParams()
-  //     .set("pageIndex", event.pageIndex.toString())
-  //     .set("pageSize", event.pageSize.toString())
-  //     .set("sortColumn", (this.sort)
-  //     ? this.sort.active
-  //     : this.defaultSortColumn)
-  //     .set("sortOrder", (this.sort)
-  //     ? this.sort.direction
-  //     : this.defaultSortOrder);
-  //     if (this.filterQuery) {
-  //     params = params
-  //     .set("filterColumn", this.defaultFilterColumn)
-  //     .set("filterQuery", this.filterQuery);
-  //     }
-  // }
-
 openDailog(){
-this.dailog.open(addcounterycomponent,{
+let dailogRef= this.dailog.open(addcounterycomponent,{
   width:'700px',
   height:'500px',
+  data: { countery: this.counterydalog },
   disableClose:true
 })
+dailogRef.afterClosed().subscribe(response=>{
+  console.log(response.data);
+  this.counterydalog
+  this.GetDataService()
+});
 }
+
 }

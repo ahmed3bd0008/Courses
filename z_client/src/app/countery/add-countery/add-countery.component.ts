@@ -1,16 +1,22 @@
-import { MatDialogRef } from "@angular/material/dialog";
-import { Component } from "@angular/core";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Component, Inject, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { counteryService } from "../countery.service";
-import { addCountery } from "../countery";
+import { addCountery, Countery } from "../countery";
 import{ToastrService}from 'ngx-toastr';
 @Component({
   selector:'add-countery-app',
   templateUrl:'./add-countery.component.html'
 })
-export class addcounterycomponent
+export class addcounterycomponent implements OnInit
 {
-  constructor(private counterserv:counteryService,private toastrS:ToastrService, private dailog:MatDialogRef<addcounterycomponent>) {}
+
+  constructor(private counterserv:counteryService,private toastrS:ToastrService,
+              private dailog:MatDialogRef<addcounterycomponent>,
+              @Inject(MAT_DIALOG_DATA) public Data:Countery) {}
+  ngOnInit(): void {
+
+  }
   closeDialog(){
     this.dailog.close('addcounterycomponent');
   }
@@ -23,6 +29,7 @@ export class addcounterycomponent
         console.log(Response.data);
         console.log('ggdf');
         this.toastrS.error("good")
+        this.closeDialog();
       },
       error=>{
           console.log(error);
