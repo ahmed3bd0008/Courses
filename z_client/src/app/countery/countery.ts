@@ -4,3 +4,6 @@ export interface Countery
       id:string;
 
 }
+export interface addCountery{
+  name:string;
+}

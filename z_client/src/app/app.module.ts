@@ -28,6 +28,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { SelectCourseComponent } from './Courses/courseLevel/CourseLevelSelect/select-course/select-course.component';
 import { AddCourseComponent } from './Courses/Course-list/AddCourse/Add-course.component';
 import { selectCourseCategoryComponent } from './Courses/coursecatagory/SelectCourseCatagory/select-course-category.component';
+import { ToastrModule } from 'ngx-toastr';
+import { selectcounterycomponent } from './countery/select-countery/select-countery.component';
+import { addcounterycomponent } from './countery/add-countery/add-countery.component';
 @NgModule({
   declarations: [
 
@@ -48,7 +51,9 @@ import { selectCourseCategoryComponent } from './Courses/coursecatagory/SelectCo
     RegisterComponent,
     SelectCourseComponent,
     AddCourseComponent,
-    selectCourseCategoryComponent
+    selectCourseCategoryComponent,
+    selectcounterycomponent,
+    addcounterycomponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +66,9 @@ import { selectCourseCategoryComponent } from './Courses/coursecatagory/SelectCo
     MatDialogModule,
     HttpClientModule,
     FormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ToastrModule.forRoot({
+      positionClass :'toast-bottom-left',autoDismiss:false,enableHtml:true,messageClass:'danger'})
   ],
   providers: [ ],
   exports:   [ AppComponent],

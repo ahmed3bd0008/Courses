@@ -1,0 +1,19 @@
+
+  <button class="btn btn-danger" (click)="closeDialog()">close</button>
+
+<div class="row">
+  <form #sddCounteryForm="ngForm"  action="post" (ngSubmit)="onSubmit(sddCounteryForm)">
+    <div class="row mb-6">
+      <div class="col-12 form-group mb-6">
+        <label for="name">name of Countery</label>
+        <input type="text" class="form-control" id='name' name="name" ngModel #name="ngModel"/>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-12  ">
+        <input class="btn btn-primary" type="submit"/>
+        <input class="btn btn-danger" type="button" value="Cancel" (click)="closeDialog()"/>
+      </div>
+    </div>
+  </form>
+</div>

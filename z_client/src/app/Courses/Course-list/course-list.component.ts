@@ -11,7 +11,7 @@ export class courselistcomponent
   constructor(public dialog: MatDialog) {}
   openDialog(): void {
     const dialogRef = this.dialog.open(AddCourseComponent, {
-      height: '900px',
+      height: '800px',
       width: '1200px',
       disableClose: true
     });
