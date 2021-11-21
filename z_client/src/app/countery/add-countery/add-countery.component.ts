@@ -21,18 +21,13 @@ export class addcounterycomponent implements OnInit
     this.dailog.close('addcounterycomponent');
   }
   onSubmit(model:NgForm){
-
     const countery:addCountery=model.value as addCountery;
-    console.log(countery);
     this.counterserv.addcountery(countery).subscribe(
       Response =>{
-        console.log(Response.data);
-        console.log('ggdf');
         this.toastrS.error("good")
         this.closeDialog();
       },
       error=>{
-          console.log(error);
           this.toastrS.error("good")
       }
     )

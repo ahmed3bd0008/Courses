@@ -41,8 +41,6 @@ export class countercomponent implements OnInit
         this.counteries=(reslt.data as Countery[]);
         this.counterymeta = new MatTableDataSource<Countery>(this.counteries);
        this.counterymeta.paginator = this.paginator;
-        console.log(reslt.message);
-        console.log(reslt.status);
     },error=>{console.log(error)});
     }
 
@@ -51,8 +49,6 @@ export class countercomponent implements OnInit
         this.counteries=(reslt.data as Countery[]);
         this.counterymeta = new MatTableDataSource<Countery>(this.counteries);
        this.counterymeta.paginator = this.paginator;
-        console.log(reslt.message);
-        console.log(reslt.status);
     },error=>{console.log(error)});
     }
     loadData(query: string ) {
@@ -72,7 +68,7 @@ let dailogRef= this.dailog.open(addcounterycomponent,{
   disableClose:true
 })
 dailogRef.afterClosed().subscribe(response=>{
-  console.log(response.data);
+  console.log(response.Data);
   this.counterydalog
   this.GetDataService()
 });
