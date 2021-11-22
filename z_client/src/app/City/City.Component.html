@@ -5,3 +5,9 @@
 </button>
 <!-- Modal -->
 <add-city-app></add-city-app>
+<table>
+  <tr *ngFor="let city of cities">
+    <td>{{city.name}}</td>
+    <td>{{city.id}}</td>
+  </tr>
+</table>
