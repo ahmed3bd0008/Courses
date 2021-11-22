@@ -10,10 +10,10 @@ import{ToastrService}from 'ngx-toastr';
 })
 export class addcounterycomponent implements OnInit
 {
-
+ 
   constructor(private counterserv:counteryService,private toastrS:ToastrService,
               private dailog:MatDialogRef<addcounterycomponent>,
-              @Inject(MAT_DIALOG_DATA) public Data:Countery) {}
+             ) {}
   ngOnInit(): void {
 
   }

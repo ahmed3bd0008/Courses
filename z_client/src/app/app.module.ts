@@ -31,6 +31,8 @@ import { selectCourseCategoryComponent } from './Courses/coursecatagory/SelectCo
 import { ToastrModule } from 'ngx-toastr';
 import { selectcounterycomponent } from './countery/select-countery/select-countery.component';
 import { addcounterycomponent } from './countery/add-countery/add-countery.component';
+import { CityComponent } from './City/City.Component';
+import { addcitycomponent } from './City/AddCity/add-city.component';
 @NgModule({
   declarations: [
 
@@ -54,6 +56,8 @@ import { addcounterycomponent } from './countery/add-countery/add-countery.compo
     selectCourseCategoryComponent,
     selectcounterycomponent,
     addcounterycomponent,
+    CityComponent,
+    addcitycomponent
   ],
   imports: [
     BrowserModule,
