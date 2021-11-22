@@ -1,0 +1,6 @@
+<select class="form-select" aria-label="Default select example">
+
+  <option value="">chocee</option>
+  <option *ngFor="let countery of counteryArr" [value]="countery.id"  (select)="addNewItem(countery.id)">{{countery.name}} </option>
+</select>
+select value: {{selectedValue}}
