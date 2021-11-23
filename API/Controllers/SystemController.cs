@@ -91,8 +91,7 @@ namespace API.Controllers
          [HttpPost("AddCity")]
          public IActionResult addCity(AddCityDto cityDto)
         {
-           _systemService.addCity(cityDto);
-           return Ok();
+           return Ok(_systemService.addCity(cityDto));
         }
         [HttpGet("GetCities")]
         public async Task< IActionResult> getCities()

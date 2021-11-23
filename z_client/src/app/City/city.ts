@@ -4,5 +4,5 @@ export interface  city{
 }
 export interface  addCity{
   name:string;
-  CounteryId:string;
+  counteryId:string;
 }
