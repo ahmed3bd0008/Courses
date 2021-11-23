@@ -32,4 +32,7 @@ GetSelectCountery(){
 addNewItem(value: string) {
   this.newItemEvent.emit(value);
 }
+getSelect(selelect:any){
+  this.addNewItem(selelect as string)
+}
 }
