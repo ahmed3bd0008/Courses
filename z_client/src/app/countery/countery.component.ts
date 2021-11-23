@@ -23,9 +23,10 @@ export class countercomponent implements OnInit
   defaultFilterColumn: string = "name";
   filterQuery: string ="";
   name:string="";
-  counterydalog:Countery;
-  public counterymeta: MatTableDataSource<Countery>;
-   @ViewChild(MatPaginator) paginator: MatPaginator
+  counterydalog!: Countery;
+  public counterymeta!: MatTableDataSource<Countery>;
+   @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
   constructor(private Http:HttpClient,private dailog:MatDialog,private CounterServ:counteryService)
   {
 
