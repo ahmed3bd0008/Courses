@@ -135,6 +135,8 @@ namespace Business.Implemenation
 
                         public HttpResponse<int> addCity(AddCityDto cityDto)
                         {
+                                    var ExistCity= _mangerRepo.CityRepo.findCitycity(cityDto.Name,cityDto.CounteryId);
+                                    if(ExistCity !=null) return new HttpResponse<int>{Status=false,Data=0,Message="exist city"};
                                     var city=_mapper.Map<City>(cityDto);
                                     _mangerRepo.CityRepo.Add(city);
                                     _mangerRepo.save();

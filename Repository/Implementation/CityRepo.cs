@@ -16,7 +16,27 @@ namespace Repository.Implementation
                                     _dapperContext=dapperContext;
                         }
 
-                        public async Task<City> GetCity(Guid cityId)
+        public  City findCitycity(string CityName,Guid counteryId)
+        {
+            var query="SELECT * FROM Cities WHERE Name=@name and counteryId=@counteryId";
+            using(var connection=_dapperContext.CreateConnection())
+            {
+                var city=  connection.QuerySingleOrDefault<City>(query,new {name=CityName,counteryId=counteryId});
+                return city;
+            }
+        }
+
+        public async Task<City> findCitycityAsync(string CityName,Guid counteryId)
+        {
+             var query="SELECT * FROM Cities WHERE Name=@name";
+            using(var connection=_dapperContext.CreateConnection())
+            {
+                var city=await  connection.QuerySingleOrDefaultAsync<City>(query,new {name=CityName});
+                return city;
+            }
+        }
+
+        public async Task<City> GetCity(Guid cityId)
                         {
                                       var query="SELECT * FROM Cities WHERE Id=@Id ";
                                       using(var connection=_dapperContext.CreateConnection())
