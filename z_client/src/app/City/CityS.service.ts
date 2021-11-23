@@ -26,7 +26,7 @@ getCitiesService(){
 }
 
 addCity(city:addCity){
-  return this.client.post(this.baseUrl+'AddCity',city).
+  return this.client.post<ResponseClient>(this.baseUrl+'AddCity',city).
   pipe(map(
     response=>{
       const addresponse=response;

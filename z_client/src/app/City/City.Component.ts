@@ -1,14 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { city } from "./city";
+import { addCity, city } from "./city";
 import { CityService } from "./CityS.service";
 @Component({
   selector:'city-app',
   templateUrl:'./City.Component.html'
 })
 export class CityComponent implements OnInit{
- /**
-  *
-  */
  cities:city[]=[];
  constructor(private cityserv:CityService) {}
   ngOnInit(): void {
@@ -16,7 +13,6 @@ export class CityComponent implements OnInit{
   }
  getallCity(){
    this.cityserv.getCitiesService().subscribe(response=>{
-     console.log(response)
      if(response.status)
       {
         const citiesc:city[]=response.data as city[];
@@ -26,4 +22,10 @@ export class CityComponent implements OnInit{
      console.log(error);
    })
  }
+ addCity(addcity:addCity){
+   this.cities.unshift( {id:"fghffg",name:addcity.name});
+   console.log(addcity);
+}
+opendailogFun(){
+}
 }

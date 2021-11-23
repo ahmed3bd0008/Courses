@@ -1,10 +1,10 @@
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+<button (click)="opendailogFun()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
   Add City
 </button>
 <!-- Modal -->
-<add-city-app></add-city-app>
+<add-city-app  (addToCityListEvent)="addCity($event)"></add-city-app>
 <table>
   <tr *ngFor="let city of cities">
     <td>{{city.name}}</td>

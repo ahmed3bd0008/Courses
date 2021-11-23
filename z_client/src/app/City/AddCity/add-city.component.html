@@ -20,7 +20,7 @@
        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" id='closebutton' class="btn btn-danger" data-bs-dismiss="modal" (click)="onSave()">Close</button>
         <button type="submit" (click)="onSubmit()"  class="btn btn-primary">Understood</button>
       </div>
     </div>
