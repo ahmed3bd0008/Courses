@@ -5,7 +5,6 @@ import{addCity}from "../city";
   selector:'add-city-app',
   templateUrl:'./add-city.component.html'
 })
-
 export class addcitycomponent{
   cityName:string='';
   counteryId:string='';
@@ -21,8 +20,8 @@ export class addcitycomponent{
           this.sendCity.counteryId=this.counteryId;
           this.sendCity.name=this.cityName;
           this.addToEventList(this.sendCity);
-          this.closebutton.nativeElement.click();
-
+          this.onSave();
+          this.cityName='';
         }
       }
     },error=>{
@@ -32,12 +31,12 @@ export class addcitycomponent{
   addItem(newItem: string) {
     this.counteryId=newItem;
   }
-
   addToEventList(city:addCity)
   {
     this.addToCityListEvent.emit(city);
   }
   public onSave() {
     this.closebutton.nativeElement.click();
+    this.cityName='';
   }
 }
