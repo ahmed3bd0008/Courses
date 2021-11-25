@@ -12,5 +12,6 @@ namespace Repository.Interfacies
         public Task<List<Countery>> GetCountery(string CounteryId);
         public Task<PagingList<Countery>> GetCounteryOrderByName(RequestCounteryPrameter counteryPrameter);
         public Task<List<City>> GetCounteryWithCitIes();
+        public  Task<List< Countery>>GetCounteriesFull();
     }
 }

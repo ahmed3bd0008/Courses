@@ -177,6 +177,12 @@ namespace Business.Implemenation
                                    var counteriesDto=_mapper.Map<List<CityCounteryDto>>(counteries);
                                    return new HttpResponse<List<CityCounteryDto>>{Status=true,Data=counteriesDto};
                         }
+                          public async Task<HttpResponse<List<CityCounteryDto>>> GetCounteryWithCityfull()
+                        {
+                                   var counteries=await _mangerRepo.CounteryRepo.GetCounteriesFull();
+                                   var counteriesDto=_mapper.Map<List<CityCounteryDto>>(counteries);
+                                   return new HttpResponse<List<CityCounteryDto>>{Status=true,Data=counteriesDto};
+                        }
             }
             
 }

@@ -65,5 +65,24 @@ namespace Repository.Implementation
                                                return Cities.AsList();
                                    }
                         }
+
+                        public async Task<List< Countery>>GetCounteriesFull()
+                        {
+                           var query= "SELECT Cities.Name,Counteries.Name FROM Counteries JOIN Cities on Cities.CounteryId=Counteries.Id";
+                                   using(var connection=_dapperContext.CreateConnection())
+                                   {
+                try {
+
+                    var countery = await connection.QueryAsync<Countery, City, Countery>(query, (countery, city) => { countery.Cities = countery.Cities; return countery; }, splitOn: "Id");
+                    Console.WriteLine("drsd");
+                    return countery.AsList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                                   }
+            return new List<Countery>();
+                        }
             }
 }

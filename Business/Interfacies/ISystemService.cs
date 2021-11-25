@@ -33,6 +33,8 @@ namespace Business.Interfacies
         Task<HttpResponse<List<CounteryDto>>> GetCountery(RequestCounteryPrameter counteryPrameter);
 
         Task< HttpResponse<List<CityCounteryDto>>>GetCounteryWithCity();
+        Task< HttpResponse<List<CityCounteryDto>>>GetCounteryWithCityfull();
+        
          HttpResponse<int> addCity(AddCityDto cityDto);
         Task <HttpResponse<int>> addAsyncCity(AddCityDto cityDto);
 
