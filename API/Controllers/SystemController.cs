@@ -88,6 +88,12 @@ namespace API.Controllers
            
            return Ok(await _systemService.GetCounteryWithCity());
         }
+        [HttpGet("GetCounteriesCitiesFull")]
+         public async Task< IActionResult> GetCounteriesCitiesfull()
+        {
+           
+           return Ok(await _systemService.GetCounteryWithCityfull());
+        }
          [HttpPost("AddCity")]
          public IActionResult addCity(AddCityDto cityDto)
         {
