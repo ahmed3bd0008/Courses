@@ -6,10 +6,10 @@
         <button type="button" class="btn-close btn-close-danger" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       <form #createCity="ngForm" (ngSubmit)="onSubmit()">
+       <form #createCity="ngForm" (ngSubmit)="onSubmit(createCity)">
          <div class="form-group">
            <label>city Name</label>
-           <input type="text" name="name" class="form-control" [(ngModel)]="cityName"/>
+           <input type="text" name="name" ngModel="" class="form-control" [(ngModel)]="cityName" />
          </div>
          <div class="form-group">
            <label>Countery Name</label>
@@ -20,8 +20,8 @@
        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" #closebutton class="btn btn-danger" data-bs-dismiss="modal" (click)="onSave()">Close</button>
-        <button type="submit" (click)="onSubmit()"  class="btn btn-primary">Understood</button>
+        <button type="button" #closebutton class="btn btn-danger" data-bs-dismiss="modal" (click)="onSave(createCity)">Close</button>
+        <button type="submit"  class="btn btn-primary">Understood</button>
       </div>
     </div>
   </div>
