@@ -1,4 +1,4 @@
-import { Component, Input,Output,EventEmitter,ViewChild } from "@angular/core";
+import { Component, Input,Output,EventEmitter,ViewChild, ElementRef } from "@angular/core";
 import{CityService}from"../CityS.service";
 import{addCity}from "../city";
 import { NgForm } from "@angular/forms";
@@ -11,24 +11,32 @@ export class addcitycomponent{
   counteryId:string='';
   @Output() addToCityListEvent = new EventEmitter<addCity>();
   sendCity:addCity={name:'',counteryId:''};
-  @ViewChild('closebutton')closebutton:any;
+  @ViewChild('closebutton')
+  closebutton!: ElementRef;
   constructor(private cityServ:CityService){}
-  onSubmit(createCity:NgForm){
-    this.cityServ.addCity({name:this.cityName,counteryId:this.counteryId}).subscribe((Response)=>{
-      {
-        if(Response.status)
+  onSubmit(){
+    if(this.cityName || !this.cityName.trim())
+    {
+      this.cityServ.addCity({name:this.cityName,counteryId:this.counteryId}).subscribe((Response)=>{
         {
-          this.sendCity.counteryId=this.counteryId;
-          this.sendCity.name=this.cityName;
-          this.addToEventList(this.sendCity);
-          this.onSave(createCity);
-          this.cityName='';
-          createCity.reset();
+          console.log(Response.status)
+          if(Response.status)
+          {
+            this.sendCity.counteryId=this.counteryId;
+            this.sendCity.name=this.cityName;
+            this.addToEventList(this.sendCity);
+            this.onSave();
+            this.cityName='';
+
+          }
         }
-      }
-    },error=>{
-      console.log(error)
-    } )
+      },error=>{
+        console.log(error)
+      } )
+    }
+    else{
+      console.log("name is nulls")
+    }
     }
   addItem(newItem: string) {
     this.counteryId=newItem;
@@ -37,8 +45,8 @@ export class addcitycomponent{
   {
     this.addToCityListEvent.emit(city);
   }
-  public onSave(city:NgForm) {
-    console.log(city.value);
+  public onSave() {
+    console.log("hhhhhh");
     this.closebutton.nativeElement.click();
 
   }
