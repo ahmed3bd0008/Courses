@@ -33,6 +33,7 @@ import { selectcounterycomponent } from './countery/select-countery/select-count
 import { addcounterycomponent } from './countery/add-countery/add-countery.component';
 import { CityComponent } from './City/City.Component';
 import { addcitycomponent } from './City/AddCity/add-city.component';
+import { updateCityComponent } from './City/UpdateCity/update-city.component';
 @NgModule({
   declarations: [
 
@@ -57,7 +58,8 @@ import { addcitycomponent } from './City/AddCity/add-city.component';
     selectcounterycomponent,
     addcounterycomponent,
     CityComponent,
-    addcitycomponent
+    addcitycomponent,
+    updateCityComponent
   ],
   imports: [
     BrowserModule,

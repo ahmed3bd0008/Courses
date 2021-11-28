@@ -1,6 +1,6 @@
 
 <!-- Button trigger modal -->
-<button (click)="opendailogFun()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
   Add City
 </button>
 <!-- Modal -->
@@ -9,5 +9,11 @@
   <tr *ngFor="let city of cities">
     <td>{{city.name}}</td>
     <td>{{city.id}}</td>
+    <td>{{city.countery.name}}</td>
+    <td>{{city.countery.id}}</td>
+    <td><button buttontype="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#updatecity" (click)="Update(city.id)"> Edit </button></td>
+    <td><button type="button" class="btn btn-danger">Delete</button></td>
   </tr>
 </table>
+<update-city-app [updateCity]="updateCity"></update-city-app>
+

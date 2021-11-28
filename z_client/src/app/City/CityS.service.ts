@@ -16,7 +16,7 @@ constructor(private client:HttpClient) {
 }
 
 getCitiesService(){
-  return this.client.get<ResponseClient>(this.baseUrl+'GetCities').
+  return this.client.get<ResponseClient>(this.baseUrl+'GetCitiesCounterfull').
   pipe(map(
     response=>{
       const ServiceRepose:ResponseClient=response;

@@ -11,10 +11,11 @@ export class selectcounterycomponent implements OnInit{
 /**
  *
  */
- @Output() newItemEvent = new EventEmitter<string>();
+ @Output() newItemEvent = new EventEmitter<Countery>();
 constructor( private counteryserv: counteryService) {
 }
 selectedValue:string='';
+
   ngOnInit(): void {
     this.GetSelectCountery();
   }
@@ -29,10 +30,18 @@ GetSelectCountery(){
     console.log(Error)
   })
 }
-addNewItem(value: string) {
+addNewItem(value: Countery) {
+if(value)
   this.newItemEvent.emit(value);
 }
-getSelect(selelect:any){
-  this.addNewItem(selelect as string)
+getSelect($event:any){
+
+ const  name :string= $event.target.options[$event.target.options.selectedIndex].text;
+ const id:string = $event.target.options[$event.target.options.selectedIndex].value;
+ if(id || id.trim()!='')
+ {
+   const countery :Countery={id:id,name:name};
+    this.addNewItem( countery)
+ }
 }
 }

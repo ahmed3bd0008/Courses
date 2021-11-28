@@ -1,4 +1,4 @@
-<select class="form-select" aria-label="Default select example" (change)="getSelect($event.target.value)" >
+<select class="form-select" aria-label="Default select example" (change)="getSelect($event)" >
 
   <option value="">chocee</option>
   <option *ngFor="let countery of counteryArr" [value]="countery.id"  >{{countery.name}} </option>
