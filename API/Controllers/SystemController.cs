@@ -105,5 +105,11 @@ namespace API.Controllers
            
            return Ok(await _systemService.GetCity());
         }
+          [HttpGet("GetCitiesCounterfull")]
+         public async Task< IActionResult> GetCitiesCounterfull()
+        {
+           
+           return Ok(await _systemService.GetCityCounteryfull());
+        }
     }
 }

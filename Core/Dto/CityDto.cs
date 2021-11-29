@@ -18,4 +18,10 @@ namespace Core.Dto
         public List< CityDto> Cities { get; set; }
         public CounteryDto Counteries { get; set; }
     }
+    public class CitisCounteryDto
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public CounteryDto countery { get; set; }
+    }
 }

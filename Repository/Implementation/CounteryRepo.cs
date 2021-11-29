@@ -6,6 +6,8 @@ using Repository.Context;
 using Repository.Interfacies;
 using Dapper;
 using Core.Paging;
+using System.Linq;
+
 namespace Repository.Implementation
 {
     public class CounteryRepo:GenericRepo<Countery> ,ICounteryRepo
@@ -66,23 +68,57 @@ namespace Repository.Implementation
                                    }
                         }
 
-                        public async Task<List< Countery>>GetCounteriesFull()
-                        {
-                           var query= "SELECT Cities.Name,Counteries.Name FROM Counteries JOIN Cities on Cities.CounteryId=Counteries.Id";
-                                   using(var connection=_dapperContext.CreateConnection())
-                                   {
-                try {
+            //     public async Task<List< Countery>>GetCounteriesFull()
+            //      {
+            //                var query= "SELECT * FROM Counteries "+"select * from   Cities ";
+            //                        using(var connection=_dapperContext.CreateConnection())
+            //                        {
+            //     try {
 
-                    var countery = await connection.QueryAsync<Countery, City, Countery>(query, (countery, city) => { countery.Cities = countery.Cities; return countery; }, splitOn: "Id");
-                    Console.WriteLine("drsd");
-                    return countery.AsList();
-                }
-                catch (Exception ex)
+            //         var countery = await connection.QueryAsync<Countery, City, Countery>(query, (countery, city) => { countery.Cities = countery.Cities; return countery; }, splitOn: "Id");
+            //         Console.WriteLine("drsd");
+            //         return countery.AsList();
+            //     }
+            //     catch (Exception ex)
+            //     {
+            //         Console.WriteLine(ex.Message);
+            //     }
+            //                        }
+            // return new List<Countery>();
+            //             }
+            // }
+            
+              public async Task<List< Countery>>GetCounteriesFull()
+                 {
+                var query= "SELECT * FROM Counteries JOIN Cities ON Counteries.Id=Cities.CounteryId ";
+                using(var connection=_dapperContext.CreateConnection())
                 {
-                    Console.WriteLine(ex.Message);
-                }
-                                   }
-            return new List<Countery>();
+                 {
+                var counteryDict = new Dictionary<Guid, Countery>();
+                var counteryDict3 = new Dictionary<Guid, Countery>();
+                var Counteries = await connection.QueryAsync<Countery, City, Countery>(
+                    query, (Countery, City) =>
+                    {
+                        if (!counteryDict.TryGetValue(Countery.Id, out var currentCountery))
+                        {
+                            currentCountery = Countery;
+                            counteryDict.Add(currentCountery.Id, currentCountery);        
+                            currentCountery.Cities=new List<City>();
                         }
-            }
+                        currentCountery.Cities.Add(City);
+                        return currentCountery;
+                    }
+        );
+                  return Counteries.Distinct().ToList();
+    
+                 }
+                }
+                 }
+    }
 }
+
+                                   
+          
+                        
+            
+

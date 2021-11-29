@@ -177,12 +177,19 @@ namespace Business.Implemenation
                                    var counteriesDto=_mapper.Map<List<CityCounteryDto>>(counteries);
                                    return new HttpResponse<List<CityCounteryDto>>{Status=true,Data=counteriesDto};
                         }
-                          public async Task<HttpResponse<List<CityCounteryDto>>> GetCounteryWithCityfull()
+                          public async Task<HttpResponse<List<counteryCitiesDto>>> GetCounteryWithCityfull()
                         {
                                    var counteries=await _mangerRepo.CounteryRepo.GetCounteriesFull();
-                                   var counteriesDto=_mapper.Map<List<CityCounteryDto>>(counteries);
-                                   return new HttpResponse<List<CityCounteryDto>>{Status=true,Data=counteriesDto};
+                                   var counteriesDto=_mapper.Map<List<counteryCitiesDto>>(counteries);
+                                   return new HttpResponse<List<counteryCitiesDto>>{Status=true,Data=counteriesDto};
                         }
-            }
+
+        public async Task<HttpResponse<List<CitisCounteryDto>>> GetCityCounteryfull()
+        {
+             var cities=await _mangerRepo.CityRepo.GetCounteriesFull();
+                                   var counteriesDto=_mapper.Map<List<CitisCounteryDto>>(cities);
+                                   return new HttpResponse<List<CitisCounteryDto>>{Status=true,Data=counteriesDto ,Message=counteriesDto.Count.ToString()};
+        }
+    }
             
 }

@@ -11,6 +11,7 @@ namespace Repository.Interfacies
         public Task<List<City>> GetCity();
         public Task<List<City>> GetCity(string CityName);
         public City findCitycity(string CityName,Guid counteryId);
+         public  Task<List< City>>GetCounteriesFull();
         public Task<City> findCitycityAsync(string CityName,Guid counteryId);
     }
 }
