@@ -6,7 +6,7 @@ import { fetchDataComponent } from './fetch-data/fetch-data.component';
 import { countercomponent } from './countery/countery.component';
 import { homecomponent } from './Home/home.component';
 import { CityComponent } from './City/City.Component';
-
+import{AuthGuard}from'./gruid/auth.guard'
 const routes: Routes = [
   {path:'courses',component:courselistcomponent},
   {path:'user',component:Usercomponent},

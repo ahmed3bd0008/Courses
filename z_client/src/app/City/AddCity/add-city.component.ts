@@ -1,4 +1,4 @@
-import { Component, Input,Output,EventEmitter,ViewChild } from "@angular/core";
+import { Component, Input,Output,EventEmitter,ViewChild, ElementRef } from "@angular/core";
 import{CityService}from"../CityS.service";
 import{addCity,cityCountery,AddcityCountery}from "../city";
 import { NgForm } from "@angular/forms";
@@ -11,6 +11,7 @@ export class addcitycomponent{
   cityName:string='';
   countery:Countery={id:"",name:""};
   @Output() addToCityListEvent = new EventEmitter<addCity>();
+
 
   @ViewChild('closebutton')closebutton:any;
   constructor(private cityServ:CityService){}
@@ -33,11 +34,15 @@ export class addcitycomponent{
           this.onSave();
           this.cityName='';
 
+
         }
-      }
-    },error=>{
-      console.log(error)
-    } )
+      },error=>{
+        console.log(error)
+      } )
+    }
+    else{
+      console.log("name is nulls")
+    }
     }
 
     submite(mod:NgForm)
@@ -77,6 +82,7 @@ export class addcitycomponent{
     this.addToCityListEvent.emit(city);
   }
   public onSave() {
+
     this.closebutton.nativeElement.click();
 
   }
