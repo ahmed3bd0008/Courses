@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
-import { addCity, city } from "./city";
+import { addCity, city,updateCity } from "./city";
 import { ResponseClient } from "../ResponseClient";
 @Injectable({
   providedIn:'root'
@@ -34,6 +34,16 @@ addCity(city:addCity){
     }
   )
 
+  )
+}
+
+updateCity(city: updateCity)
+{
+  return this.client.put<ResponseClient>(this.baseUrl+'UpdateCity',city).pipe(
+    map(Response=>{
+      const updateresponse:ResponseClient=Response;
+      return updateresponse;
+    })
   )
 }
 }

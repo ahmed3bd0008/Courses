@@ -190,6 +190,25 @@ namespace Business.Implemenation
                                    var counteriesDto=_mapper.Map<List<CitisCounteryDto>>(cities);
                                    return new HttpResponse<List<CitisCounteryDto>>{Status=true,Data=counteriesDto ,Message=counteriesDto.Count.ToString()};
         }
+
+        public async Task<HttpResponse<UpdateCity>> updateCity(UpdateCity updateCity)
+        {
+          try{
+          var city =await _mangerRepo.CityRepo.GetCity(updateCity.Id);
+           if(city==null) return new HttpResponse<UpdateCity>(){Status=false, Message="data is empity"};
+           var  existingCity=await _mangerRepo.CityRepo.findCitycityAsync(updateCity.Name,updateCity.CounteryId);
+           if(existingCity!=null) return new HttpResponse<UpdateCity>(){Status=false,Message="this countery is existing"};
+           var cityDb=_mapper.Map<City>(updateCity);
+            _mangerRepo.CityRepo.Update(cityDb);
+            int success=await _mangerRepo.saveAsync();
+            if(success<1) return new HttpResponse<UpdateCity>(){Status=false, Message="error on save"};
+            return new HttpResponse<UpdateCity>(){Message="success",Status=true};
+          }
+          catch(Exception EX)
+          {
+            return new HttpResponse<UpdateCity>(){Status=false,Message=EX.Message};
+          }
+        }
     }
             
 }

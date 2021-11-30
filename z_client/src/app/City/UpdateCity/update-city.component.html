@@ -10,18 +10,18 @@
        <form>
          <div class="form-group">
            <label>City Name</label>
-           <input ([(ngModel)]="updateCity.name") class="form-control" type="text"/>
+           <input [(ngModel)]="cityName"   [ngModelOptions]="{standalone: true}" class="form-control" type="text"/>
          </div>
          <br>
          <div class="form-control">
           <label>countery Name</label>
-          <select-countery-app></select-countery-app>>
+          <select-countery-app [selectCountery]="selectedCounteryId" (counterId)="getSelectcoumtery($event)"></select-countery-app>>
          </div>
        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Update</button>
+        <button type="button" #closeupdatebutton class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="update()">Update</button>
       </div>
     </div>
   </div>

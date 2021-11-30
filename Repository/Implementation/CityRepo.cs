@@ -23,17 +23,17 @@ namespace Repository.Implementation
             var query="SELECT * FROM Cities WHERE Name=@name and counteryId=@counteryId";
             using(var connection=_dapperContext.CreateConnection())
             {
-                var city=  connection.QuerySingleOrDefault<City>(query,new {name=CityName,counteryId=counteryId});
+                var city=  connection.QueryFirstOrDefault<City>(query,new {name=CityName,counteryId=counteryId});
                 return city;
             }
         }
 
         public async Task<City> findCitycityAsync(string CityName,Guid counteryId)
         {
-             var query="SELECT * FROM Cities WHERE Name=@name";
+             var query="SELECT * FROM Cities WHERE Name=@name and counteryId=@counteryId  ";
             using(var connection=_dapperContext.CreateConnection())
             {
-                var city=await  connection.QuerySingleOrDefaultAsync<City>(query,new {name=CityName});
+                var city=await  connection.QueryFirstOrDefaultAsync<City>(query,new {name=CityName,counteryId=counteryId});
                 return city;
             }
         }
