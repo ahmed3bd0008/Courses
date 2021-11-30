@@ -28,7 +28,6 @@ namespace Business.Interfacies
 
         Task< HttpResponse<List<CounteryDto>>>GetCountery(string countryName);
         Task< HttpResponse<CounteryDto>>GetCounter(Guid countryId);
-
         Task< HttpResponse<List< CounteryDto>>>GetCountery();
         Task<HttpResponse<List<CounteryDto>>> GetCountery(RequestCounteryPrameter counteryPrameter);
 
@@ -38,11 +37,11 @@ namespace Business.Interfacies
         
          HttpResponse<int> addCity(AddCityDto cityDto);
         Task <HttpResponse<int>> addAsyncCity(AddCityDto cityDto);
-
         Task< HttpResponse<List<CityDto>>>GetCity(string cityName);
         Task< HttpResponse<CityDto>>GetCity(Guid cityId);
-
         Task< HttpResponse<List< CityDto>>>GetCity();
+        Task <HttpResponse<UpdateCity>>updateCity(UpdateCity updateCity);
+
          
     }
 }

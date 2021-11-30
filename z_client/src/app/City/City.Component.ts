@@ -25,13 +25,11 @@ export class CityComponent implements OnInit{
  }
  addCity(addcity:AddcityCountery){
    this.cities.unshift( {id:"fghffg",name:addcity.name,counteryId:"",countery:{id:addcity.countery.id,name:addcity.countery.name}});
-   console.log(addcity);
 }
 
 Update(id:string)
 {
   this.updateCity= this.cities.filter(d=>d.id==id)[0];
-  console.log(this.updateCity)
 }
 }
 

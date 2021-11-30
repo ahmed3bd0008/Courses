@@ -11,7 +11,6 @@ export class addcitycomponent{
   cityName:string='';
   countery:Countery={id:"",name:""};
   @Output() addToCityListEvent = new EventEmitter<addCity>();
-
   @ViewChild('closebutton')closebutton:any;
   constructor(private cityServ:CityService){}
   onSubmit(){
@@ -19,7 +18,6 @@ export class addcitycomponent{
       {
         if(Response.status)
         {
-
           const  sendCity :AddcityCountery={
             name:this.cityName,
             counteryId:this.countery.id,
@@ -32,14 +30,12 @@ export class addcitycomponent{
           this.addToEventList(sendCity);
           this.onSave();
           this.cityName='';
-
         }
       }
     },error=>{
       console.log(error)
     } )
     }
-
     submite(mod:NgForm)
     {
       this.cityServ.addCity({name:this.cityName,counteryId:this.countery.id}).subscribe((Response)=>{

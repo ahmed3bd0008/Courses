@@ -24,4 +24,9 @@ namespace Core.Dto
         public string Name { get; set; }
         public CounteryDto countery { get; set; }
     }
+    public class  UpdateCity{
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public Guid CounteryId{get;set;} 
+    }   
 }

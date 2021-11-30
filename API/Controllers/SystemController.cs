@@ -111,5 +111,11 @@ namespace API.Controllers
            
            return Ok(await _systemService.GetCityCounteryfull());
         }
+         [HttpPut("UpdateCity")]
+         public async Task< IActionResult> UpdateCity(UpdateCity updateCity)
+        {
+           
+           return Ok(await _systemService.updateCity(updateCity));
+        }
     }
 }
