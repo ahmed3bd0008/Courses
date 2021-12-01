@@ -41,6 +41,7 @@ namespace Business.Interfacies
         Task< HttpResponse<CityDto>>GetCity(Guid cityId);
         Task< HttpResponse<List< CityDto>>>GetCity();
         Task <HttpResponse<UpdateCity>>updateCity(UpdateCity updateCity);
+        Task<HttpResponse<int>>DeleteCity(Guid CityId);
 
          
     }

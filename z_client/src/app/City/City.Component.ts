@@ -31,5 +31,21 @@ Update(id:string)
 {
   this.updateCity= this.cities.filter(d=>d.id==id)[0];
 }
+Delete(id:string)
+{
+  this.cityserv.deleteCity(id).subscribe(
+    Response=>{
+      if(Response.status)
+      {
+        this.getallCity();
+      }
+      console.log(Response);
+    },error=>{
+      console.log(error);
+
+    }
+
+  )
+}
 }
 

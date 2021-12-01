@@ -116,6 +116,12 @@ namespace API.Controllers
         {
            
            return Ok(await _systemService.updateCity(updateCity));
+
+        }
+         [HttpDelete("DeleteCity")]
+         public async Task< IActionResult> DeleteCity(Guid DeleteId)
+        {
+           return Ok(await _systemService.DeleteCity(DeleteId));
         }
     }
 }

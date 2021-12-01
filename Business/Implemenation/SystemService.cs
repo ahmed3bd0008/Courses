@@ -209,6 +209,14 @@ namespace Business.Implemenation
             return new HttpResponse<UpdateCity>(){Status=false,Message=EX.Message};
           }
         }
+        public async  Task<HttpResponse<int>>DeleteCity(Guid CityId){
+          var cityDb= await _mangerRepo.CityRepo.GetCity(CityId);
+          if(cityDb==null) return new HttpResponse<int>(){Status=false,Message="thier is no cit with this Id"};
+          _mangerRepo.CityRepo.Delete(cityDb);
+          var stat=await _mangerRepo.saveAsync();
+          if(stat<1)return new HttpResponse<int>(){Status=false,Message="Erro Happen When Delete"};
+          return new HttpResponse<int>(){Message="City Is Deleted",Status=true,Data=1};
+        }
     }
             
 }
