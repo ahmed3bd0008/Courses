@@ -26,6 +26,7 @@ namespace Repository.Context
         public DbSet< Module> Modules { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Countery> Counteries { get; set; }
+        override  public DbSet<AppUser> Users { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //impotant for identity 
@@ -36,6 +37,7 @@ namespace Repository.Context
             modelBuilder.ApplyConfiguration(new SkillConfiguration());
             modelBuilder.ApplyConfiguration(new CounteryConfiguration());
             modelBuilder.ApplyConfiguration(new CityConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
        
     }

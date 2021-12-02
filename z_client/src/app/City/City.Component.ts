@@ -30,6 +30,7 @@ export class CityComponent implements OnInit{
 Update(id:string)
 {
   this.updateCity= this.cities.filter(d=>d.id==id)[0];
+  
 }
 Delete(id:string)
 {
