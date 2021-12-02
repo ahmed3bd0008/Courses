@@ -46,4 +46,15 @@ updateCity(city: updateCity)
     })
   )
 }
+
+
+deleteCity(cityId:string)
+{
+  return this.client.delete<ResponseClient>(this.baseUrl+'DeleteCity?DeleteId='+cityId).pipe(
+    map(Response=>{
+      const updateresponse:ResponseClient=Response;
+      return updateresponse;
+    })
+  )
+}
 }

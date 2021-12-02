@@ -12,7 +12,7 @@
     <td>{{city.countery.name}}</td>
     <td>{{city.countery.id}}</td>
     <td><button buttontype="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#updatecity" (click)="Update(city.id)"> Edit </button></td>
-    <td><button type="button" class="btn btn-danger">Delete</button></td>
+    <td><button type="button" class="btn btn-danger" (click)="Delete(city.id)">Delete</button></td>
   </tr>
 </table>
 <update-city-app  [updateCityChild]="updateCity"></update-city-app>
