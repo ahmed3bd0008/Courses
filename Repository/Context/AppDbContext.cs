@@ -3,12 +3,12 @@ using Core.Entity;
 using Core.Entity.Course;
 using Repository.Configuration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Core.Entity.User;
 using System;
+using Core.Entity.User;
 
 namespace Repository.Context
 {
-    public class AppDbContext:IdentityDbContext<AppUser,AppRole,string>
+    public class AppDbContext:IdentityDbContext<AppUser,AppRole,Guid>
     {
         public AppDbContext(DbContextOptions options):base(options)
         {
@@ -26,7 +26,6 @@ namespace Repository.Context
         public DbSet< Module> Modules { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Countery> Counteries { get; set; }
-        override  public DbSet<AppUser> Users { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //impotant for identity 

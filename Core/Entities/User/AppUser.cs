@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 namespace Core.Entity.User
 {
-    public class AppUser: IdentityUser
+    public class AppUser: IdentityUser<Guid>
     {
         public DateTime CreateDate { get; set; }=DateTime.Now;
         public DateTime BirthDate { get; set; }
