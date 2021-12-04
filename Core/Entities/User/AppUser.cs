@@ -11,7 +11,6 @@ namespace Core.Entity.User
         public DateTime LastActivity { get; set; }
         public ICollection<Photo> Photos { get; set; }
         public Guid ? CityId { get; set; }
-        public Guid RelationKey { get; set; }
         public City City { get; set; }
         public int GetAge(){
             var DateToDay=DateTime.Today;

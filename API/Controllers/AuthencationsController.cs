@@ -13,11 +13,6 @@ namespace API.Controllers
     [Route("[controller]")]
     public class AuthencationsController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<AuthencationsController> _logger;
                         private readonly IAuthentcationManger _authentcationManger;
 
@@ -38,6 +33,10 @@ namespace API.Controllers
         {
                     
             return Ok(await _authentcationManger.LogenUser(loginUserDto));
+        }
+        [HttpGet("GetAllUser")]
+        public async Task<IActionResult>GetAllUser(){
+            return Ok(await _authentcationManger.GetUserAsync());
         }
 
     }

@@ -1,7 +1,10 @@
+using System.Linq;
 using AutoMapper;
 using Core.Dto;
+using Core.Dto.UserDto;
 using Core.Entity;
 using Core.Entity.Course;
+using Core.Entity.User;
 
 namespace Business.Mapper
 {
@@ -36,6 +39,15 @@ namespace Business.Mapper
             CreateMap<Countery, counteryCitiesDto>().ReverseMap();
             CreateMap<City, CitisCounteryDto>().ReverseMap();
             CreateMap<City,UpdateCity>().ReverseMap();
+            CreateMap<AppUser,RegisterUserDto>().ReverseMap();
+
+
+            CreateMap<AppUser,UserDto>().
+            ForMember(d=>d.Phone,m=>m.
+            MapFrom(o=>o.Photos.FirstOrDefault(d=>d.IsMain))).
+            ForMember(d=>d.Age,m=>m.MapFrom(d=>d.GetAge())).
+            ForMember(d=>d.City,m=>m.MapFrom(d=>d.City.Name)).
+            ReverseMap();
             
         }
     }

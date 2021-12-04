@@ -1,38 +1,50 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Business.Configuration;
 using Business.Interfacies.Authencation;
 using Core.Dto.UserDto;
+using Core.Entity;
 using Core.Entity.User;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Repository.UserManement;
+using Repository.Interfacies;
 
 namespace Business.Implemenation.authentication
 {
     public class AuthentcationManger:IAuthentcationManger
     {
         private readonly IConfiguration _config;
-        private readonly UserManager<AppUser> _userManager;
+        private readonly UserMangeMenApplication _userManager;
         private readonly IConfigurationSection _serviceKey;
         private readonly JwtSettings _jwtSettings;
         private readonly RoleManager<AppRole> _roleManager;
+        private readonly IMapper _mapper;
+        private readonly IMangerRepo _mangerRepo;
 
         public  AuthentcationManger(IConfiguration config,
-         UserManager<AppUser> userManager,
+         UserMangeMenApplication userManager,
          IOptionsMonitor<JwtSettings>jwtSettings,
-         RoleManager<AppRole>roleManager)
+         RoleManager<AppRole>roleManager,
+         IMangerRepo mangerRepo,
+         IMapper mapper)
         {
             _config = config;
             _userManager = userManager;
             _serviceKey = _config.GetSection("JwtSettings");
             _jwtSettings=jwtSettings.CurrentValue;
             _roleManager=roleManager;
+            _mapper=mapper;
+            _mangerRepo=mangerRepo;
         }
         public AppUser user { get; set; }
         public async Task<int> CreateUser(RegisterUserDto registerUserDto)
@@ -40,8 +52,11 @@ namespace Business.Implemenation.authentication
                    AppUser appUser=new (){
                         UserName=registerUserDto.UserName,
                         Email=registerUserDto.Email,
-                        PhoneNumber=registerUserDto.Phone
+                        PhoneNumber=registerUserDto.Phone,
+                        CityId=registerUserDto.CityId,
+                        BirthDate=registerUserDto.BirthDate,
                    };
+                   appUser.Photos=registerUserDto.Photos.Select(x=>new Photo(){Url=x.Url,IsMain=x.IsMain}).ToList();
                    var res= await _userManager.CreateAsync(appUser,registerUserDto.Password);
                    if(res.Succeeded)
                    {
@@ -56,6 +71,12 @@ namespace Business.Implemenation.authentication
                   }
                   return 0;
             }
+        public async Task< List<UserDto>>GetUserAsync(){
+            var users=await _userManager.GetAllUser();;
+            
+            var UserListDto=_mapper.Map<List<UserDto>>(users);
+            return UserListDto;
+        }
         public async Task<UserToken> LogenUser(LoginUserDto loginUserDto)
             {
                     if(await VaildUser(loginUserDto))

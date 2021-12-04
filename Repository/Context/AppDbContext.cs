@@ -25,6 +25,7 @@ namespace Repository.Context
         public DbSet< Skill> Skills { get; set; }
         public DbSet< Module> Modules { get; set; }
         public DbSet<City> Cities { get; set; }
+         public override DbSet<AppUser> Users { get; set; }
         public DbSet<Countery> Counteries { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

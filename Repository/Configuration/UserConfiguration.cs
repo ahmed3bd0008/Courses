@@ -10,7 +10,7 @@ namespace Repository.Configuration
         public void Configure(EntityTypeBuilder<AppUser> builder)
         {
             builder.HasOne(d=>d.City).WithMany(m=>m.Users).HasForeignKey(fk=>fk.CityId).HasConstraintName("UserCityId");
-            builder.HasMany(m=>m.Photos).WithOne(o=>o.User).HasPrincipalKey(key=>key.RelationKey).HasForeignKey(fk=>fk.UserId).HasConstraintName("UserPhotoId");
+            builder.HasMany(m=>m.Photos).WithOne(o=>o.User).HasForeignKey(fk=>fk.UserId).HasConstraintName("UserPhotoId");
         }
     }
 }

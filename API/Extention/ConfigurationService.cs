@@ -14,6 +14,7 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Business.Interfacies.Authencation;
 using Business.Implemenation.authentication;
+using Repository.UserManement;
 
 namespace Api.Extention
 {
@@ -34,7 +35,8 @@ namespace Api.Extention
         public static void addServiceIdentity(this IServiceCollection services,IConfiguration configuration)
         {
             services.AddIdentity<AppUser, AppRole>(Option => { Option.SignIn.RequireConfirmedAccount = false; Option.SignIn.RequireConfirmedEmail = false; }).
-            AddEntityFrameworkStores<AppDbContext>();
+            AddEntityFrameworkStores<AppDbContext>().AddUserManager<UserMangeMenApplication>().
+            AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
             {
