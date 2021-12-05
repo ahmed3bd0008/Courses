@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Business.Interfacies.Authencation;
 using Core.Dto.UserDto;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class AuthencationsController : ControllerBase
     {
         private readonly ILogger<AuthencationsController> _logger;
@@ -35,6 +34,7 @@ namespace API.Controllers
             return Ok(await _authentcationManger.LogenUser(loginUserDto));
         }
         [HttpGet("GetAllUser")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult>GetAllUser(){
             return Ok(await _authentcationManger.GetUserAsync());
         }

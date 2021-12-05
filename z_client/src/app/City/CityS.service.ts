@@ -3,11 +3,14 @@ import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
 import { addCity, city,updateCity } from "./city";
 import { ResponseClient } from "../ResponseClient";
+import { environment } from "src/environments/environment";
 @Injectable({
   providedIn:'root'
 })
 export class CityService{
-baseUrl:string='https://localhost:5001/api/System/'
+
+//baseUrl:string='https://localhost:5001/api/System/'
+baseUrl:string=environment.baseUrl+'/System/'
 /**
  *
  */

@@ -3,6 +3,7 @@ import{HttpClient}from"@angular/common/http"
 import { User, Usertoken } from "./User";
 import{map}from"rxjs/operators";
 import{ReplaySubject}from"rxjs"
+import { environment } from "src/environments/environment";
 @Injectable(
   {
     providedIn:"root"
@@ -10,7 +11,7 @@ import{ReplaySubject}from"rxjs"
 )
 export class Authorizeservice
 {
-  BaseUrl:string="https://localhost:5001/Authencations"
+  BaseUrl:string=environment.baseUrl+"/Authencations"
   //buufer Not UnderStand Why Use it
    private currentUsersourc=new ReplaySubject<Usertoken>(1);
    currentuser$=this.currentUsersourc.asObservable();

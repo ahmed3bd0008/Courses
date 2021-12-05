@@ -271,7 +271,6 @@ namespace API.Migrations
                 table: "Photo",
                 column: "UserId");
         }
-
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

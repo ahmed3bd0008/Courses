@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Core.Entity.User;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -36,7 +36,10 @@ namespace Repository.UserManement
         }
         public async Task<List<AppUser>>GetAllUser()
         {
-            return await _appDbContext.Users.Include(d=>d.City).ToListAsync();
+            return await _appDbContext.Users.Include(d => d.City)
+                // .Include(d => d.Photos).Where(d=>d.Photos.Any(p=>p.IsMain==true))  //in case we want to get only user that have main Photo
+                .Include(d => d.Photos)
+                .ToListAsync();
         }
       
 

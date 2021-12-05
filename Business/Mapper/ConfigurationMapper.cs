@@ -41,12 +41,16 @@ namespace Business.Mapper
             CreateMap<City,UpdateCity>().ReverseMap();
             CreateMap<AppUser,RegisterUserDto>().ReverseMap();
 
+            CreateMap <Photo,PhotoDto>().ReverseMap();
+
 
             CreateMap<AppUser,UserDto>().
             ForMember(d=>d.Phone,m=>m.
             MapFrom(o=>o.Photos.FirstOrDefault(d=>d.IsMain))).
             ForMember(d=>d.Age,m=>m.MapFrom(d=>d.GetAge())).
             ForMember(d=>d.City,m=>m.MapFrom(d=>d.City.Name)).
+            ForMember(d=>d.Phone,m=>m.MapFrom(d=>d.PhoneNumber)).
+            ForMember(d=>d.MainPhoto,m=>m.MapFrom(d=>d.Photos.FirstOrDefault(k=>k.IsMain==true).Url)).
             ReverseMap();
             
         }

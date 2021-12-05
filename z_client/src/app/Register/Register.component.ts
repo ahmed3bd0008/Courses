@@ -14,6 +14,7 @@ export class RegisterComponent
 
 
   }
+ 
   @Output() cancelRegister=new EventEmitter();
   onSubmit(module:NgForm){
     console.log(module.value)
