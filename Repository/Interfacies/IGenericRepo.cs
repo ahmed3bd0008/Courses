@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core.Entity.Comman;
 
@@ -9,5 +10,6 @@ namespace Repository.Interfacies
         void Delete(T Model);
         void Update(T Model);
         Task AddAsync(T Model);
+        List<T>GetAll();
     }
 }

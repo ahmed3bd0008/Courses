@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Core.Entity.Comman;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +36,10 @@ namespace Repository.Implementation
                         public void Update(T Model)
                         {
                                    _entity.Update(Model);
+                        }
+                        public List<T>GetAll()
+                        {
+                            return _entity.ToList();
                         }
 
             }
