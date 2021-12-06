@@ -26,12 +26,14 @@ namespace Core.Entity.Course
         public Guid ? courseLevelId { get; set; }
         public Guid ? CurrencyId { get; set; }
         public Guid ? LanguageId { get; set; }
+        public Guid CourseTrackId { get; set; }
         public CourseStatus CourseStatus { get; set; }
         public CourseCategory CourseCategory { get; set; }
         public CourseType CourseType { get; set; }
         public CourseLevel CourseLevel { get; set; }
         public Currency currency { get; set; }
         public Language language { get; set; }
+        public courseTrack CourseTrack { get; set; }
          public ICollection< CourseGainSkill >CourseGainSkills { get; set; }
         public ICollection< CourseRequiredSkill >CourseRequiredSkills { get; set; }
         public ICollection<CourseModule>CourseModules{set;get;}

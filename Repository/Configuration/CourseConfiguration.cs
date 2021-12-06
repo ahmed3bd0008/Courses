@@ -21,7 +21,8 @@ namespace Repository.Configuration
                                     builder.HasMany(d=>d.CourseInstructors).WithOne(m=>m.Course).HasForeignKey(fk=>fk.CourseId).OnDelete(DeleteBehavior.Cascade);
                                     builder.HasMany(d=>d.CourseModules).WithOne(m=>m.Course).HasForeignKey(fk=>fk.CourseId).OnDelete(DeleteBehavior.Cascade);
                                     builder.HasMany(d=>d.CourseGainSkills).WithOne(m=>m.Course).HasForeignKey(fk=>fk.CourseId).OnDelete(DeleteBehavior.Cascade);
-                                    builder.HasMany(d=>d.CourseRequiredSkills).WithOne(m=>m.Course).HasForeignKey(fk=>fk.CourseId).OnDelete(DeleteBehavior.Cascade);           
+                                    builder.HasMany(d=>d.CourseRequiredSkills).WithOne(m=>m.Course).HasForeignKey(fk=>fk.CourseId).OnDelete(DeleteBehavior.Cascade); 
+                                    builder.HasOne(d=>d.CourseTrack).WithMany(m=>m.Courses).HasForeignKey(fk=>fk.CourseTrackId).HasConstraintName("FKcourseTrackId") ;        
                         }
             }
 }
