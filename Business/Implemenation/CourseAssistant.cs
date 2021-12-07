@@ -115,5 +115,30 @@ namespace Business.Implemenation
                                 var skillDtos=_mapper.Map<List<SkillDto>>(skills);
                                 return new HttpResponse<List<SkillDto>>(){Status=true,Data=skillDtos};
                         }
-            }
+
+        public HttpResponse<int> addSCourseTrack(AddSkillDto CourseTrackDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<HttpResponse<int>> addAsyncCourseTrack(AddSkillDto CourseTrackDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<HttpResponse<List<SkillDto>>> GetCourseTrack(string CourseTrackName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<HttpResponse<SkillDto>> GetCourseTrack(Guid CourseTrackId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<HttpResponse<List<SkillDto>>> GetCourseTrack()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
