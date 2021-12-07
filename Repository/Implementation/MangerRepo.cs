@@ -25,6 +25,7 @@ namespace Repository.Implementation
                         private  ICourseCategoryRepo _courseCategoryRepo;
                         private  ICityRepo _cityRepo;
                         private  ICounteryRepo _counteryRepo;
+                        private  IcoursetrackRepo _courseTrack;
                         public DapperContext dapperContext{get{return _dapperContext;}}
                         public ILanguageRepo LanguageRepo 
                         {
@@ -124,7 +125,15 @@ namespace Repository.Implementation
                             }
                         }
 
-                        public int save()
+        public IcoursetrackRepo CourseTrackRepo {
+            get{
+                    if(_courseTrack==null)
+                        _courseTrack=new coursetrackRepo(_context,_dapperContext);
+                    return _courseTrack;
+            }
+        }
+
+        public int save()
                         {
                                return     _context.SaveChanges();
                         }

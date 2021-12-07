@@ -32,9 +32,9 @@ namespace Repository.Interfacies
         Task <HttpResponse<int>> addAsyncCourseTrack(AddCourseTrackDto CourseTrackDto);
 
         Task< HttpResponse<List<SkillDto>>>GetCourseTrack(string CourseTrackName);
-        Task< HttpResponse<SkillDto>>GetCourseTrack(Guid CourseTrackId);
+        Task< HttpResponse<CourseTrackDto>>GetCourseTrack(Guid CourseTrackId);
 
-        Task< HttpResponse<List<SkillDto>>>GetCourseTrack();
+         HttpResponse<List<CourseTrackDto>> GetCourseTrack();
 
     }
 }

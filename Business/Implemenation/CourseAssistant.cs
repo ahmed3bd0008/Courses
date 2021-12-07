@@ -5,6 +5,7 @@ using AutoMapper;
 using Business.HttpResponse;
 using Core.Dto;
 using Core.Entity;
+using Core.Entity.Course;
 using Repository.Interfacies;
 namespace Business.Implemenation
 {
@@ -116,23 +117,22 @@ namespace Business.Implemenation
                                 return new HttpResponse<List<SkillDto>>(){Status=true,Data=skillDtos};
                         }
 
-<<<<<<< HEAD
         public HttpResponse<int> addSCourseTrack(AddCourseTrackDto CourseTrackDto)
         {
-            _mangerRepo.cou
+            var courseTrack=_mapper.Map<courseTrack>(CourseTrackDto) ;
+            _mangerRepo.CourseTrackRepo.Add(courseTrack);
+            var res= _mangerRepo.save();
+            if(res<1)return new HttpResponse<int>(){Status=false,Message="error when save",Data=0};
+            return new HttpResponse<int>(){Status=true,Message="success",Data=1};
         }
 
-        public Task<HttpResponse<int>> addAsyncCourseTrack(AddCourseTrackDto CourseTrackDto)
-=======
-        public HttpResponse<int> addSCourseTrack(AddSkillDto CourseTrackDto)
+        public async Task<HttpResponse<int>> addAsyncCourseTrack(AddCourseTrackDto CourseTrackDto)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<HttpResponse<int>> addAsyncCourseTrack(AddSkillDto CourseTrackDto)
->>>>>>> cabfc210bb55e080b613ac66304c286309c0852a
-        {
-            throw new NotImplementedException();
+            var courseTrack=_mapper.Map<courseTrack>(CourseTrackDto) ;
+            await _mangerRepo.CourseTrackRepo.AddAsync(courseTrack);
+            var res=await _mangerRepo.saveAsync();
+            if(res<1)return new HttpResponse<int>(){Status=false,Message="error when save",Data=0};
+            return new HttpResponse<int>(){Status=true,Message="success",Data=1};
         }
 
         public Task<HttpResponse<List<SkillDto>>> GetCourseTrack(string CourseTrackName)
@@ -140,14 +140,17 @@ namespace Business.Implemenation
             throw new NotImplementedException();
         }
 
-        public Task<HttpResponse<SkillDto>> GetCourseTrack(Guid CourseTrackId)
+        public Task<HttpResponse<CourseTrackDto>> GetCourseTrack(Guid CourseTrackId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<HttpResponse<List<SkillDto>>> GetCourseTrack()
+        public HttpResponse<List<CourseTrackDto>> GetCourseTrack()
         {
-            throw new NotImplementedException();
+            var courstracks=  _mangerRepo.CourseTrackRepo.GetAll();
+            if(courstracks.Count==0)return new HttpResponse<List<CourseTrackDto>>(){Status=false,Message="Data is Empty"};
+            var coursetackDto=_mapper.Map<List<CourseTrackDto>>(courstracks);
+            return new HttpResponse<List<CourseTrackDto>>(){Status=true,Data=coursetackDto};
         }
     }
 }

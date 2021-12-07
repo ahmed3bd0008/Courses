@@ -16,7 +16,7 @@ import { homecomponent } from './Home/home.component';
 import { navcomponent } from './Nav/nav.component';
 import { Usercomponent } from './User/user.component';
 
-import { HttpClientModule}from'@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS}from'@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //mateDialog
 import {MatDialogModule} from '@angular/material/dialog';
@@ -34,6 +34,7 @@ import { addcounterycomponent } from './countery/add-countery/add-countery.compo
 import { CityComponent } from './City/City.Component';
 import { addcitycomponent } from './City/AddCity/add-city.component';
 import { updateCityComponent } from './City/UpdateCity/update-city.component';
+import { JwtInterceptor } from './jwt.interceptor';
 @NgModule({
   declarations: [
 
@@ -76,7 +77,10 @@ import { updateCityComponent } from './City/UpdateCity/update-city.component';
     ToastrModule.forRoot({
     })
   ],
-  providers: [ ],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}
+   ]
+  ,
   exports:   [ AppComponent],
   bootstrap: [AppComponent]
 })
