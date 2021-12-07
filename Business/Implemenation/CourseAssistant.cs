@@ -116,12 +116,21 @@ namespace Business.Implemenation
                                 return new HttpResponse<List<SkillDto>>(){Status=true,Data=skillDtos};
                         }
 
+<<<<<<< HEAD
         public HttpResponse<int> addSCourseTrack(AddCourseTrackDto CourseTrackDto)
         {
             _mangerRepo.cou
         }
 
         public Task<HttpResponse<int>> addAsyncCourseTrack(AddCourseTrackDto CourseTrackDto)
+=======
+        public HttpResponse<int> addSCourseTrack(AddSkillDto CourseTrackDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<HttpResponse<int>> addAsyncCourseTrack(AddSkillDto CourseTrackDto)
+>>>>>>> cabfc210bb55e080b613ac66304c286309c0852a
         {
             throw new NotImplementedException();
         }

@@ -4,6 +4,7 @@ import{map}from "rxjs/operators"
 import { RegistUser } from "./RegistUse";
 import { environment } from "src/environments/environment";
 import{ResponseClient}from'../../app/ResponseClient';
+import { UserDispalay } from "../Nav/User";
 
 
 const option={
@@ -37,7 +38,7 @@ register(Model:RegistUser)
 }
 
 getAllUser(){
-  return this.clint.get<ResponseClient>(this.BaseUrl+'/GetAllUser',option)
+  return this.clint.get<UserDispalay[]>(this.BaseUrl+'/GetAllUser',option)
 }
 getUserByUserName(userName:string){
   return this.clint.get<ResponseClient>(this.BaseUrl+'/GetUserByName/userName/'+userName,option)
