@@ -86,7 +86,7 @@ namespace Business.Implemenation.authentication
         }
          public async Task<UserDto> GetUserByUserNameAsync(string UserName)
         {
-           var user =await _userManager.FindByNameAsync(UserName);
+           var user =await _userManager.GetUser(UserName);
            var userDto=_mapper.Map<UserDto>(user);
            return userDto;
         }

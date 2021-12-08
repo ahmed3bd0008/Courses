@@ -19,12 +19,12 @@ export class Usercomponent implements OnInit
   }
   ngOnInit(): void {
     this.getAllUser();
+    this.registService.getUserByUserName("sdfsd");
   }
   getAllUser(){
     this.registService.getAllUser().subscribe(
       Response=>{
           this.Users=Response as UserDispalay[]
-          console.log(this.Users)
       },error=>{
         console.log(error)
       }

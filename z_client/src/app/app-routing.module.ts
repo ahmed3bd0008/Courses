@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'courses',component:courselistcomponent},
   {path:'user',component:Usercomponent,
   children:[
-    {path:'UserDetails/Id',component:UserDetailsComponent}
+    {path:'user/:userName',component:UserDetailsComponent}
   ]},
   {path:'',component:homecomponent,pathMatch:'full'},
   {path:'fetch-data',component:fetchDataComponent},
@@ -27,3 +27,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

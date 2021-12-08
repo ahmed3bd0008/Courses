@@ -39,7 +39,7 @@ namespace API.Controllers
             return Ok(await _authentcationManger.GetUserAsync());
         }
          [HttpGet("GetUserByUserName/{UserName}")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult>GetUserByName(string UserName){
             return Ok(await _authentcationManger.GetUserByUserNameAsync(UserName));
         }
