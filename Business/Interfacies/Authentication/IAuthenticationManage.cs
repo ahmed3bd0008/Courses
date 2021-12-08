@@ -12,5 +12,6 @@ namespace Business.Interfacies.Authencation
         Task<UserToken>LogenUser(LoginUserDto loginUserDto);
         Task<bool>VaildUser(LoginUserDto loginUserDto);
          public  Task< List<UserDto>>GetUserAsync();
+         public  Task< UserDto>GetUserByUserNameAsync(string UserName);
     }
 }

@@ -35,6 +35,7 @@ import { CityComponent } from './City/City.Component';
 import { addcitycomponent } from './City/AddCity/add-city.component';
 import { updateCityComponent } from './City/UpdateCity/update-city.component';
 import { JwtInterceptor } from './jwt.interceptor';
+import { UserDetailsComponent } from './User/UserDetails/user-details.component';
 @NgModule({
   declarations: [
 
@@ -60,7 +61,8 @@ import { JwtInterceptor } from './jwt.interceptor';
     addcounterycomponent,
     CityComponent,
     addcitycomponent,
-    updateCityComponent
+    updateCityComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

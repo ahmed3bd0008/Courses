@@ -7,9 +7,13 @@ import { countercomponent } from './countery/countery.component';
 import { homecomponent } from './Home/home.component';
 import { CityComponent } from './City/City.Component';
 import{AuthGuard}from'./gruid/auth.guard'
+import { UserDetailsComponent } from './User/UserDetails/user-details.component';
 const routes: Routes = [
   {path:'courses',component:courselistcomponent},
-  {path:'user',component:Usercomponent},
+  {path:'user',component:Usercomponent,
+  children:[
+    {path:'UserDetails/Id',component:UserDetailsComponent}
+  ]},
   {path:'',component:homecomponent,pathMatch:'full'},
   {path:'fetch-data',component:fetchDataComponent},
   {path:'countery',component:countercomponent},
