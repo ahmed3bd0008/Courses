@@ -11,9 +11,10 @@ import { UserDetailsComponent } from './User/UserDetails/user-details.component'
 const routes: Routes = [
   {path:'courses',component:courselistcomponent},
   {path:'user',component:Usercomponent,
-  children:[
-    {path:'user/:userName',component:UserDetailsComponent}
-  ]},
+        children:[
+          {path:'user/:userName',component:UserDetailsComponent}
+        ]},
+  {path:'user/:userName',component:UserDetailsComponent},
   {path:'',component:homecomponent,pathMatch:'full'},
   {path:'fetch-data',component:fetchDataComponent},
   {path:'countery',component:countercomponent},

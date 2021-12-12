@@ -17,6 +17,7 @@ export interface UserDispalay
   city: string
   createDate: Date
   email: string
+  age:number;
   introduction: string
   lastActivity: Date
   mainPhoto: string

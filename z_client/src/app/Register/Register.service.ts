@@ -42,8 +42,8 @@ getAllUser(){
   return this.clint.get<UserDispalay[]>(this.BaseUrl+'/GetAllUser')
 }
 getUserByUserName(userName:string){
-  //return this.clint.get<ResponseClient>(this.BaseUrl+'/GetUserByName/userName/'+userName,option)
+  //return this.clint.get<ResponseClient>(this.BaseUrl+'/GetUserByName/'+userName,option)
   console.log(this.BaseUrl+'/GetUserByUserName/'+userName)
-  return this.clint.get<ResponseClient>(this.BaseUrl+'/GetUserByUserName/userName/'+userName)
+  return this.clint.get<UserDispalay>(this.BaseUrl+'/GetUserByUserName/'+userName)
 }
 }
