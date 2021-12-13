@@ -16,6 +16,7 @@ export class UserDetailsComponent implements OnInit{
 
   }
   userdispaly!: UserDispalay ;
+  active:number = 1;
   defaultPhoto:string='https://th.bing.com/th/id/OIP.F5jwVbaqtqnav-gsxBDLOQAAAA?pid=ImgDet&w=200&h=200&rs=1';
   ngOnInit(): void {
     this.getUser();

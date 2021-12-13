@@ -34,8 +34,14 @@ import { addcounterycomponent } from './countery/add-countery/add-countery.compo
 import { CityComponent } from './City/City.Component';
 import { addcitycomponent } from './City/AddCity/add-city.component';
 import { updateCityComponent } from './City/UpdateCity/update-city.component';
+
+//for intersector  token
 import { JwtInterceptor } from './jwt.interceptor';
+
 import { UserDetailsComponent } from './User/UserDetails/user-details.component';
+
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
 
@@ -76,6 +82,8 @@ import { UserDetailsComponent } from './User/UserDetails/user-details.component'
     HttpClientModule,
     FormsModule,
     MatPaginatorModule,
+    //for bootstrap boot strap
+    NgbModule,
     ToastrModule.forRoot({
     })
   ],
