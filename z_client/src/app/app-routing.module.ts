@@ -8,18 +8,21 @@ import { homecomponent } from './Home/home.component';
 import { CityComponent } from './City/City.Component';
 import{AuthGuard}from'./gruid/auth.guard'
 import { UserDetailsComponent } from './User/UserDetails/user-details.component';
+import { userEditComponent } from './User/UserEdit/user-edit.component';
 const routes: Routes = [
   {path:'courses',component:courselistcomponent},
-  {path:'user',component:Usercomponent,
+          {path:'editUser',component:userEditComponent},
+          {path:'user',component:Usercomponent,
         children:[
-          {path:'user/:userName',component:UserDetailsComponent}
+          {path:'user/:userName',component:UserDetailsComponent},
+          {path:'editUser',component:userEditComponent}
         ]},
   {path:'user/:userName',component:UserDetailsComponent},
-  {path:'',component:homecomponent,pathMatch:'full'},
   {path:'fetch-data',component:fetchDataComponent},
   {path:'countery',component:countercomponent},
   {path:'home',component:homecomponent},
   {path:'city',component:CityComponent},
+  {path:'',component:homecomponent,pathMatch:'full'},
   {path:'**',component:homecomponent},
 ];
 

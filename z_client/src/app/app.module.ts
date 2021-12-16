@@ -42,6 +42,7 @@ import { UserDetailsComponent } from './User/UserDetails/user-details.component'
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { userEditComponent } from './User/UserEdit/user-edit.component';
 @NgModule({
   declarations: [
 
@@ -68,7 +69,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CityComponent,
     addcitycomponent,
     updateCityComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    userEditComponent
   ],
   imports: [
     BrowserModule,
