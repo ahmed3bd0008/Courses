@@ -9,7 +9,16 @@ import { CityComponent } from './City/City.Component';
 import{AuthGuard}from'./gruid/auth.guard'
 import { UserDetailsComponent } from './User/UserDetails/user-details.component';
 import { userEditComponent } from './User/UserEdit/user-edit.component';
+import { InstituteComponent } from './Institute/Institute.component';
+import { InstituteProfileComponent } from './Institute/InstituteProfile/InstituteProfile.component';
+import { InstituteSetUpComponent } from './Institute/InstituteSetUp/InstituteSetUp.component';
+
 const routes: Routes = [
+  {path:'Institute',component:InstituteComponent,
+  children:[
+    {path:'',component:InstituteSetUpComponent},
+    {path:':id/EditInstituteProfile',component:InstituteProfileComponent},
+  ]},
   {path:'courses',component:courselistcomponent},
           {path:'editUser',component:userEditComponent},
           {path:'user',component:Usercomponent,
@@ -22,6 +31,7 @@ const routes: Routes = [
   {path:'countery',component:countercomponent},
   {path:'home',component:homecomponent},
   {path:'city',component:CityComponent},
+
   {path:'',component:homecomponent,pathMatch:'full'},
   {path:'**',component:homecomponent},
 ];

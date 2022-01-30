@@ -29,7 +29,7 @@ namespace Business.Interfacies
         Task< HttpResponse<List<CounteryDto>>>GetCountery(string countryName);
         Task< HttpResponse<CounteryDto>>GetCounter(Guid countryId);
         Task< HttpResponse<List< CounteryDto>>>GetCountery();
-        Task<HttpResponse<List<CounteryDto>>> GetCountery(RequestCounteryPrameter counteryPrameter);
+        Task<HttpResponse<PagingList<CounteryDto>>> GetCountery(RequestCounteryPrameter counteryPrameter);
 
         Task< HttpResponse<List<CityCounteryDto>>>GetCounteryWithCity();
         Task< HttpResponse<List<counteryCitiesDto>>>GetCounteryWithCityfull();

@@ -20,7 +20,7 @@ namespace Core.Paging
         public static PagingList<T> ToPageList(List<T>Source,int PageIndex,int PageSize)
         {
                     int count=Source.Count;
-                    var items=Source.Skip((PageIndex-1)*PageSize).Take(PageIndex).ToList();
+                    var items=Source.Skip((PageIndex-1)*PageSize).Take(PageSize).ToList();
                     return new PagingList<T>(Source:items,PageIndex:PageIndex,PageSize:PageSize,AccountRecord:count);
                     
         }

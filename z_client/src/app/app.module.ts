@@ -43,6 +43,10 @@ import { UserDetailsComponent } from './User/UserDetails/user-details.component'
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { userEditComponent } from './User/UserEdit/user-edit.component';
+
+
+
+import { InstituteModule } from './Institute/Institute.module';
 @NgModule({
   declarations: [
 
@@ -70,8 +74,8 @@ import { userEditComponent } from './User/UserEdit/user-edit.component';
     addcitycomponent,
     updateCityComponent,
     UserDetailsComponent,
-    userEditComponent
-  ],
+    userEditComponent,
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -86,6 +90,7 @@ import { userEditComponent } from './User/UserEdit/user-edit.component';
     MatPaginatorModule,
     //for bootstrap boot strap
     NgbModule,
+    InstituteModule,
     ToastrModule.forRoot({
     })
   ],
