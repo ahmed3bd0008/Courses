@@ -126,11 +126,14 @@ namespace Business.Implemenation
                                    var counteriesDto=_mapper.Map<List<CounteryDto>>(counteries);
                                    return new HttpResponse<List<CounteryDto>>{Status=true,Data=counteriesDto,Message="important"};
                         }
-                         public async Task<HttpResponse<List<CounteryDto>>> GetCountery(RequestCounteryPrameter counteryPrameter)
+                         public async Task<HttpResponse<PagingList<CounteryDto>>> GetCountery(RequestCounteryPrameter counteryPrameter)
                         {
                                   var counteries=await _mangerRepo.CounteryRepo.GetCounteryOrderByName(counteryPrameter);
-                                   var counteriesDto=_mapper.Map<List<CounteryDto>>(counteries);
-                                   return new HttpResponse<List<CounteryDto>>{Status=true,Data=counteriesDto,Message="important"};
+                                  var CounteriesDto=_mapper.Map<List<CounteryDto>>(counteries);
+                                  var counteryPaging= PagingList<CounteryDto>.ToPageList(Source:CounteriesDto,PageIndex:counteryPrameter.PageNumber,PageSize:counteryPrameter.PageSize);
+
+                                   return new HttpResponse<PagingList<CounteryDto>>
+                                       { Status = true,Data=counteryPaging, Message = "important"};
                         }
 
                         public HttpResponse<int> addCity(AddCityDto cityDto)

@@ -80,7 +80,9 @@ namespace API.Controllers
          [HttpGet("GetCounteriesPagingOrderByName")]
         public async Task<IActionResult>GetCounteriesPagingOrderByName( [FromQuery]RequestCounteryPrameter counteryPrameter)
         {
-          return Ok(await _systemService.GetCountery(counteryPrameter));
+           var countery =await _systemService.GetCountery(counteryPrameter);
+           Response.AddPagNationHeader(countery.Data.MetaData);
+          return Ok(countery);
         }
         [HttpGet("GetCounteriesCities")]
         public async Task< IActionResult> GetCounteriesCities()

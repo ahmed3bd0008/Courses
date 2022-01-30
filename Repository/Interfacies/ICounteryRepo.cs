@@ -10,7 +10,7 @@ namespace Repository.Interfacies
         public Task<Countery> GetCountery(Guid CounterId);
         public Task<List<Countery>> GetCountery();
         public Task<List<Countery>> GetCountery(string CounteryId);
-        public Task<PagingList<Countery>> GetCounteryOrderByName(RequestCounteryPrameter counteryPrameter);
+        public Task<IEnumerable<Countery>> GetCounteryOrderByName(RequestCounteryPrameter counteryPrameter);
         public Task<List<City>> GetCounteryWithCitIes();
         public  Task<List< Countery>>GetCounteriesFull();
     }

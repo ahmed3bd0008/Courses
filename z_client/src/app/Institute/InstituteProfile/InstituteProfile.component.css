@@ -1,0 +1,25 @@
+.profile-img{
+  width: 200px;
+}
+.profile-img-div{
+  top:420px;
+  padding: 10px;
+  padding-left: 50px;
+}
+img{
+  overflow: hidden;
+}
+
+.editInfoProfile{
+  bottom: 10px;
+
+}
+.cover-img{
+  height:500px;
+}
+.info-Container
+{
+  margin: auto;
+    max-width: 1020px;
+}
+

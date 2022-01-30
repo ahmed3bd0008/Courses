@@ -45,14 +45,14 @@ namespace Repository.Implementation
                                    }
                         }
 
-                        public async Task<PagingList<Countery>> GetCounteryOrderByName(RequestCounteryPrameter counteryPrameter)
+                        public async Task<IEnumerable<Countery>> GetCounteryOrderByName(RequestCounteryPrameter counteryPrameter)
                         {
                                    var OrderString=counteryPrameter.SortQueue=="DESC"?"DESC":"ASC";
                                    var Query=$"SELECT * FROM Counteries ORDER BY Name {OrderString} ";
                                      using(var connection=_dapperContext.CreateConnection())
                                    {
                                                var counteries=await connection.QueryAsync<Countery>(Query);
-                                               return  PagingList<Countery>.ToPageList(Source:counteries.AsList(),PageIndex:counteryPrameter.PageNumber,PageSize:counteryPrameter.PageSize);
+                                               return  counteries;
                                    }
 
                         }

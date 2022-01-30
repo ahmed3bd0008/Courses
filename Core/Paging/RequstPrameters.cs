@@ -9,7 +9,7 @@ namespace Core.Paging
                                     return _PageSize;
                            } 
                         set{
-                                    _PageSize=value>PageSize?MaxSize:value;
+                                    _PageSize=value>MaxSize?MaxSize:value;
                         } 
                        }
         public int PageNumber { get; set; }
