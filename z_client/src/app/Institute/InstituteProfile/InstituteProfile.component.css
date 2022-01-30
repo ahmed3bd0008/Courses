@@ -1,9 +1,9 @@
 .profile-img{
   width: 200px;
+
 }
-.profile-img-div{
-  top:420px;
-  padding: 10px;
+.postionImgProfile{
+  top:72%;
   padding-left: 50px;
 }
 img{
@@ -15,7 +15,7 @@ img{
 
 }
 .cover-img{
-  height:500px;
+  /* height:500px; */
 }
 .info-Container
 {
