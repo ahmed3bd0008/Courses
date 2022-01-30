@@ -15,6 +15,9 @@ export interface UserDispalay
 {
   userName: "string"
   city: string
+  cityId: string
+  counteryId: string
+  countery: string
   createDate: Date
   email: string
   age:number;

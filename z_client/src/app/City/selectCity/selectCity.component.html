@@ -1,0 +1,7 @@
+<select class="form-select" aria-label="Default select example"  [(ngModel)]="selectcityId" >
+
+  <option value="">chocee</option>
+  <option *ngFor="let city of cityArr" [value]="city.id"  >{{city.name}} </option>
+</select>
+<h1>{{selectcityId}}</h1>
+

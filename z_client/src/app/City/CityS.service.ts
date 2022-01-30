@@ -60,4 +60,19 @@ deleteCity(cityId:string)
     })
   )
 }
+getCounteryCitiesByName(counteryName :string ){
+  return this.client.get<ResponseClient>(this.baseUrl+'GetCitiesByCounteryName/'+counteryName).
+  pipe(map(Response=>{
+    const responses:ResponseClient=Response;
+    return responses;
+  }))
+}
+getCounteryCitiesById(counteryId:string)
+{
+  return this.client.get<ResponseClient>(this.baseUrl+'GetCitiesByCounteryId?counteryId='+counteryId).
+  pipe(map(Response=>{
+    const responses:ResponseClient=Response;
+    return responses;
+  }))
+}
 }

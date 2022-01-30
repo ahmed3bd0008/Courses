@@ -112,7 +112,26 @@ namespace Repository.Implementation
                 }
         }
         }
-                
+
+        public async Task<List<City>> GetcountryCitiesById(Guid CounteryId)
+        {
+            string query="select * from Cities where CounteryId=@CounteryId ";
+            using(var connection=_dapperContext.CreateConnection())
+            {
+                var city= await connection.QueryAsync<City>(query,new {CounteryId=CounteryId});
+                return city.Distinct().AsList();
+            }
+        }
+
+        public async Task<List<City>> GetcountryCitiesByName(string counteryName)
+        {
+            string query="select * from Cities where Name like @counteryName ";
+            using(var connection=_dapperContext.CreateConnection())
+            {
+                var city= await connection.QueryAsync<City>(query,new {counteryName=counteryName});
+                return city.Distinct().AsList();
+            }
+        }
     }
 }
                  

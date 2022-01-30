@@ -105,6 +105,18 @@ namespace API.Controllers
            
            return Ok(await _systemService.GetCity());
         }
+         [HttpGet("GetCitiesByCounteryName/{counteryName}")]
+        public async Task< IActionResult> getCities(string counteryName)
+        {
+           
+           return Ok(await _systemService.GetCounteryCitiesByName(counteryName));
+        }
+         [HttpGet("GetCitiesByCounteryId")]
+        public async Task< IActionResult> getCities(Guid counteryId)
+        {
+           
+           return Ok(await _systemService.GetCounteryCitiesById(counteryId));
+        }
           [HttpGet("GetCitiesCounterfull")]
          public async Task< IActionResult> GetCitiesCounterfull()
         {

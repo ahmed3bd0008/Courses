@@ -43,6 +43,12 @@ import { UserDetailsComponent } from './User/UserDetails/user-details.component'
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { userEditComponent } from './User/UserEdit/user-edit.component';
+import { selectCityComponent } from './City/selectCity/selectCity.component';
+
+
+//galary
+//import { HttpClientModule} from '@angular/common/http';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 @NgModule({
   declarations: [
 
@@ -70,7 +76,9 @@ import { userEditComponent } from './User/UserEdit/user-edit.component';
     addcitycomponent,
     updateCityComponent,
     UserDetailsComponent,
-    userEditComponent
+    userEditComponent,
+    selectCityComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -81,9 +89,9 @@ import { userEditComponent } from './User/UserEdit/user-edit.component';
     MatTableModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    HttpClientModule,
     FormsModule,
     MatPaginatorModule,
+    NgxGalleryModule ,
     //for bootstrap boot strap
     NgbModule,
     ToastrModule.forRoot({

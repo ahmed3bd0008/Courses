@@ -49,6 +49,9 @@ namespace Business.Mapper
             MapFrom(o=>o.Photos.FirstOrDefault(d=>d.IsMain))).
             ForMember(d=>d.Age,m=>m.MapFrom(d=>d.GetAge())).
             ForMember(d=>d.City,m=>m.MapFrom(d=>d.City.Name)).
+            ForMember(d=>d.CityId,m=>m.MapFrom(d=>d.City.Id)).
+            ForMember(d=>d.countery,m=>m.MapFrom(d=>d.City.Countery.Name)).
+            ForMember(d=>d.counteryId,m=>m.MapFrom(d=>d.City.CounteryId)).
             ForMember(d=>d.Phone,m=>m.MapFrom(d=>d.PhoneNumber)).
             ForMember(d=>d.MainPhoto,m=>m.MapFrom(d=>d.Photos.FirstOrDefault(k=>k.IsMain==true).Url)).
             ReverseMap();

@@ -43,7 +43,7 @@ namespace Repository.UserManement
         }
         public async Task<AppUser>GetUser(string Username)
         {
-            return await _appDbContext.Users.Include(d => d.City)
+            return await _appDbContext.Users.Include(d => d.City).ThenInclude(d=>d.Countery)
                 // .Include(d => d.Photos).Where(d=>d.Photos.Any(p=>p.IsMain==true))  //in case we want to get only user that have main Photo
                 .Include(d => d.Photos).Where(d=>d.UserName==Username)
                 .FirstOrDefaultAsync();

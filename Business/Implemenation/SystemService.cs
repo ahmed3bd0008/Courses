@@ -190,7 +190,19 @@ namespace Business.Implemenation
                                    var counteriesDto=_mapper.Map<List<CitisCounteryDto>>(cities);
                                    return new HttpResponse<List<CitisCounteryDto>>{Status=true,Data=counteriesDto ,Message=counteriesDto.Count.ToString()};
         }
+         public async Task<HttpResponse<List<CityDto>>> GetCounteryCitiesByName(string couteryName)
+        {
+            var cityDb=await _mangerRepo.CityRepo.GetcountryCitiesByName( couteryName);
+             var cityDto=_mapper.Map<List<CityDto>>(cityDb);
+             return new HttpResponse<List<CityDto>>(){Data=cityDto,Status=true,Message="success"};
+        }
 
+        public async Task<HttpResponse<List<CityDto>>> GetCounteryCitiesById(Guid counteryId)
+        {
+             var cityDb=await _mangerRepo.CityRepo.GetcountryCitiesById( counteryId);
+             var cityDto=_mapper.Map<List<CityDto>>(cityDb);
+             return new HttpResponse<List<CityDto>>(){Data=cityDto,Status=true,Message="success"};
+        }
         public async Task<HttpResponse<UpdateCity>> updateCity(UpdateCity updateCity)
         {
           try{
@@ -217,6 +229,8 @@ namespace Business.Implemenation
           if(stat<1)return new HttpResponse<int>(){Status=false,Message="Erro Happen When Delete"};
           return new HttpResponse<int>(){Message="City Is Deleted",Status=true,Data=1};
         }
+
+       
     }
             
 }

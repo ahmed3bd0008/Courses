@@ -31,7 +31,11 @@ namespace Core.Dto.UserDto
         public string Introduction { get; set; }
         public DateTime LastActivity { get; set; }
         public IList<PhotoDto> Photos { get; set; }
+        public Guid CityId { get; set; }
         public string City { get; set; }
+        public Guid counteryId { get; set; }
+
+        public string countery { get; set; }
         public string Phone { get; set; }
         public string MainPhoto { get; set; }
     }

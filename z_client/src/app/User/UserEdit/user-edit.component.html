@@ -56,10 +56,10 @@
                 </div>
 
                  <label for="floatingInput">countery</label>
-                  <select-countery-app></select-countery-app>
+                  <select-countery-app  (newItemEvent)="addItem($event)" [selectCountery]='selectcounteryp'></select-countery-app>
                   <label for="floatingInput">countery</label>
-               
-
+                  <label for="floatingInput">City</label>
+                  <select-city-app [countery]="countery" [selectcityId]="selectCity" ></select-city-app>
 
               </ng-template>
             </li>
