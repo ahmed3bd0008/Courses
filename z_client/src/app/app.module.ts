@@ -101,7 +101,7 @@ import { InstituteModule } from './Institute/Institute.module';
     MatDialogModule,
     FormsModule,
     MatPaginatorModule,
-    NgxGalleryModule ,
+
     //for bootstrap boot strap
     NgbModule,
     InstituteModule,

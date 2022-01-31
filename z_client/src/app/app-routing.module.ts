@@ -12,12 +12,20 @@ import { userEditComponent } from './User/UserEdit/user-edit.component';
 import { InstituteComponent } from './Institute/Institute.component';
 import { InstituteProfileComponent } from './Institute/InstituteProfile/InstituteProfile.component';
 import { InstituteSetUpComponent } from './Institute/InstituteSetUp/InstituteSetUp.component';
+import { EditDescribtionComponent } from './Institute/InstituteProfile/editDescribtion/editDescribtion.component';
+import { EditContactInstituteComponent } from './Institute/InstituteProfile/editContactInstitute/editContactInstitute.component';
+import { EditInfoInstituteComponent } from './Institute/InstituteProfile/editInfoInstitute/editInfoInstitute.component';
 
 const routes: Routes = [
   {path:'Institute',component:InstituteComponent,
   children:[
     {path:'',component:InstituteSetUpComponent},
-    {path:':id/EditInstituteProfile',component:InstituteProfileComponent},
+    {path:':id/EditInstituteProfile',component:InstituteProfileComponent,
+                                    children:[
+                                      {path:'editDescribtion',component:EditDescribtionComponent},
+                                      {path:'editContact',component:EditContactInstituteComponent},
+                                      {path:'editIndo',component:EditInfoInstituteComponent},
+                                   ]},
   ]},
   {path:'courses',component:courselistcomponent},
           {path:'editUser',component:userEditComponent},
