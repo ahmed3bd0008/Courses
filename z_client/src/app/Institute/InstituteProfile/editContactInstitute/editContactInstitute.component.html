@@ -5,73 +5,95 @@
       <button (click)="close()" #closeInfoModule type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-      <div class="container">
-        <div class="row">
-          <label>Institute Email</label>
-          <div class="col-5">
-            <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-          </div>
-          <div class="col-5">
-            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-          </div>
-          <div class="col-1">
-            <i class="fas fa-trash-alt"></i>
-          </div>
-          <div class="col-1">
-             <i class="fas fa-plus-circle"></i>
-          </div>
-
-        </div>
-
-        <div class="row">
-          <div class="col-4">
-            <label>Address</label>
-            <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-          </div>
-          <div class="col-4">
-            <label>City</label>
-            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-          </div>
-          <div class="col-4">
-            <label>Provicy</label>
-            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+      <form [formGroup]="contactForm">
+        <div class="container">
+          <div class="row" formArrayName="emails"
+          >
+            <div class="row" *ngFor="let item of controltEmail ; let i=index"
+            [formGroupName]="i"
+            >
+            <label>Institute Email</label>
+            <div class="col-10">
+              <input type="text" class="form-control" placeholder="Email" aria-label="email"
+                formControlName="email"
+              >
+            </div>
+            <div class="col-1">
+              <i class="fas fa-trash-alt" (click)="deleteEmail(i)"></i>
+            </div>
+            <div class="col-1">
+              <i class="fas fa-plus-circle" (click)="addEmail() "></i>
+            </div>
           </div>
         </div>
 
-        <div class="row">
+          <div class="row">
+            <div class="col-4">
+              <label>Address</label>
+              <input type="text" class="form-control"
+              placeholder="First name" aria-label="First name"
+              formControlName="countery"
+              >
+            </div>
+            <div class="col-4">
+              <label>City</label>
+              <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+            </div>
+            <div class="col-4">
+              <label>Provicy</label>
+              <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+            </div>
+          </div>
+
+
+
+
           <label>Institute Phone</label>
-          <div class="col-5">
-            <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-          </div>
-          <div class="col-5">
-            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-          </div>
-          <div class="col-1">
-            <i class="fas fa-trash-alt"></i>
-          </div>
-          <div class="col-1">
-             <i class="fas fa-plus-circle"></i>
-          </div>
-        </div>
+          <div style="margin: auto;" class="row g-3 justify-content-evenly"formArrayName="phones"  >
+            <div *ngFor="let phone of controlPhones;let i=index"
+              [formGroupName]="i"
+            >
+                <div class="col-md-5 col-sm-12  displayInline">
+                  <input type="text" class="form-control " placeholder="phone" aria-label="phone"
+                    formControlName="phone"
+                  >
+                </div>
+                <div class="col-md-5 col-sm-12 displayInline">
+                  <input type="text" class="form-control " placeholder="Phonetype" aria-label="Phonetype"
+                  formControlName="phoneType"
+                  >
+                </div>
+                <div class="col-md-1 col-sm-6 displayInline" *ngIf="index!=1" >
+                  <i   class="fas fa-trash-alt"(click)="deletearrayGrpoup(i)"></i>
+                </div>
+                <div class="col-md-1 col-sm-6 displayInline">
+                  <i class="fas fa-plus-circle" (click)="addPhone()" ></i>
+                </div>
 
-        <div class="row">
-          <label>Institute Website</label>
-          <div class="col-5">
-            <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-          </div>
-          <div class="col-5">
-            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-          </div>
-          <div class="col-1">
-            <i class="fas fa-trash-alt"></i>
-          </div>
-          <div class="col-1">
-             <i class="fas fa-plus-circle"></i>
+            </div>
           </div>
         </div>
 
 
-      </div>
+        <div class="raw" formArrayName="websites">
+          <div class="row" *ngFor="let website of contactWebsite ;let i=index"
+           [formGroupName]="i"
+          >
+            <label>Institute Website</label>
+            <div class="col-10">
+              <input type="text" class="form-control" placeholder="Website" aria-label="Website">
+            </div>
+            <div class="col-1">
+              <i class="fas fa-trash-alt" (click)="deleteWebsite(i)"></i>
+            </div>
+            <div class="col-1">
+              <i class="fas fa-plus-circle" (click)="addWebsite()" ></i>
+            </div>
+          </div>
+        </div>
+
+
+    </form>
     </div>
     <div class="modal-footer">
       <button (click)="close()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

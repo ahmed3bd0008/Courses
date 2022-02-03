@@ -6,12 +6,14 @@ import { EditDescribtionComponent } from './InstituteProfile/editDescribtion/edi
 import { InstituteProfileComponent } from './InstituteProfile/InstituteProfile.component';
 import { InstituteSetUpComponent } from './InstituteSetUp/InstituteSetUp.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   imports: [
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   declarations: [
     InstituteComponent,

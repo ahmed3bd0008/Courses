@@ -12,6 +12,7 @@ export class EditInfoInstituteComponent implements OnInit {
   constructor(private router:Router,private activeRouter:ActivatedRoute) { }
 
   ngOnInit() {
+    console.log("info")
   }
   close (){
     this.router.navigate(['../'],{relativeTo:this.activeRouter})

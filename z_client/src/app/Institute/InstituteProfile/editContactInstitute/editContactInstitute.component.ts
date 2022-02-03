@@ -17,18 +17,77 @@ export class EditContactInstituteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.phoneGroup=new FormArray([]);
+    this.phoneGroup.push(new FormGroup({
+      phone:new FormControl(null,[]),
+      phoneType:new FormControl(null,[]),
+    }))
+    this.emailGroup=new FormArray([]);
+    this.emailGroup.push(new FormGroup({
+      email:new FormControl(null)
+    }))
+
+    this.websiteGroup=new FormArray([]);
+    this.websiteGroup.push(new FormGroup({
+      website:new FormControl(null)
+    }))
+
     this.contactForm=new FormGroup({
       countery:new FormControl(null),
       city:new FormControl(null),
-      Phones:this.phoneGroup
+      phones:this.phoneGroup,
+      emails:this.emailGroup,
+      websites:  this.websiteGroup
     })
-    this.phoneGroup=new FormArray([]);
-    this.phoneGroup.push(new FormGroup({
-      phone:new FormControl(null),
-      phoneType:new FormControl(null),
-    }))
   }
+  get controlPhones(){
+    return (<FormArray>this.contactForm.get('phones')).controls;
+  }
+  get controltEmail(){
+    return (<FormArray>this.contactForm.get('emails')).controls;
+  }
+  get contactWebsite(){
+    return (<FormArray>this.contactForm.get('websites')).controls;
+  }
+
  close (){
     this.router.navigate(['../'],{relativeTo:this.activeRouter})
+  }
+  addPhone(){
+    (<FormArray>this.contactForm.get('phones')).push(
+      new FormGroup({
+        phone:new FormControl(null,[]),
+        phoneType:new FormControl(null,[]),
+      })
+    )
+  }
+  deletearrayGrpoup(phonegroupNum:number)
+  {
+    (<FormArray>this.contactForm.get('phones')).
+    removeAt(phonegroupNum)
+  }
+  addEmail(){
+    (<FormArray>this.contactForm.get('emails')).
+    push(
+      new FormGroup({
+        email:new FormControl(null,[]),
+      })
+    )
+  }
+  deleteEmail(emailNum:number){
+    (<FormArray>this.contactForm.get('emails')).
+    removeAt(emailNum)
+  }
+  addWebsite(){
+    (<FormArray>this.contactForm.get('websites')).
+    push(
+      new FormGroup({
+        email:new FormControl(null,[]),
+      })
+    )
+  }
+  deleteWebsite(emailNum:number){
+    (<FormArray>this.contactForm.get('websites')).
+    removeAt(emailNum)
   }
 }
