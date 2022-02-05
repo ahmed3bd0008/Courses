@@ -17,6 +17,7 @@ export class EditContactInstituteComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.phoneGroup=new FormArray([]);
     this.phoneGroup.push(new FormGroup({
       phone:new FormControl(null,[]),
@@ -82,12 +83,17 @@ export class EditContactInstituteComponent implements OnInit {
     (<FormArray>this.contactForm.get('websites')).
     push(
       new FormGroup({
-        email:new FormControl(null,[]),
+        website:new FormControl(null,[]),
       })
     )
   }
   deleteWebsite(emailNum:number){
     (<FormArray>this.contactForm.get('websites')).
     removeAt(emailNum)
+  }
+  onsubmite(){
+    alert("fsdfsd")
+    console.log("gdgsd")
+    console.log(this.contactForm)
   }
 }

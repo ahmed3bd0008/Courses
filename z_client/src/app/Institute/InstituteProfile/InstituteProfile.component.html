@@ -30,8 +30,7 @@
   <div class="shadow-lg bg-body ">
     <div style="padding:2px;">
       <p  class="text-center">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
-        minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo
+      {{describtionstr}}
       </p>
       <hr/>
     </div>
@@ -49,10 +48,11 @@
       </div>
       <hr/>
     </div>
-    <div style="padding:2px;">
+    <span>Email:</span>
+    <div style="padding:2px;" *ngFor="let item of email">
       <div  class="">
-        <span>Email:</span>
-        <p>Email</p>
+
+        <textarea>{{item.email}}</textarea>
       </div>
       <hr/>
     </div>

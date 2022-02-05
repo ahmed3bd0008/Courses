@@ -5,7 +5,7 @@
       <button (click)="close()" #closeInfoModule type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="contactForm">
+      <form [formGroup]="contactForm" (ngSubmit)="onsubmite()">
         <div class="container">
           <div class="row" formArrayName="emails"
           >
@@ -81,10 +81,12 @@
           >
             <label>Institute Website</label>
             <div class="col-10">
-              <input type="text" class="form-control" placeholder="Website" aria-label="Website">
+              <input type="text" class="form-control" placeholder="Website" aria-label="Website"
+                formControlName="website"
+              >
             </div>
             <div class="col-1">
-              <i class="fas fa-trash-alt" (click)="deleteWebsite(i)"></i>
+              <i [disabled]=true class="fas fa-trash-alt" (click)="deleteWebsite(i)"></i>
             </div>
             <div class="col-1">
               <i class="fas fa-plus-circle" (click)="addWebsite()" ></i>
@@ -92,12 +94,11 @@
           </div>
         </div>
 
-
+        <div class="modal-footer">
+          <button (click)="close()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button  type="submit" class="btn btn-primary">Understood</button>
+        </div>
     </form>
-    </div>
-    <div class="modal-footer">
-      <button (click)="close()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Understood</button>
     </div>
   </div>
 
